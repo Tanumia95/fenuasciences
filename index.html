@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annales STI2D – Physique-Chimie & Maths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+<style>
+:root{
+  --bg:#EEF1F7;--surface:#FFFFFF;--surface-2:#F4F6FB;
+  --accent:#1B5EA8;--accent-tint:#E4EDF8;--accent-hover:#164E90;
+  --text:#19243A;--muted:#5C6880;--border:#C8D3E6;--border-light:#DDE5F0;
+  --c-therm:#C05300;--c-therm-bg:#FFF0E6;
+  --c-chim:#6B35A8;--c-chim-bg:#F3ECFC;
+  --c-ondes:#0A7A60;--c-ondes-bg:#E6F5F1;
+  --c-elec:#1B5EA8;--c-elec-bg:#E4EDF8;
+  --c-meca:#8B3A20;--c-meca-bg:#FAEDE8;
+  --c-nucl:#7A6A00;--c-nucl-bg:#F5F0DC;
+  --c-mesur:#3A5068;--c-mesur-bg:#EAF0F5;
+  --r:8px;--r-sm:4px;--r-lg:14px;
+  --sh:0 2px 8px rgba(25,36,58,.10);--sh-sm:0 1px 3px rgba(25,36,58,.08);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1623;--surface:#192235;--surface-2:#1F2B40;
+  --accent:#4A90D9;--accent-tint:#1C2F48;--accent-hover:#6AABEE;
+  --text:#E2E8F4;--muted:#8A9AB8;--border:#2A3A55;--border-light:#223050;
+  --c-therm:#FF9E5C;--c-therm-bg:#2B1A0A;
+  --c-chim:#B07AE8;--c-chim-bg:#20143A;
+  --c-ondes:#3EC7A2;--c-ondes-bg:#0B2820;
+  --c-elec:#6AABEE;--c-elec-bg:#0D1E33;
+  --c-meca:#E08060;--c-meca-bg:#2A1208;
+  --c-nucl:#D4BC40;--c-nucl-bg:#221E00;
+  --c-mesur:#90AABF;--c-mesur-bg:#121C26;
+  --sh:0 2px 8px rgba(0,0,0,.35);--sh-sm:0 1px 3px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#0F1623;--surface:#192235;--surface-2:#1F2B40;
+  --accent:#4A90D9;--accent-tint:#1C2F48;--accent-hover:#6AABEE;
+  --text:#E2E8F4;--muted:#8A9AB8;--border:#2A3A55;--border-light:#223050;
+  --c-therm:#FF9E5C;--c-therm-bg:#2B1A0A;--c-chim:#B07AE8;--c-chim-bg:#20143A;
+  --c-ondes:#3EC7A2;--c-ondes-bg:#0B2820;--c-elec:#6AABEE;--c-elec-bg:#0D1E33;
+  --c-meca:#E08060;--c-meca-bg:#2A1208;--c-nucl:#D4BC40;--c-nucl-bg:#221E00;
+  --c-mesur:#90AABF;--c-mesur-bg:#121C26;
+  --sh:0 2px 8px rgba(0,0,0,.35);--sh-sm:0 1px 3px rgba(0,0,0,.3);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+/* HEADER */
+.site-header{background:var(--surface);border-bottom:1px solid var(--border);padding:18px 24px 14px;position:relative;overflow:hidden}
+.site-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border-light) 1px,transparent 1px),linear-gradient(90deg,var(--border-light) 1px,transparent 1px);background-size:28px 28px;opacity:.4;pointer-events:none}
+.header-inner{position:relative;max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.site-title{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;color:var(--text);line-height:1.15}
+.site-title span{color:var(--accent)}
+.site-subtitle{font-size:.8rem;color:var(--muted)}
+.theme-toggle{margin-left:auto;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:5px 10px;font-size:.78rem;color:var(--muted);cursor:pointer;font-family:inherit;transition:background .15s}
+.theme-toggle:hover{background:var(--accent-tint);color:var(--accent)}
+/* TABS */
+.tab-nav{display:flex;gap:4px;background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px}
+.tab-nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:4px}
+.tab-btn{padding:10px 18px;border:none;background:none;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+/* LEGEND */
+.legend{background:var(--surface);border-bottom:1px solid var(--border-light);padding:8px 24px}
+.legend-inner{max-width:1100px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.legend-label{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-right:4px;white-space:nowrap}
+.leg-pill{display:flex;align-items:center;gap:5px;font-size:.73rem;color:var(--muted);cursor:pointer;padding:2px 0;transition:color .12s}
+.leg-pill:hover{color:var(--text)}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+/* FILTERS */
+.filters-bar{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--sh-sm);padding:10px 24px}
+.filters-inner{max-width:1100px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.search-wrap{position:relative;flex:1;min-width:180px;max-width:280px}
+.search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);width:14px;height:14px;pointer-events:none}
+.search-input{width:100%;padding:7px 10px 7px 30px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--surface-2);color:var(--text);font-size:.85rem;font-family:inherit;outline:none;transition:border-color .15s}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--muted)}
+select.filter-select{padding:7px 26px 7px 9px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--surface-2);color:var(--text);font-size:.85rem;font-family:inherit;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C6880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;transition:border-color .15s}
+select.filter-select:focus{border-color:var(--accent)}
+.year-pills{display:flex;gap:4px;flex-wrap:wrap}
+.year-pill{padding:5px 9px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.78rem;font-family:'Outfit',sans-serif;font-weight:500;cursor:pointer;transition:all .12s;line-height:1}
+.year-pill:hover{border-color:var(--accent);color:var(--accent)}
+.year-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.filter-clear{display:none;background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;padding:4px 6px;border-radius:var(--r-sm);text-decoration:underline}
+.filter-clear.visible{display:inline}
+.filter-clear:hover{color:var(--text)}
+.notion-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px 3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;background:var(--accent);color:#fff;cursor:default;white-space:nowrap}
+.notion-chip-x{background:none;border:none;color:#fff;cursor:pointer;font-size:.85rem;padding:0 0 0 2px;line-height:1;opacity:.8}
+.notion-chip-x:hover{opacity:1}
+/* GRID */
+.grid-wrap{max-width:1100px;margin:0 auto;padding:20px 24px 48px}
+.result-count{font-size:.8rem;color:var(--muted);margin-bottom:12px}
+.result-count strong{color:var(--text)}
+.year-group-label{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--border-light)}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+/* CARD */
+.subject-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;box-shadow:var(--sh-sm);cursor:pointer;transition:border-color .15s,box-shadow .15s;position:relative;overflow:hidden}
+.subject-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.subject-card:hover{border-color:var(--accent);box-shadow:var(--sh)}
+.card-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.card-region{font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;color:var(--text)}
+.card-date{font-size:.78rem;color:var(--muted)}
+.card-notions{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.notion-badge{display:inline-flex;align-items:center;gap:4px;font-size:.71rem;font-weight:500;border-radius:4px;padding:2px 6px;line-height:1.4}
+.notion-badge-bar{width:3px;height:10px;border-radius:2px;flex-shrink:0}
+.notion-badge.cat-therm{background:var(--c-therm-bg);color:var(--c-therm)} .notion-badge.cat-therm .notion-badge-bar{background:var(--c-therm)}
+.notion-badge.cat-chim{background:var(--c-chim-bg);color:var(--c-chim)} .notion-badge.cat-chim .notion-badge-bar{background:var(--c-chim)}
+.notion-badge.cat-ondes{background:var(--c-ondes-bg);color:var(--c-ondes)} .notion-badge.cat-ondes .notion-badge-bar{background:var(--c-ondes)}
+.notion-badge.cat-elec{background:var(--c-elec-bg);color:var(--c-elec)} .notion-badge.cat-elec .notion-badge-bar{background:var(--c-elec)}
+.notion-badge.cat-meca{background:var(--c-meca-bg);color:var(--c-meca)} .notion-badge.cat-meca .notion-badge-bar{background:var(--c-meca)}
+.notion-badge.cat-nucl{background:var(--c-nucl-bg);color:var(--c-nucl)} .notion-badge.cat-nucl .notion-badge-bar{background:var(--c-nucl)}
+.notion-badge.cat-mesur{background:var(--c-mesur-bg);color:var(--c-mesur)} .notion-badge.cat-mesur .notion-badge-bar{background:var(--c-mesur)}
+.cat-therm-card::before{background:var(--c-therm)} .cat-chim-card::before{background:var(--c-chim)} .cat-ondes-card::before{background:var(--c-ondes)}
+.cat-elec-card::before{background:var(--c-elec)} .cat-meca-card::before{background:var(--c-meca)} .cat-nucl-card::before{background:var(--c-nucl)} .cat-mesur-card::before{background:var(--c-mesur)}
+.card-actions{display:flex;gap:6px}
+.btn-pdf,.btn-corr,.btn-newtab-inline{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--r-sm);font-size:.78rem;font-weight:500;font-family:inherit;text-decoration:none;cursor:pointer;border:1px solid;transition:all .12s}
+.btn-pdf{background:var(--accent-tint);color:var(--accent);border-color:var(--accent-tint)}
+.btn-pdf:hover{background:var(--accent);color:#fff}
+.btn-corr{background:var(--surface-2);color:var(--muted);border-color:var(--border)}
+.btn-corr:hover{border-color:var(--accent);color:var(--accent)}
+.btn-newtab-inline{background:var(--surface-2);color:var(--muted);border-color:var(--border)}
+.btn-newtab-inline:hover{border-color:var(--accent);color:var(--accent)}
+.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+.no-results strong{display:block;color:var(--text);margin-bottom:6px;font-size:1.05rem}
+/* PDF MODAL */
+.pdf-modal{position:fixed;inset:0;z-index:100;display:flex;align-items:stretch}
+.pdf-modal-backdrop{position:absolute;inset:0;background:rgba(10,16,30,.6);backdrop-filter:blur(3px)}
+.pdf-modal-inner{position:relative;margin:0 auto;width:100%;max-width:1400px;display:flex;flex-direction:column;background:var(--surface);height:100vh}
+.pdf-modal-header{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--surface-2);flex-shrink:0;flex-wrap:wrap}
+.pdf-modal-title{font-family:'Outfit',sans-serif;font-weight:600;font-size:.95rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdf-modal-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.btn-toggle-corr{background:var(--surface-2);border:1px solid var(--border);color:var(--muted);padding:5px 10px;border-radius:var(--r-sm);font-size:.78rem;cursor:pointer;font-family:inherit;transition:all .12s}
+.btn-toggle-corr:hover,.btn-toggle-corr.active{background:var(--accent-tint);border-color:var(--accent);color:var(--accent)}
+.btn-newtab-modal{background:var(--accent-tint);border:1px solid var(--accent-tint);color:var(--accent);padding:5px 10px;border-radius:var(--r-sm);font-size:.78rem;cursor:pointer;text-decoration:none;font-family:inherit;display:inline-flex;align-items:center;gap:4px}
+.btn-newtab-modal:hover{background:var(--accent);color:#fff}
+.btn-close-modal{background:none;border:1px solid var(--border);color:var(--muted);width:28px;height:28px;border-radius:var(--r-sm);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.btn-close-modal:hover{background:var(--surface-2);color:var(--text)}
+.pdf-modal-body{flex:1;display:flex;gap:0;overflow:hidden}
+.pdf-pane{flex:1;display:flex;flex-direction:column;min-width:0;border-left:1px solid var(--border)}
+.pdf-pane:first-child{border-left:none}
+.pdf-pane-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:6px 12px;background:var(--surface-2);border-bottom:1px solid var(--border-light);flex-shrink:0}
+.pdf-pane iframe{flex:1;width:100%;border:none;background:#fff;height:100%}
+.pdf-mobile-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px;text-align:center;flex:1;color:var(--muted)}
+.pdf-mobile-fallback strong{color:var(--text);font-size:1.05rem}
+/* QCM TAB */
+.qcm-wrap,.flash-wrap{max-width:800px;margin:0 auto;padding:32px 24px 60px}
+.section-title{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:6px}
+.section-sub{font-size:.88rem;color:var(--muted);margin-bottom:24px}
+.notion-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:32px}
+.notion-pick-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:10px;border-left:4px solid}
+.notion-pick-card:hover{box-shadow:var(--sh);transform:translateY(-1px)}
+.notion-pick-card .npcard-label{font-size:.88rem;font-weight:500;line-height:1.3}
+.npcard-count{font-size:.72rem;color:var(--muted);margin-top:2px}
+.notion-pick-card.cat-therm{border-left-color:var(--c-therm)} .notion-pick-card.cat-chim{border-left-color:var(--c-chim)} .notion-pick-card.cat-ondes{border-left-color:var(--c-ondes)} .notion-pick-card.cat-elec{border-left-color:var(--c-elec)} .notion-pick-card.cat-meca{border-left-color:var(--c-meca)} .notion-pick-card.cat-nucl{border-left-color:var(--c-nucl)} .notion-pick-card.cat-mesur{border-left-color:var(--c-mesur)}
+/* QCM question screen */
+.qcm-screen{display:none}
+.qcm-screen.active{display:block}
+.qcm-progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.qcm-progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .3s}
+.qcm-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:.82rem;color:var(--muted)}
+.qcm-notion-tag{font-weight:600}
+.qcm-counter{font-variant-numeric:tabular-nums}
+.qcm-question{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;margin-bottom:16px;font-size:1rem;font-weight:500;line-height:1.55}
+.qcm-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.qcm-opt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);cursor:pointer;text-align:left;font-size:.9rem;line-height:1.4;font-family:inherit;color:var(--text);transition:all .12s;width:100%}
+.qcm-opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-tint)}
+.qcm-opt-letter{width:22px;height:22px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:700;flex-shrink:0;color:var(--muted)}
+.qcm-opt.correct{border-color:#16a34a;background:#f0fdf4;color:#166534}
+.qcm-opt.correct .qcm-opt-letter{background:#16a34a;border-color:#16a34a;color:#fff}
+.qcm-opt.wrong{border-color:#dc2626;background:#fef2f2;color:#991b1b}
+.qcm-opt.wrong .qcm-opt-letter{background:#dc2626;border-color:#dc2626;color:#fff}
+:root[data-theme="dark"] .qcm-opt.correct{border-color:#22c55e;background:#0f2f1a;color:#86efac}
+:root[data-theme="dark"] .qcm-opt.wrong{border-color:#f87171;background:#2d1212;color:#fca5a5}
+.qcm-explication{background:var(--accent-tint);border:1px solid var(--border-light);border-left:3px solid var(--accent);border-radius:var(--r);padding:12px 14px;font-size:.85rem;color:var(--text);line-height:1.5;margin-bottom:14px;display:none}
+.qcm-explication.show{display:block}
+.qcm-explication strong{color:var(--accent);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
+.btn-next{background:var(--accent);color:#fff;border:none;padding:10px 22px;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .15s;display:none}
+.btn-next.show{display:inline-flex;align-items:center;gap:6px}
+.btn-next:hover{background:var(--accent-hover)}
+/* QCM Score */
+.qcm-score{text-align:center;padding:40px 20px;display:none}
+.qcm-score.active{display:block}
+.score-circle{width:100px;height:100px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;background:var(--accent-tint);border:3px solid var(--accent);color:var(--accent)}
+.score-label{font-size:1.1rem;font-weight:600;margin-bottom:6px}
+.score-sub{font-size:.88rem;color:var(--muted);margin-bottom:24px}
+.btn-retry,.btn-back{padding:10px 20px;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .12s;border:1px solid}
+.btn-retry{background:var(--accent);color:#fff;border-color:var(--accent);margin-right:8px}
+.btn-retry:hover{background:var(--accent-hover)}
+.btn-back{background:var(--surface-2);color:var(--muted);border-color:var(--border)}
+.btn-back:hover{border-color:var(--accent);color:var(--accent)}
+
+/* MODE SUJETS / EXERCICES */
+#subjectsList{display:block}
+.results-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.mode-toggle{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:3px;gap:2px}
+.mode-btn{border:none;background:transparent;color:var(--muted);font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:16px;cursor:pointer;transition:all .12s}
+.mode-btn.active{background:var(--accent);color:#fff}
+.mode-btn:not(.active):hover{color:var(--accent)}
+.mode-hint{font-size:.78rem;color:var(--muted);margin-bottom:6px;min-height:1em}
+.card-exo-title{font-family:'Outfit',sans-serif;font-size:.86rem;font-weight:600;color:var(--text);margin:-2px 0 8px;line-height:1.35}
+.card-exo-num{color:var(--accent);font-weight:700}
+.badge-ancien{font-size:.66rem;font-weight:600;color:var(--muted);border:1px solid var(--border);border-radius:10px;padding:1px 6px;margin-left:6px;white-space:nowrap}
+/* FLASHCARDS */
+.flash-selector{margin-bottom:32px}
+.flash-deck{display:none;max-width:560px;margin:0 auto}
+.flash-deck.active{display:block}
+.flash-deck-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:.85rem;color:var(--muted)}
+.flash-deck-notion{font-weight:600;color:var(--text)}
+.flash-counter{font-variant-numeric:tabular-nums}
+.flashcard-scene{perspective:1000px;height:340px;margin-bottom:16px;cursor:pointer}
+.flashcard{width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s;position:relative}
+.flashcard.flipped{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center}
+.card-front{background:var(--surface);border:1px solid var(--border);box-shadow:var(--sh)}
+.card-back{background:var(--accent);transform:rotateY(180deg);border:1px solid var(--accent-hover)}
+.card-face-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;opacity:.6}
+.card-front .card-face-label{color:var(--muted)}
+.card-back .card-face-label{color:rgba(255,255,255,.7)}
+.card-face-text{font-size:.95rem;line-height:1.55;white-space:pre-line}
+.card-front .card-face-text{color:var(--text);font-weight:500}
+.card-back .card-face-text{color:#fff;text-align:left;font-size:.9rem;max-height:100%;overflow-y:auto}
+.card-back{justify-content:safe center;overflow:hidden}
+.flash-hint{font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:14px}
+.flash-nav{display:flex;gap:8px;justify-content:center;align-items:center}
+.flash-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.flash-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.flash-btn:disabled{opacity:.35;cursor:not-allowed}
+.btn-flip{background:var(--accent-tint);border:1px solid var(--accent);color:var(--accent);padding:8px 18px;border-radius:var(--r);font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .12s}
+.btn-flip:hover{background:var(--accent);color:#fff}
+.btn-back-flash,.btn-retry-flash{padding:8px 16px;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .12s;border:1px solid;margin-top:20px;margin-right:6px}
+.btn-back-flash{background:var(--surface-2);color:var(--muted);border-color:var(--border)}
+.btn-back-flash:hover{border-color:var(--accent);color:var(--accent)}
+/* RESPONSIVE */
+@media(max-width:600px){
+  .site-header{padding:14px 16px}
+  .filters-bar,.legend,.tab-nav{padding-left:14px;padding-right:14px}
+  .grid-wrap,.qcm-wrap,.flash-wrap{padding-left:14px;padding-right:14px;padding-top:20px}
+  .subjects-grid{grid-template-columns:1fr}
+  .notion-grid{grid-template-columns:1fr 1fr}
+  .flashcard-scene{height:360px}
+  .pdf-modal-inner{max-width:100%}
+}
+</style>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="site-title">Annales <span>STI2D</span></div>
+      <div class="site-subtitle">Physique-Chimie &amp; Mathématiques · Baccalauréat</div>
+    </div>
+    <button class="theme-toggle" id="themeToggle">◑ Thème</button>
+  </div>
+</header>
+
+<!-- TABS NAV -->
+<div class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="annales">📄 Annales</button>
+    <button class="tab-btn" data-tab="qcm">❓ QCM</button>
+    <button class="tab-btn" data-tab="flashcards">🃏 Flashcards</button>
+  </div>
+</div>
+
+<!-- ══ TAB: ANNALES ══════════════════════════════════════════════ -->
+<div id="tab-annales" class="tab-content active">
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-inner">
+      <span class="legend-label">Catégories :</span>
+      <span class="leg-pill" data-filter-cat="cat-therm"><span class="leg-dot" style="background:var(--c-therm)"></span>Thermique</span>
+      <span class="leg-pill" data-filter-cat="cat-chim"><span class="leg-dot" style="background:var(--c-chim)"></span>Chimie</span>
+      <span class="leg-pill" data-filter-cat="cat-ondes"><span class="leg-dot" style="background:var(--c-ondes)"></span>Ondes</span>
+      <span class="leg-pill" data-filter-cat="cat-elec"><span class="leg-dot" style="background:var(--c-elec)"></span>Électricité</span>
+      <span class="leg-pill" data-filter-cat="cat-meca"><span class="leg-dot" style="background:var(--c-meca)"></span>Mécanique</span>
+      <span class="leg-pill" data-filter-cat="cat-nucl"><span class="leg-dot" style="background:var(--c-nucl)"></span>Nucléaire</span>
+      <span class="leg-pill" data-filter-cat="cat-mesur"><span class="leg-dot" style="background:var(--c-mesur)"></span>Mesures</span>
+    </div>
+  </div>
+  <!-- Filters -->
+  <div class="filters-bar">
+    <div class="filters-inner">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+        <input class="search-input" id="searchInput" type="text" placeholder="Rechercher…">
+      </div>
+      <select class="filter-select" id="regionSelect">
+        <option value="">Toutes les régions</option>
+        <option>Métropole</option><option>Polynésie</option><option>NC</option>
+        <option>Réunion</option><option>Antilles-Guyane</option><option>Mayotte</option>
+        <option>Mexique</option><option>Centres étrangers</option><option>Sujet zéro 1</option><option>Sujet zéro 2</option>
+      </select>
+      <select class="filter-select" id="notionAdd">
+        <option value="">+ Ajouter une notion…</option>
+        <optgroup label="🌡 Thermique"><option>Transfert thermique</option><option>Énergie interne</option><option>Changement d'état</option></optgroup>
+        <optgroup label="⚗ Chimie"><option>Combustion</option><option>Corrosion</option><option>Oxydoréduction</option><option>Acide-base</option><option>Piles et accumulateur</option></optgroup>
+        <optgroup label="〰 Ondes"><option>Ondes sonores</option><option>Ondes électromagnétiques</option><option>Notions d'ondes</option></optgroup>
+        <optgroup label="⚡ Électricité"><option>Signaux électriques</option><option>Transport électricité</option><option>Sécurité électrique</option><option>Convertisseur</option><option>Panneaux photovoltaïques</option><option>Panneaux photothermique</option><option>Rendement</option></optgroup>
+        <optgroup label="⚙ Mécanique"><option>Mouvement et forces</option><option>Forces de frottement</option><option>Mouvement rotatif</option><option>Statique des fluides</option></optgroup>
+        <optgroup label="☢ Nucléaire"><option>Nucléaire</option><option>Radioactivité</option></optgroup>
+        <optgroup label="📐 Mesures"><option>Incertitudes type-A</option><option>Incertitudes type-B</option><option>Capteurs</option></optgroup>
+      </select>
+      <div id="notionChips" style="display:flex;gap:5px;flex-wrap:wrap;align-items:center"></div>
+      <div class="year-pills" id="yearPills">
+        <button class="year-pill active" data-year="">Toutes</button>
+        <button class="year-pill" data-year="2026">2026</button>
+        <button class="year-pill" data-year="2025">2025</button>
+        <button class="year-pill" data-year="2024">2024</button>
+        <button class="year-pill" data-year="2023">2023</button>
+        <button class="year-pill" data-year="2022">2022</button>
+        <button class="year-pill" data-year="2021">2021</button>
+        <button class="year-pill" data-year="2020">2020</button>
+        <button class="year-pill" data-year="2019">2019</button>
+        <button class="year-pill" data-year="2018">2018</button>
+        <button class="year-pill" data-year="2017">2017</button>
+      </div>
+      <button class="filter-clear" id="filterClear">✕ Réinitialiser</button>
+    </div>
+  </div>
+  <!-- Grid -->
+  <div class="grid-wrap">
+    <div class="results-head">
+      <div class="result-count"><strong id="countNum">34</strong> <span id="countLabel">sujet(s)</span></div>
+      <div class="mode-toggle" id="modeToggle" role="tablist" aria-label="Type d'affichage">
+        <button class="mode-btn active" data-mode="sujets">📄 Sujets complets</button>
+        <button class="mode-btn" data-mode="exercices">🧩 Par exercice</button>
+      </div>
+    </div>
+    <div class="mode-hint" id="modeHint"></div>
+    <div class="subjects-grid" id="subjectsList"></div>
+  </div>
+</div>
+
+<!-- ══ TAB: QCM ══════════════════════════════════════════════════ -->
+<div id="tab-qcm" class="tab-content">
+  <div class="qcm-wrap">
+    <!-- Selector -->
+    <div id="qcmSelector">
+      <div class="section-title">QCM par notion</div>
+      <div class="section-sub">Choisissez une notion pour commencer l'entraînement interactif.</div>
+      <div class="notion-grid" id="qcmNotionGrid"></div>
+    </div>
+    <!-- Question screen -->
+    <div class="qcm-screen" id="qcmScreen">
+      <div class="qcm-progress-bar"><div class="qcm-progress-fill" id="qcmProgressFill"></div></div>
+      <div class="qcm-meta">
+        <span class="qcm-notion-tag" id="qcmNotionTag"></span>
+        <span class="qcm-counter" id="qcmCounter"></span>
+      </div>
+      <div class="qcm-question" id="qcmQuestion"></div>
+      <div class="qcm-options" id="qcmOptions"></div>
+      <div class="qcm-explication" id="qcmExplication"><strong>Explication</strong><span id="qcmExplicationText"></span></div>
+      <button class="btn-next" id="btnNext">Question suivante →</button>
+    </div>
+    <!-- Score screen -->
+    <div class="qcm-score" id="qcmScore">
+      <div class="score-circle" id="scoreCircle"></div>
+      <div class="score-label" id="scoreLabel"></div>
+      <div class="score-sub" id="scoreSub"></div>
+      <button class="btn-retry" id="btnRetry">🔄 Rejouer</button>
+      <button class="btn-back" id="btnBackQcm">← Choisir une autre notion</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB: FLASHCARDS ═══════════════════════════════════════════ -->
+<div id="tab-flashcards" class="tab-content">
+  <div class="flash-wrap">
+    <!-- Selector -->
+    <div id="flashSelector">
+      <div class="section-title">Flashcards par notion</div>
+      <div class="section-sub">Cliquez sur une notion pour réviser avec les flashcards.</div>
+      <div class="notion-grid" id="flashNotionGrid"></div>
+    </div>
+    <!-- Deck -->
+    <div class="flash-deck" id="flashDeck">
+      <div class="flash-deck-header">
+        <span class="flash-deck-notion" id="flashDeckNotion"></span>
+        <span class="flash-counter" id="flashCounter"></span>
+      </div>
+      <div class="flashcard-scene" id="flashScene" title="Cliquez pour retourner">
+        <div class="flashcard" id="flashcard">
+          <div class="card-face card-front"><div class="card-face-label">Question</div><div class="card-face-text" id="flashFront"></div></div>
+          <div class="card-face card-back"><div class="card-face-label">Réponse</div><div class="card-face-text" id="flashBack"></div></div>
+        </div>
+      </div>
+      <p class="flash-hint">Cliquez sur la carte ou sur « Retourner » pour voir la réponse</p>
+      <div class="flash-nav">
+        <button class="flash-btn" id="flashPrev">←</button>
+        <button class="btn-flip" id="flashFlipBtn">Retourner</button>
+        <button class="flash-btn" id="flashNext">→</button>
+      </div>
+      <div style="text-align:center">
+        <button class="btn-back-flash" id="btnBackFlash">← Choisir une autre notion</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF MODAL -->
+<div id="pdfModal" style="display:none" class="pdf-modal">
+  <div class="pdf-modal-backdrop" id="pdfBackdrop"></div>
+  <div class="pdf-modal-inner">
+    <div class="pdf-modal-header">
+      <span class="pdf-modal-title" id="pdfModalTitle"></span>
+      <div class="pdf-modal-actions">
+        <button class="btn-toggle-corr" id="btnToggleCorr" style="display:none">Afficher la correction</button>
+        <button class="btn-toggle-corr" id="btnAltView" style="display:none" title="Si l'écran est blanc, essaye ce mode">🔄 Affichage alternatif</button>
+        <a class="btn-newtab-modal" id="btnNewtab" href="#" target="_blank" rel="noopener">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V8"/><path d="M8 1h3v3"/><line x1="11" y1="1" x2="6" y2="6"/></svg>
+          Nouvel onglet
+        </a>
+        <button class="btn-close-modal" id="btnClosePdf">✕</button>
+      </div>
+    </div>
+    <div class="pdf-modal-body" id="pdfModalBody">
+      <div class="pdf-pane" id="pdfSujetPane">
+        <div class="pdf-pane-label">📄 Sujet</div>
+        <iframe id="pdfSujetIframe" title="Sujet" src=""></iframe>
+      </div>
+      <div class="pdf-pane" id="pdfCorrPane" style="display:none">
+        <div class="pdf-pane-label">✅ Correction</div>
+        <iframe id="pdfCorrIframe" title="Correction" src=""></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ══ ANNALES DATA ══════════════════════════════════════════════ */
+const ANNALES = [
+  {titre:"Sujet Antilles Guyane 2026",pays:"Antilles-Guyane",annee:2026,session:"Juin",notions:["Sécurité électrique", "Énergie interne", "Transfert thermique", "Panneaux photovoltaïques", "Changement d'état", "Piles et accumulateur", "Combustion", "Corrosion", "Incertitudes type-A", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1jrbKU884QrK7voZ-OpFHDIoATSbGFne8/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1jrbKU884QrK7voZ-OpFHDIoATSbGFne8/preview",url_correction:null},
+  {titre:"Sujet. Métropole 2026",pays:"Métropole",annee:2026,session:"Juin",notions:["Acide-base", "Piles et accumulateur", "Nucléaire", "Notions d'ondes", "Radioactivité", "Transfert thermique", "Signaux électriques", "Énergie interne", "Transport électricité", "Panneaux photovoltaïques", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1qoAXdEfSDV_7a2MHC0IIA8gf7NrKXdfq/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1qoAXdEfSDV_7a2MHC0IIA8gf7NrKXdfq/preview",url_correction:null},
+  {titre:"Sujet Polynésie 2026",pays:"Polynésie",annee:2026,session:"Juin",notions:["Piles et accumulateur", "Forces de frottement", "Ondes sonores", "Mouvement rotatif", "Ondes électromagnétiques", "Notions d'ondes", "Corrosion", "Panneaux photovoltaïques", "Acide-base", "Mouvement et forces", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1Nt_o-AVV_52sc7uqZiY28ODvHQ7Ssn4C/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Nt_o-AVV_52sc7uqZiY28ODvHQ7Ssn4C/preview",url_correction:null},
+  {titre:"Sujet Métropole juin 2025",pays:"Métropole",annee:2025,session:"Juin",notions:["Mouvement rotatif", "Combustion", "Statique des fluides", "Forces de frottement", "Incertitudes type-A", "Nucléaire", "Incertitudes type-B", "Changement d'état", "Corrosion", "Mouvement et forces", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1-Czf1b-JiY9Ya-TWWUWh6PXuqjVunHYy/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1-Czf1b-JiY9Ya-TWWUWh6PXuqjVunHYy/preview",url_correction:null},
+  {titre:"Sujet Métropole sept 2025",pays:"Métropole",annee:2025,session:"Septembre",notions:["Énergie interne", "Transfert thermique", "Signaux électriques", "Acide-base", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1_OLabuIcKTrESsC47J-3eqznOH8Nq261/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1_OLabuIcKTrESsC47J-3eqznOH8Nq261/preview",url_correction:null},
+  {titre:"Sujet NC nov 2025",pays:"NC",annee:2025,session:"Novembre",notions:["Nucléaire", "Radioactivité", "Notions d'ondes", "Ondes électromagnétiques", "Combustion", "Transfert thermique", "Corrosion"],url_sujet:"https://drive.google.com/file/d/1h6Lq5F2b4OMQm5SDhjUSad-cHf5oiWi8/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1h6Lq5F2b4OMQm5SDhjUSad-cHf5oiWi8/preview",url_correction:null},
+  {titre:"Sujet Polynésie juin 2025",pays:"Polynésie",annee:2025,session:"Juillet",notions:["Panneaux photothermique", "Forces de frottement", "Combustion", "Ondes sonores", "Convertisseur", "Acide-base", "Rendement", "Signaux électriques", "Transfert thermique"],url_sujet:"https://drive.google.com/file/d/1zFx6-Zzba5yDV_a3H_t2zUPEslUjMguE/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1zFx6-Zzba5yDV_a3H_t2zUPEslUjMguE/preview",url_correction:null},
+  {titre:"Sujet Métropole juin 2024",pays:"Métropole",annee:2024,session:"Juin",notions:["Ondes sonores", "Radioactivité", "Nucléaire", "Combustion", "Forces de frottement", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1A0xkF-wwyhe4AgS-ffp36_9h3k34yJkC/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1A0xkF-wwyhe4AgS-ffp36_9h3k34yJkC/preview",url_correction:null},
+  {titre:"Sujet Métropole sept 2024",pays:"Métropole",annee:2024,session:"Septembre",notions:["Ondes électromagnétiques", "Forces de frottement", "Notions d'ondes", "Transfert thermique", "Acide-base", "Signaux électriques", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1Pe4T9MbXCZe3m8WgLgaRb_A7nJh5QZR1/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Pe4T9MbXCZe3m8WgLgaRb_A7nJh5QZR1/preview",url_correction:null},
+  {titre:"Sujet Polynésie jui 2024",pays:"Polynésie",annee:2024,session:"Juillet",notions:["Transfert thermique", "Corrosion", "Piles et accumulateur", "Ondes sonores", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/158Rbt393j_F-VQJZZIZIv1bfs7Hqk1AA/view?usp=sharing",url_preview:"https://drive.google.com/file/d/158Rbt393j_F-VQJZZIZIv1bfs7Hqk1AA/preview",url_correction:null},
+  {titre:"Sujet Polynésie mar 2023",pays:"Polynésie",annee:2023,session:"Mars",notions:["Énergie interne", "Transfert thermique", "Ondes sonores", "Acide-base"],url_sujet:"https://drive.google.com/file/d/1DtVZR_eyaCcVkK4_Zr8exhYG042rJkpA/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1DtVZR_eyaCcVkK4_Zr8exhYG042rJkpA/preview",url_correction:null},
+  {titre:"Sujet Mexique 2023",pays:"Mexique",annee:2023,session:"Mars",notions:["Forces de frottement", "Ondes sonores", "Incertitudes type-A", "Piles et accumulateur", "Combustion", "Ondes électromagnétiques", "Mouvement et forces", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1oqPUQJltpLsHpwclMKON0kRTi_rioB5E/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1oqPUQJltpLsHpwclMKON0kRTi_rioB5E/preview",url_correction:null},
+  {titre:"Sujet Métropole mar 2023",pays:"Métropole",annee:2023,session:"Mars",notions:["Forces de frottement", "Ondes sonores", "Transfert thermique", "Énergie interne", "Acide-base", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1NR9KwYDWEFqelIXaM5AAWKF0TE0cSUpT/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1NR9KwYDWEFqelIXaM5AAWKF0TE0cSUpT/preview",url_correction:null},
+  {titre:"Sujet Métropole sept 2023",pays:"Métropole",annee:2023,session:"Septembre",notions:["Piles et accumulateur", "Rendement", "Corrosion", "Forces de frottement", "Capteurs", "Oxydoréduction", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1iP0vmphO90lBSuMRojdpGE-KcM2STYvP/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1iP0vmphO90lBSuMRojdpGE-KcM2STYvP/preview",url_correction:null},
+  {titre:"Sujet NC aou 2023",pays:"NC",annee:2023,session:"Août",notions:["Combustion", "Transfert thermique", "Incertitudes type-B", "Rendement", "Ondes sonores", "Panneaux photovoltaïques"],url_sujet:"https://drive.google.com/file/d/14yzPMsBQlBH2DUklfWJ2W4Y2qC5CsjcJ/view?usp=sharing",url_preview:"https://drive.google.com/file/d/14yzPMsBQlBH2DUklfWJ2W4Y2qC5CsjcJ/preview",url_correction:null},
+  {titre:"Sujet Réunion mar 2023",pays:"Réunion",annee:2023,session:"Mars",notions:["Combustion", "Incertitudes type-B", "Signaux électriques", "Forces de frottement", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1Blxq6W2PbAVHwUCiqOS4UAM5ZpmksDmw/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Blxq6W2PbAVHwUCiqOS4UAM5ZpmksDmw/preview",url_correction:null},
+  {titre:"Sujet Mayotte mai 2022",pays:"Mayotte",annee:2022,session:"Mai",notions:["Forces de frottement", "Piles et accumulateur", "Incertitudes type-A", "Ondes sonores", "Transfert thermique", "Énergie interne", "Incertitudes type-B", "Convertisseur", "Mouvement et forces", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/13iy3F5W-7VdYbvKmF1JogFIQq_0agS1t/view?usp=sharing",url_preview:"https://drive.google.com/file/d/13iy3F5W-7VdYbvKmF1JogFIQq_0agS1t/preview",url_correction:null},
+  {titre:"Sujet Métropole mai 2022",pays:"Métropole",annee:2022,session:"Mai",notions:["Transfert thermique", "Énergie interne", "Ondes sonores", "Acide-base", "Ondes électromagnétiques", "Panneaux photovoltaïques", "Panneaux photothermique", "Combustion", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1JGBoN-w4XAIuI6d3_FQJKHqhQwRmAOk0/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1JGBoN-w4XAIuI6d3_FQJKHqhQwRmAOk0/preview",url_correction:null},
+  {titre:"Sujet Métropole sept 2022",pays:"Métropole",annee:2022,session:"Septembre",notions:["Piles et accumulateur", "Acide-base", "Notions d'ondes", "Ondes sonores", "Forces de frottement", "Énergie interne", "Transfert thermique", "Oxydoréduction", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/19R2Wc0XY4I7DGN4ea3-2vZQvBt8EIGbT/view?usp=sharing",url_preview:"https://drive.google.com/file/d/19R2Wc0XY4I7DGN4ea3-2vZQvBt8EIGbT/preview",url_correction:null},
+  {titre:"Sujet NC oct 2022",pays:"NC",annee:2022,session:"Octobre",notions:["Forces de frottement", "Piles et accumulateur", "Rendement", "Notions d'ondes", "Transfert thermique", "Mouvement et forces", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1_ol7JKhi2h6atFww1JprzeMe6zgF9l-J/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1_ol7JKhi2h6atFww1JprzeMe6zgF9l-J/preview",url_correction:null},
+  {titre:"Sujet Polynésie mai 2022",pays:"Polynésie",annee:2022,session:"Mai",notions:["Énergie interne", "Ondes sonores", "Piles et accumulateur", "Combustion", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1F5AD0MA2Q1klRKqL4bVrDbD4Z1tqMwyk/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1F5AD0MA2Q1klRKqL4bVrDbD4Z1tqMwyk/preview",url_correction:null},
+  {titre:"Sujet Métropole mar 2021",pays:"Métropole",annee:2021,session:"Mars",notions:["Ondes sonores", "Panneaux photovoltaïques", "Piles et accumulateur", "Combustion", "Transfert thermique", "Changement d'état", "Énergie interne", "Convertisseur", "Rendement", "Oxydoréduction"],url_sujet:"https://drive.google.com/file/d/1vqb0d0SbEpDUNzR37xH9R9LFBdAinNd2/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1vqb0d0SbEpDUNzR37xH9R9LFBdAinNd2/preview",url_correction:null},
+  {titre:"Sujet Métropole juil 2021",pays:"Métropole",annee:2021,session:"Juin",notions:["Transfert thermique", "Énergie interne", "Mouvement rotatif", "Rendement", "Piles et accumulateur", "Panneaux photovoltaïques", "Acide-base", "Ondes sonores"],url_sujet:"https://drive.google.com/file/d/1h7W6pim_ZjB5uK49hcUJqklU3dgPqT6O/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1h7W6pim_ZjB5uK49hcUJqklU3dgPqT6O/preview",url_correction:null},
+  {titre:"Sujet Métropole sept 2021",pays:"Métropole",annee:2021,session:"Septembre",notions:["Énergie interne", "Forces de frottement", "Incertitudes type-B", "Transfert thermique", "Acide-base", "Convertisseur", "Rendement", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1QqQ-OWlZr9l3mGEdZ8EUXh7oTPwKHF-l/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1QqQ-OWlZr9l3mGEdZ8EUXh7oTPwKHF-l/preview",url_correction:null},
+  {titre:"Sujet zéro 1 2021",pays:"Sujet zéro 1",annee:2021,session:"",notions:["Transfert thermique", "Panneaux photovoltaïques", "Piles et accumulateur", "Forces de frottement", "Oxydoréduction", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1DCCpY7A8GCodLndDxdgMs6b7-ai5ENoV/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1DCCpY7A8GCodLndDxdgMs6b7-ai5ENoV/preview",url_correction:null},
+  {titre:"Sujet zéro 2 2021",pays:"Sujet zéro 2",annee:2021,session:"",notions:["Ondes sonores", "Panneaux photovoltaïques", "Incertitudes type-A", "Notions d'ondes", "Acide-base", "Forces de frottement", "Rendement", "Convertisseur", "Capteurs", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1SjR3UdkQhjk5f8sn-ICyQjJNZkRtCgNl/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1SjR3UdkQhjk5f8sn-ICyQjJNZkRtCgNl/preview",url_correction:null},
+  {titre:"Sujet Métropole Sept 2020",pays:"Métropole",annee:2020,session:"Septembre",notions:["Panneaux photovoltaïques", "Convertisseur", "Rendement", "Piles et accumulateur", "Forces de frottement", "Ondes électromagnétiques", "Notions d'ondes", "Oxydoréduction", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1ZbhfZf8ttGRPKWT_pHO0OE4ssrjNJfpg/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ZbhfZf8ttGRPKWT_pHO0OE4ssrjNJfpg/preview",url_correction:null},
+  {titre:"Sujet Antilles-Guyane Jui 2019",pays:"Antilles-Guyane",annee:2019,session:"Juin",notions:["Panneaux photovoltaïques", "Ondes électromagnétiques", "Convertisseur", "Rendement", "Nucléaire", "Radioactivité", "Piles et accumulateur", "Combustion", "Mouvement rotatif", "Forces de frottement", "Oxydoréduction", "Capteurs", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1AzHNxoxFihcn2NnK2ojW7wyqXEedZCUU/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1AzHNxoxFihcn2NnK2ojW7wyqXEedZCUU/preview",url_correction:null},
+  {titre:"Sujet Métropole Jui 2019",pays:"Métropole",annee:2019,session:"Juin",notions:["Convertisseur", "Rendement", "Panneaux photovoltaïques", "Ondes électromagnétiques", "Forces de frottement", "Mouvement rotatif", "Statique des fluides", "Combustion", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1Qc516K5grdsHsO-OcKDnmuGvU81jVQJK/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Qc516K5grdsHsO-OcKDnmuGvU81jVQJK/preview",url_correction:null},
+  {titre:"Sujet Métropole sept 2019",pays:"Métropole",annee:2019,session:"Septembre",notions:["Forces de frottement", "Convertisseur", "Rendement", "Piles et accumulateur", "Notions d'ondes", "Oxydoréduction", "Capteurs"],url_sujet:"https://drive.google.com/file/d/1Z3wweQFE_FZXCLywUCiSbNNLKqFJ_x_O/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Z3wweQFE_FZXCLywUCiSbNNLKqFJ_x_O/preview",url_correction:null},
+  {titre:"Sujet NC nov 2019",pays:"NC",annee:2019,session:"Novembre",notions:["Panneaux photovoltaïques", "Convertisseur", "Rendement", "Ondes électromagnétiques", "Piles et accumulateur", "Combustion", "Changement d'état", "Forces de frottement", "Oxydoréduction", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/16T9zEPTwmQRvkFF0HuSCNQ1ZTvq7o_Fn/view?usp=sharing",url_preview:"https://drive.google.com/file/d/16T9zEPTwmQRvkFF0HuSCNQ1ZTvq7o_Fn/preview",url_correction:null},
+  {titre:"Sujet Polynésie 2019",pays:"Polynésie",annee:2019,session:"Juin",notions:["Transfert thermique", "Changement d'état", "Énergie interne", "Forces de frottement", "Ondes sonores", "Combustion", "Acide-base"],url_sujet:"https://drive.google.com/file/d/10epXqMa5dJYO-19JgSoYQN9jtTCzA67N/view?usp=sharing",url_preview:"https://drive.google.com/file/d/10epXqMa5dJYO-19JgSoYQN9jtTCzA67N/preview",url_correction:null},
+  {titre:"Sujet Polynésie jui 2018",pays:"Polynésie",annee:2018,session:"Juin",notions:["Convertisseur", "Rendement", "Forces de frottement", "Piles et accumulateur", "Acide-base", "Statique des fluides", "Mouvement et forces"],url_sujet:"https://drive.google.com/file/d/1jF2anU7voneP9uzI-bvflXiTXwWdvITm/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1jF2anU7voneP9uzI-bvflXiTXwWdvITm/preview",url_correction:null},
+  {titre:"Sujet NC mar 2017",pays:"NC",annee:2017,session:"Novembre",notions:["Combustion", "Forces de frottement", "Piles et accumulateur", "Mouvement rotatif", "Ondes sonores", "Notions d'ondes"],url_sujet:"https://drive.google.com/file/d/1uXvdAYzqIQcERscceZm0OhSswEN2O6Xx/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1uXvdAYzqIQcERscceZm0OhSswEN2O6Xx/preview",url_correction:null},
+];
+
+const CAT_MAP = {
+  "Transfert thermique":"cat-therm","Énergie interne":"cat-therm","Changement d'état":"cat-therm","Panneaux photothermique":"cat-therm",
+  "Combustion":"cat-chim","Corrosion":"cat-chim","Acide-base":"cat-chim","Piles et accumulateur":"cat-chim",
+  "Ondes sonores":"cat-ondes","Ondes électromagnétiques":"cat-ondes","Notions d'ondes":"cat-ondes",
+  "Signaux électriques":"cat-elec","Rendement":"cat-elec","Convertisseur":"cat-elec","Panneaux photovoltaïques":"cat-elec","Transport électricité":"cat-elec","Sécurité électrique":"cat-elec",
+  "Forces de frottement":"cat-meca","Mouvement rotatif":"cat-meca","Statique des fluides":"cat-meca",
+  "Nucléaire":"cat-nucl","Radioactivité":"cat-nucl",
+  "Incertitudes type-A":"cat-mesur","Incertitudes type-B":"cat-mesur","Capteurs":"cat-mesur",
+  "Oxydoréduction":"cat-chim","Mouvement et forces":"cat-meca"
+};
+
+/* ══ QCM DATA ══════════════════════════════════════════════════ */
+const QCM_DATA = [
+ {id:"frott",label:"Forces de frottement",cat:"cat-meca",questions:[
+  {q:"Un objet de 5 kg glisse sur un plan horizontal (g=10 m/s²). Avec μk=0,4, la force de frottement cinétique vaut :",opts:["20 N","2 N","50 N","0,08 N"],c:0,e:"N = mg = 50 N ; fc = μk×N = 0,4×50 = 20 N."},
+  {q:"La force de frottement cinétique sur un objet en mouvement est :",opts:["Dans le sens du mouvement","Opposée au mouvement","Perpendiculaire au mouvement","Nulle"],c:1,e:"La force de frottement cinétique s'oppose toujours au mouvement relatif."},
+  {q:"Pour un plan incliné d'angle θ, la réaction normale N d'un objet de masse m est :",opts:["N = mg","N = mg sinθ","N = mg cosθ","N = mg tanθ"],c:2,e:"La réaction normale est perpendiculaire au plan : N = mg cosθ."},
+  {q:"En général, la relation entre μk (cinétique) et μs (statique) est :",opts:["μk > μs","μk = μs","μk < μs","Sans relation"],c:2,e:"Il faut plus de force pour démarrer le glissement que pour le maintenir, donc μs > μk."},
+  {q:"Au seuil du glissement (glissement imminent), la force de frottement statique fs_max vaut :",opts:["μk × N","μs × N","mg","0"],c:1,e:"fs_max = μs × N. Tant que fs < μs×N, l'objet reste immobile."},
+  {q:"Un objet de 2 kg est sur un plan incliné à 30°. N vaut environ (g=10 m/s²) :",opts:["10 N","17,3 N","20 N","14,1 N"],c:1,e:"N = mg cos30° = 2×10×0,866 ≈ 17,3 N."}
+ ]},
+ {id:"therm",label:"Transfert thermique",cat:"cat-therm",questions:[
+  {q:"La résistance thermique d'une paroi (épaisseur e, conductivité λ, surface S) est :",opts:["Rth = λS/e","Rth = e/(λS)","Rth = λ/(eS)","Rth = eS/λ"],c:1,e:"Rth = e/(λ·S) en K/W. Grande λ = bonne conductivité = Rth petite."},
+  {q:"Le flux thermique φ (en W) à travers une paroi de résistance Rth soumise à ΔT est :",opts:["φ = ΔT × Rth","φ = Rth / ΔT","φ = ΔT / Rth","φ = ΔT − Rth"],c:2,e:"φ = ΔT / Rth (analogue à I = U/R en électricité)."},
+  {q:"Deux parois en série ont Rth1=0,5 K/W et Rth2=1,2 K/W. La résistance totale est :",opts:["0,7 K/W","1,7 K/W","0,6 K/W","2,4 K/W"],c:1,e:"En série : Rth_total = Rth1 + Rth2 = 0,5 + 1,2 = 1,7 K/W."},
+  {q:"Le mode de transfert thermique qui se propage sans support matériel (dans le vide) est :",opts:["La conduction","La convection","Le rayonnement","La diffusion"],c:2,e:"Le rayonnement thermique (ondes électromagnétiques infrarouges) ne nécessite pas de matière."},
+  {q:"La conductivité thermique λ est grande pour les matériaux :",opts:["Isolants","Bons conducteurs de chaleur","Transparents","Légers"],c:1,e:"Grand λ ↔ bon conducteur de chaleur. Ex : cuivre λ≈400 W/(m·K), laine de verre λ≈0,04 W/(m·K)."}
+ ]},
+ {id:"energie",label:"Énergie interne & Changement d'état",cat:"cat-therm",questions:[
+  {q:"La quantité de chaleur échangée lors d'un changement de température ΔT (masse m, chaleur spécifique c) est :",opts:["Q = m/c·ΔT","Q = m·c·ΔT","Q = mc/ΔT","Q = cΔT/m"],c:1,e:"Q = m·c·ΔT. Unité : J. Attention à l'unité de c : J/(kg·K)."},
+  {q:"La chaleur spécifique de l'eau vaut environ :",opts:["1000 J/(kg·K)","2100 J/(kg·K)","4180 J/(kg·K)","8360 J/(kg·K)"],c:2,e:"c_eau = 4180 J/(kg·K). Valeur importante à mémoriser."},
+  {q:"Lors d'un changement d'état, la température du corps :",opts:["Augmente","Diminue","Reste constante","Varie aléatoirement"],c:2,e:"Pendant un changement d'état, T reste constante (palier). L'énergie sert à modifier l'état, pas la température."},
+  {q:"L'énergie pour changer l'état de m kg (chaleur latente L) est :",opts:["Q = m/L","Q = mL","Q = L/m","Q = L+m"],c:1,e:"Q = m·L. Chaleur latente de fusion de la glace : L ≈ 334 000 J/kg."},
+  {q:"On chauffe 0,200 kg d'eau de 20°C à 100°C (c=4180 J/(kg·K)). L'énergie absorbée est :",opts:["836 J","8 360 J","66 880 J","418 J"],c:2,e:"Q = 0,200 × 4180 × (100−20) = 0,200 × 4180 × 80 = 66 880 J ≈ 66,9 kJ."}
+ ]},
+ {id:"combustion",label:"Combustion",cat:"cat-chim",questions:[
+  {q:"La combustion complète du méthane CH₄ produit :",opts:["CO + H₂O","CO₂ + H₂O","CO₂ + H₂","C + H₂O"],c:1,e:"CH₄ + 2O₂ → CO₂ + 2H₂O. Combustion complète : produits = CO₂ et H₂O."},
+  {q:"Le PCI (Pouvoir Calorifique Inférieur) représente :",opts:["L'énergie libérée avec condensation de l'eau","L'énergie libérée sans condensation de l'eau","La température max de la flamme","La masse du combustible"],c:1,e:"PCI = énergie dégagée quand l'eau produite reste vapeur. PCS inclut la condensation, donc PCS > PCI."},
+  {q:"La combustion incomplète d'un hydrocarbure produit notamment :",opts:["Plus de CO₂","Du CO (monoxyde de carbone)","De l'O₂","Du H₂"],c:1,e:"Manque d'O₂ → combustion incomplète → formation de CO (toxique). Combustion complète → CO₂."},
+  {q:"Dans C₃H₈ + 5O₂ → 3CO₂ + 4H₂O, le coefficient stœchiométrique de l'O₂ est :",opts:["3","4","5","8"],c:2,e:"5 molécules d'O₂ sont nécessaires pour brûler complètement 1 molécule de propane C₃H₈."},
+  {q:"L'unité du PCI d'un combustible solide est typiquement :",opts:["Watt (W)","J/kg","mol/L","kg/J"],c:1,e:"PCI en J/kg (solides/liquides) ou kWh/m³ (gaz). Ex : PCI méthane ≈ 50 MJ/kg."}
+ ]},
+ {id:"acide",label:"Acide-base",cat:"cat-chim",questions:[
+  {q:"Le pH d'une solution de HCl (acide fort) à C=0,01 mol/L est :",opts:["pH=1","pH=2","pH=7","pH=12"],c:1,e:"HCl totalement dissocié : [H₃O⁺]=C=10⁻² mol/L → pH = −log(10⁻²) = 2."},
+  {q:"La relation entre pKa et pKb d'un couple acide/base conjugué (à 25°C) est :",opts:["pKa × pKb = 7","pKa + pKb = 7","pKa + pKb = 14","pKa − pKb = 14"],c:2,e:"pKa + pKb = pKe = 14 à 25°C. Relation fondamentale."},
+  {q:"À l'équivalence d'un dosage acide-base :",opts:["pH=7 toujours","n_acide réagi = n_base réagi","n_acide = 0","pH est minimum"],c:1,e:"Équivalence : quantités de matière d'acide et de base exactement neutralisées. Le pH≠7 en général."},
+  {q:"Pour pH = pKa, les concentrations de AH et A⁻ sont :",opts:["[AH] > [A⁻]","[AH] = [A⁻]","[AH] < [A⁻]","[A⁻] = 0"],c:1,e:"Henderson-Hasselbalch : pH = pKa + log([A⁻]/[AH]). Si pH=pKa → log(1)=0 → [AH]=[A⁻]."},
+  {q:"Une solution tampon est une solution qui :",opts:["A toujours pH=7","Résiste aux variations de pH","Ne contient pas d'acide","Est toujours basique"],c:1,e:"Solution tampon : mélange acide faible + base conjuguée. Résiste aux variations de pH (ajout modéré d'acide/base)."}
+ ]},
+ {id:"piles",label:"Piles et accumulateurs",cat:"cat-chim",questions:[
+  {q:"Dans une pile électrochimique, l'oxydation a lieu à :",opts:["La cathode (pôle +)","L'anode (pôle −)","Les deux électrodes","L'électrolyte"],c:1,e:"Anode = oxydation (perte d'électrons). Cathode = réduction. Mémo : OxydAtion→Anode."},
+  {q:"Un accumulateur se distingue d'une pile par :",opts:["Il est plus petit","Il est rechargeable","Il a une tension plus élevée","Il n'a pas d'électrolyte"],c:1,e:"Accumulateur : réaction réversible → rechargeable. Pile : réaction irréversible → usage unique."},
+  {q:"La tension à vide d'une pile est mesurée :",opts:["Quand elle débite du courant","Sans courant circulant","Après décharge complète","À haute température"],c:1,e:"Tension à vide (FEM) = tension sans courant. Avec courant : U = E − r·I (chute sur résistance interne r)."},
+  {q:"L'unité de la capacité d'un accumulateur est :",opts:["Watt (W)","Volt (V)","Ampère-heure (Ah)","Ohm (Ω)"],c:2,e:"Capacité en Ah (ou mAh). Énergie stockée = Capacité × Tension. Ex : 3,7 V × 3000 mAh = 11,1 Wh."},
+  {q:"La corrosion d'un métal est un phénomène :",opts:["De réduction","D'oxydation","Neutre","De condensation"],c:1,e:"Corrosion = oxydation du métal (perte d'électrons). Ex : Fe → Fe²⁺ + 2e⁻ (rouille)."}
+ ]},
+ {id:"sonore",label:"Ondes sonores",cat:"cat-ondes",questions:[
+  {q:"La relation entre vitesse v, fréquence f et longueur d'onde λ est :",opts:["v = f/λ","v = f+λ","v = f·λ","v = λ/f"],c:2,e:"v = f × λ. Relation fondamentale des ondes. Unités : m/s = Hz × m."},
+  {q:"La vitesse du son dans l'air à 20°C est environ :",opts:["3×10⁸ m/s","1500 m/s","340 m/s","30 m/s"],c:2,e:"v_son ≈ 340 m/s à 20°C dans l'air. Elle augmente avec la température."},
+  {q:"Le niveau sonore L en décibels est donné par :",opts:["L = I/I₀","L = log(I/I₀)","L = 10 log(I/I₀)","L = 10·I/I₀"],c:2,e:"L = 10 × log₁₀(I/I₀) en dB, avec I₀ = 10⁻¹² W/m² (seuil d'audibilité)."},
+  {q:"Une onde sonore est une onde :",opts:["Transversale","Longitudinale","Électromagnétique","Lumineuse"],c:1,e:"Onde sonore = longitudinale (oscillations dans la direction de propagation). Ne se propage pas dans le vide."},
+  {q:"Si l'intensité sonore est multipliée par 10, le niveau sonore (en dB) :",opts:["Augmente de 3 dB","Augmente de 10 dB","Est multiplié par 10","Reste identique"],c:1,e:"ΔL = 10 log(10) = 10 dB. Règle : ×10 en intensité → +10 dB ; ×2 → +3 dB."}
+ ]},
+ {id:"em",label:"Ondes électromagnétiques",cat:"cat-ondes",questions:[
+  {q:"La vitesse de la lumière dans le vide vaut :",opts:["3×10⁶ m/s","3×10⁸ m/s","3×10¹⁰ m/s","340 m/s"],c:1,e:"c = 3×10⁸ m/s dans le vide, pour toutes les ondes EM quelle que soit leur fréquence."},
+  {q:"L'ordre croissant des longueurs d'onde dans le spectre EM est :",opts:["γ < X < UV < Visible < IR < Radio","Radio < IR < Visible < UV < X < γ","UV < Visible < IR < Radio < X < γ","Visible < Radio < UV < X < IR < γ"],c:0,e:"De courtes à longues longueurs d'onde : γ < X < UV < Visible (400-780nm) < IR < Radio."},
+  {q:"La loi de Snell-Descartes (réfraction) s'écrit :",opts:["n₁cosθ₁ = n₂cosθ₂","n₁sinθ₁ = n₂sinθ₂","n₁/sinθ₁ = n₂/sinθ₂","sinθ₁·n₁ = sinθ₂/n₂"],c:1,e:"n₁ sinθ₁ = n₂ sinθ₂. θ est l'angle par rapport à la normale à la surface de séparation."},
+  {q:"La longueur d'onde approximative de la lumière rouge visible est :",opts:["100 nm","400 nm","650 nm","1000 nm"],c:2,e:"Rouge ≈ 620-700 nm. Violet ≈ 380-420 nm. Visible entre 380 et 780 nm."},
+  {q:"Dans le vide, deux ondes EM de fréquences différentes ont :",opts:["Des vitesses différentes","La même vitesse c","Des longueurs d'onde identiques","Des indices de réfraction différents"],c:1,e:"Dans le vide, toutes les ondes EM ont la même vitesse c = 3×10⁸ m/s, quelle que soit leur fréquence."}
+ ]},
+ {id:"signaux",label:"Signaux électriques",cat:"cat-elec",questions:[
+  {q:"La valeur efficace d'une tension sinusoïdale d'amplitude Um est :",opts:["Ueff = Um","Ueff = Um/2","Ueff = Um/√2","Ueff = Um√2"],c:2,e:"Ueff = Um/√2 ≈ 0,707×Um. Ex : réseau 230 V → Um = 230√2 ≈ 325 V."},
+  {q:"La fréquence du réseau électrique en France est :",opts:["25 Hz","50 Hz","60 Hz","100 Hz"],c:1,e:"f = 50 Hz en France (et Europe). Période T = 20 ms. Aux USA : 60 Hz."},
+  {q:"Pour une résistance pure (cosφ=1), la puissance active P est :",opts:["P = Um×Im","P = Ueff×Ieff×0","P = Ueff×Ieff","P = Ueff²/(2R)"],c:2,e:"P = Ueff×Ieff (résistance pure). Aussi P = Ueff²/R = R×Ieff². Unité : W."},
+  {q:"La période T d'un signal de fréquence f = 50 Hz est :",opts:["T = 50 s","T = 0,5 s","T = 0,02 s","T = 2×10⁻⁴ s"],c:2,e:"T = 1/f = 1/50 = 0,02 s = 20 ms."},
+  {q:"Un oscilloscope affiche principalement :",opts:["Le courant en fonction du temps","La puissance instantanée","La tension en fonction du temps","La résistance du circuit"],c:2,e:"L'oscilloscope visualise u(t) en V (ordonnée) vs temps (abscisse). On lit T, Um, f = 1/T."}
+ ]},
+ {id:"rendement",label:"Rendement & Convertisseurs",cat:"cat-elec",questions:[
+  {q:"Le rendement η d'un convertisseur est défini par :",opts:["η = Pe/Ps","η = Ps/Pe","η = (Pe−Ps)/Ps","η = Pe+Ps"],c:1,e:"η = Ps/Pe (puissance utile / puissance absorbée). 0 ≤ η ≤ 1 (ou 0% à 100%)."},
+  {q:"Un moteur (Pe=2000 W, η=85%) fournit une puissance mécanique de :",opts:["2350 W","300 W","1700 W","1000 W"],c:2,e:"Ps = η×Pe = 0,85×2000 = 1700 W. Pertes = 2000−1700 = 300 W (chaleur)."},
+  {q:"Deux convertisseurs en série avec η₁=0,9 et η₂=0,8 donnent un rendement total :",opts:["1,7","0,85","0,72","1,125"],c:2,e:"η_total = η₁×η₂ = 0,9×0,8 = 0,72 (72%). Les rendements en série se multiplient."},
+  {q:"Un onduleur réalise la conversion :",opts:["CA → CC","CC → CA","Haute tension → Basse tension","Mécanique → Électrique"],c:1,e:"Onduleur : CC → CA (ex : panneaux PV → réseau). Redresseur : CA → CC (chargeur)."},
+  {q:"Les pertes dans un convertisseur sont principalement dissipées sous forme de :",opts:["Lumière","Son","Chaleur","Énergie chimique"],c:2,e:"Les pertes (effet Joule, frottements, pertes fer) se dissipent en chaleur. Pertes = Pe − Ps."}
+ ]},
+ {id:"pv",label:"Panneaux photovoltaïques",cat:"cat-elec",questions:[
+  {q:"Un panneau photovoltaïque réalise la conversion :",opts:["Chaleur → Électricité","Lumière → Électricité (CC)","Électricité → Lumière","Mouvement → Électricité"],c:1,e:"Effet photoélectrique dans le silicium : photons → courant continu (CC). Un onduleur convertit ensuite CC→CA."},
+  {q:"Le point MPP (Maximum Power Point) correspond à :",opts:["La tension maximale","Le courant maximal","La puissance maximale délivrée","L'irradiance maximale"],c:2,e:"MPP = point (U, I) où P = U×I est maximale. Le MPPT cherche ce point en permanence."},
+  {q:"L'irradiance solaire se mesure en :",opts:["Watts (W)","Watts par m² (W/m²)","Kilowattheures (kWh)","Ampères (A)"],c:1,e:"Irradiance = puissance lumineuse par unité de surface. Unité : W/m². Standard : 1000 W/m²."},
+  {q:"Des panneaux solaires en série permettent d'augmenter :",opts:["Le courant","La surface","La tension totale","Le rendement"],c:2,e:"Série : tensions s'additionnent, courant = courant d'un panneau. Parallèle : courants s'additionnent."},
+  {q:"Le rendement d'un panneau photovoltaïque standard (monocristallin) est d'environ :",opts:["5 à 10%","15 à 22%","40 à 50%","80 à 90%"],c:1,e:"Monocristallin : 18-22%. Polycristallin : 15-17%. Standard STC : 1000 W/m², 25°C."}
+ ]},
+ {id:"nucl",label:"Nucléaire & Radioactivité",cat:"cat-nucl",questions:[
+  {q:"Lors d'une désintégration α, le noyau fils par rapport au père a :",opts:["A inchangé, Z inchangé","A−4, Z−2","A+4, Z+2","A−2, Z−4"],c:1,e:"Particule α = ⁴₂He. Émission : A' = A−4, Z' = Z−2. Conservation de A et Z."},
+  {q:"Lors d'une désintégration β⁻, le noyau émet :",opts:["Un proton","Un neutron","Un électron et un antineutrino","Une particule alpha"],c:2,e:"β⁻ : n → p + e⁻ + ν̄_e. Z augmente de 1, A inchangé. Un neutron se transforme en proton."},
+  {q:"La demi-vie T½ est le temps au bout duquel :",opts:["Tous les noyaux sont désintégrés","La moitié des noyaux se sont désintégrés","L'activité double","La masse réduit de 10%"],c:1,e:"Après T½ : N = N₀/2. Après nT½ : N = N₀/2ⁿ."},
+  {q:"La loi de décroissance radioactive s'écrit :",opts:["N(t) = N₀ + λt","N(t) = N₀/(1+λt)","N(t) = N₀×2^(−t/T½)","N(t) = N₀−λt"],c:2,e:"N(t) = N₀×2^(−t/T½) ou N₀×e^(−λt) avec λ = ln2/T½."},
+  {q:"L'unité de l'activité radioactive est :",opts:["Gray (Gy)","Becquerel (Bq)","Sievert (Sv)","Joule (J)"],c:1,e:"Becquerel (Bq) = 1 désintégration/seconde. Gray (Gy) = dose absorbée. Sievert (Sv) = dose efficace."}
+ ]}
+];
+
+/* ══ FLASHCARD DATA ════════════════════════════════════════════ */
+const FLASH_DATA = [
+ {id:"therm",label:"Transferts thermiques",cat:"cat-therm",cards:[
+  {f:"Indiquer le sens dans lequel s'effectue spontanément un transfert thermique.",b:"Toujours du corps le plus chaud vers le corps le plus froid. Le transfert s'arrête à l'équilibre thermique (températures égales)."},
+  {f:"Rappeler la relation entre le flux thermique Φ, l'écart de température ΔT et la résistance thermique Rth.",b:"Φ = ΔT / Rth = (T_chaud − T_froid) / Rth\nΦ en W ; ΔT en K ou °C ; Rth en K·W⁻¹.\nAnalogie électrique : I = U / R."},
+  {f:"Rappeler l'expression de la résistance thermique d'une paroi plane (épaisseur e, conductivité λ, surface S) et préciser les unités.",b:"Rth = e / (λ × S)\ne en m ; λ en W·m⁻¹·K⁻¹ ; S en m² ; Rth en K·W⁻¹.\nRésistance surfacique (pour 1 m²) : R = e / λ en m²·K·W⁻¹."},
+  {f:"Définir le flux thermique Φ et donner son unité.",b:"Φ = énergie thermique Q transférée par unité de temps : Φ = Q / Δt.\nUnité : watt (W) = J/s."},
+  {f:"Identifier le mode de transfert thermique mis en jeu : à travers une paroi, dans l'air ou l'eau qui circule, entre le Soleil et un objet.",b:"À travers une paroi solide → conduction ; dans un fluide en mouvement (air, eau) → convection ; énergie reçue du Soleil / d'une lampe → rayonnement."},
+  {f:"Citer et décrire les trois modes de transfert thermique.",b:"Conduction : de proche en proche dans la matière, sans déplacement de matière (solides).\nConvection : avec déplacement de matière (fluides : liquides, gaz).\nRayonnement : par ondes électromagnétiques, sans support matériel (ex. Soleil)."},
+  {f:"Expliquer comment calculer la résistance thermique totale d'une paroi composée de plusieurs couches.",b:"Les couches sont en série : les résistances s'additionnent.\nRth totale = R1 + R2 + R3 + …"},
+  {f:"Interpréter une conductivité thermique λ faible et donner des ordres de grandeur.",b:"λ faible → matériau isolant (laine de verre/chanvre ≈ 0,04 W·m⁻¹·K⁻¹, air ≈ 0,025).\nλ élevé → conducteur (acier ≈ 50, cuivre ≈ 400 W·m⁻¹·K⁻¹)."},
+  {f:"Expliquer pourquoi le flux thermique diminue au cours du refroidissement d'un objet.",b:"Φ = ΔT / Rth : l'écart de température entre l'objet et l'extérieur diminue au cours du temps, donc le flux diminue (refroidissement de plus en plus lent)."},
+  {f:"Proposer des solutions pour améliorer l'isolation d'une paroi ou la classe énergétique d'un logement.",b:"Augmenter Rth : ajouter un isolant (λ faible) ou augmenter son épaisseur, double vitrage, isoler toiture/combles, supprimer les ponts thermiques."},
+  {f:"Justifier la couleur noire des capteurs solaires thermiques.",b:"Une surface noire absorbe la quasi-totalité du rayonnement reçu (visible et IR) → meilleur échauffement du fluide caloporteur."},
+  {f:"Expliquer l'intérêt du vide entre les deux parois d'une bouteille isotherme.",b:"Le vide ne contient pas de matière : il supprime la conduction et la convection. Seul le rayonnement subsiste (limité par des parois réfléchissantes)."},
+  {f:"Définir le coefficient de performance (COP) d'une pompe à chaleur.",b:"COP = énergie thermique fournie Q / énergie électrique consommée E_élec.\nCOP = 4 → 1 kWh électrique fournit 4 kWh de chaleur."},
+  {f:"Expliquer comment associer les résistances thermiques de parois placées côte à côte (murs, fenêtres, toit).",b:"Elles sont en parallèle : les flux s'ajoutent (Φ = Φ1 + Φ2 + …), soit 1/R = 1/R1 + 1/R2 + …"}
+ ]},
+ {id:"energie",label:"Énergie interne & changements d'état",cat:"cat-therm",cards:[
+  {f:"Rappeler l'expression de l'énergie thermique Q nécessaire pour faire varier la température d'un corps (sans changement d'état).",b:"Q = m × c × ΔT = m × c × (T_finale − T_initiale)\nm en kg ; c capacité thermique massique en J·kg⁻¹·K⁻¹ ; ΔT en K ou °C ; Q en J.\nQ > 0 : énergie reçue ; Q < 0 : énergie cédée."},
+  {f:"Rappeler l'expression de l'énergie échangée lors d'un changement d'état.",b:"Q = m × L\nL : énergie (chaleur latente) massique de changement d'état en J·kg⁻¹.\nFusion, vaporisation, sublimation : Q > 0 (reçue) ; solidification, liquéfaction/condensation : Q < 0 (cédée)."},
+  {f:"Décrire les étapes du calcul de l'énergie nécessaire pour transformer de la glace à −18 °C en eau liquide à 20 °C.",b:"3 étapes : 1) chauffer la glace jusqu'à 0 °C : Q1 = m c_glace ΔT1 ; 2) fusion à 0 °C : Q2 = m L_f ; 3) chauffer l'eau liquide : Q3 = m c_eau ΔT3.\nQ_total = Q1 + Q2 + Q3 (la fusion est souvent l'étape la plus « coûteuse »)."},
+  {f:"Expliquer comment déterminer l'état physique d'une espèce à l'aide d'un diagramme d'état (P,T).",b:"Repérer le point (T, P) sur le diagramme : il se trouve dans le domaine solide, liquide ou gaz. La température d'ébullition augmente avec la pression (ex. eau liquide à 300 °C sous 155 bar dans un réacteur)."},
+  {f:"Définir le point triple d'un corps pur.",b:"Point du diagramme (P,T) où les trois courbes de changement d'état se rejoignent : les états solide, liquide et gazeux coexistent en équilibre.\nIl correspond à une seule température et une seule pression.\nEx. eau : T ≈ 0,01 °C et P ≈ 611 Pa (0,006 bar)."},
+  {f:"Définir le point critique d'un corps pur.",b:"Point où se termine la courbe de vaporisation (liquide/gaz) du diagramme (P,T).\nAu-delà (T > Tc et P > Pc), on ne peut plus distinguer le liquide du gaz : le corps est à l'état de fluide supercritique.\nEx. eau : Tc ≈ 374 °C et Pc ≈ 221 bar."},
+  {f:"Rappeler la relation entre l'énergie thermique Q et la capacité thermique C d'un objet.",b:"Q = C × ΔT avec C en J·K⁻¹ (C = m × c)."},
+  {f:"Expliquer le principe d'une chaudière à condensation.",b:"Elle récupère l'énergie libérée par la liquéfaction (condensation) de la vapeur d'eau des fumées de combustion (Q = −m L_v) → meilleur rendement."},
+  {f:"Définir une transformation exothermique et une transformation endothermique.",b:"Exothermique : libère de l'énergie thermique (la température du milieu augmente, ex. combustion, acide + base).\nEndothermique : absorbe de l'énergie thermique (la température du milieu diminue)."},
+  {f:"Rappeler la relation permettant de convertir une température en kelvin.",b:"T(K) = θ(°C) + 273,15. Un écart de 1 °C = un écart de 1 K."},
+  {f:"Justifier l'ajout d'un antigel (glycol) dans un fluide caloporteur.",b:"Il abaisse la température de solidification du fluide : il ne gèle pas en hiver/en montagne (l'eau pure gèlerait à 0 °C et ferait éclater les tuyaux)."},
+  {f:"Donner la valeur de la capacité thermique massique de l'eau liquide et l'interpréter.",b:"c_eau ≈ 4,18 × 10³ J·kg⁻¹·K⁻¹ (4,18 kJ/kg/°C) : il faut 4180 J pour élever 1 kg d'eau de 1 °C."},
+  {f:"Décrire l'évolution de la température pendant le changement d'état d'un corps pur.",b:"Elle reste constante (palier) : l'énergie échangée sert à modifier l'état physique, pas la température."}
+ ]},
+ {id:"combustion",label:"Combustion",cat:"cat-chim",cards:[
+  {f:"Écrire et ajuster l'équation de combustion complète d'un combustible organique (CxHy ou CxHyOz).",b:"Combustible + O2 → CO2 + H2O.\nÉquilibrer dans l'ordre : C, puis H, puis O (coefficients entiers).\nEx. CH4 + 2 O2 → CO2 + 2 H2O ; 2 C8H18 + 25 O2 → 16 CO2 + 18 H2O."},
+  {f:"Décrire la méthode pour calculer la masse de CO2 rejetée par la combustion d'une masse m de combustible.",b:"1) n(comb) = m / M ; 2) proportions de l'équation : n(CO2) = (coef CO2 / coef comb) × n(comb) ; 3) m(CO2) = n(CO2) × M(CO2) avec M(CO2) = 44 g/mol."},
+  {f:"Rappeler l'expression de l'énergie libérée par la combustion d'une masse m de combustible de pouvoir calorifique PC.",b:"E = m × PC (PC en J/kg ou kJ/kg, ou kWh/kg).\nInversement : m = E / PC."},
+  {f:"Décrire la méthode pour calculer la masse d'eau produite par une combustion.",b:"Même méthode : n(H2O) = (coef H2O / coef comb) × n(comb), puis m = n × M(H2O) avec M = 18 g/mol."},
+  {f:"Citer le produit de combustion qui a le plus d'impact sur l'environnement et expliquer pourquoi.",b:"Le dioxyde de carbone CO2 : gaz à effet de serre → réchauffement climatique (aussi CO toxique en combustion incomplète)."},
+  {f:"Expliquer pourquoi la combustion de la biomasse (bois, bagasse) est dite « neutre en carbone ».",b:"Le CO2 libéré correspond au CO2 absorbé par la plante pendant sa croissance (photosynthèse) : bilan carbone quasi nul, contrairement aux combustibles fossiles."},
+  {f:"Définir une combustion incomplète et préciser son danger.",b:"Manque de dioxygène : production de monoxyde de carbone CO (gaz toxique, inodore) et de suie (C)."}
+ ]},
+ {id:"redox",label:"Oxydoréduction & corrosion",cat:"cat-chim",cards:[
+  {f:"Décrire la méthode pour écrire l'équation d'oxydoréduction à partir de deux demi-équations.",b:"1) Écrire la demi-équation d'oxydation (réducteur) et celle de réduction (oxydant).\n2) Multiplier pour avoir le même nombre d'électrons échangés.\n3) Additionner : les électrons n'apparaissent PAS dans le bilan.\nEx. 2 H2 + O2 → 2 H2O."},
+  {f:"Écrire un couple oxydant/réducteur et sa demi-équation électronique (méthode et exemples).",b:"Notation Ox/Red. Demi-équation : Ox + n e⁻ = Red.\nÉquilibrer : l'élément, puis O avec H2O, puis H avec H⁺, puis les charges avec e⁻.\nEx. Fe²⁺/Fe : Fe²⁺ + 2e⁻ = Fe ; O2/H2O : O2 + 4H⁺ + 4e⁻ = 2H2O."},
+  {f:"Définir une oxydation et une réduction.",b:"Oxydation = perte d'électrons (le réducteur est oxydé).\nRéduction = gain d'électrons (l'oxydant est réduit).\nMoyen mnémo : « OxPerd, RedGagne »."},
+  {f:"Expliquer comment identifier, à partir d'une demi-équation, si une espèce est l'oxydant ou le réducteur.",b:"Si l'espèce GAGNE des électrons (e⁻ du même côté qu'elle) → oxydant (elle est réduite).\nSi elle PERD des électrons (e⁻ de l'autre côté) → réducteur (elle est oxydée).\nEx. H2 = 2H⁺ + 2e⁻ : H2 est le réducteur ; O2 + 4H⁺ + 4e⁻ = 2H2O : O2 est l'oxydant."},
+  {f:"Définir un oxydant et un réducteur.",b:"Oxydant : espèce capable de CAPTER un ou plusieurs électrons.\nRéducteur : espèce capable de CÉDER un ou plusieurs électrons.\nCouple noté Ox/Red : Ox + n e⁻ = Red."},
+  {f:"Citer des moyens de protéger un métal de la corrosion par isolement.",b:"Isoler le métal de O2 et de l'eau : peinture, vernis, graisse, revêtement plastique, galvanisation (couche de zinc), couche d'oxyde protectrice (passivation, ex. aluminium, zirconium)."},
+  {f:"Citer les réactifs de la corrosion (rouille) du fer.",b:"Le fer Fe (réducteur, oxydé) réagit avec le dioxygène O2 (oxydant) en présence d'eau → oxydes/hydroxydes de fer (rouille). Le sel accélère la corrosion."},
+  {f:"Expliquer le principe d'une anode sacrificielle.",b:"On relie électriquement le fer à un métal plus réducteur (zinc, magnésium) : c'est lui qui s'oxyde à la place du fer (il joue le rôle d'anode et se « sacrifie »). Il faut le remplacer régulièrement."}
+ ]},
+ {id:"piles",label:"Piles, accumulateurs & électrolyse",cat:"cat-chim",cards:[
+  {f:"Indiquer le sens de circulation des électrons et le sens du courant dans le circuit extérieur d'une pile.",b:"Électrons : de la borne − (anode) vers la borne + (cathode) dans les fils.\nCourant conventionnel : sens inverse, de la borne + vers la borne − à l'extérieur de la pile."},
+  {f:"Préciser la réaction qui a lieu à l'anode et à la cathode.",b:"Anode : OXYDATION (borne − d'une pile en fonctionnement).\nCathode : RÉDUCTION (borne + d'une pile).\nMnémo : « Anode-Oxydation » (2 voyelles), « Cathode-Réduction » (2 consonnes)."},
+  {f:"Rappeler la relation entre la quantité d'électricité Q et la quantité de matière d'électrons échangés.",b:"Q = n(e⁻) × F, avec F = 96 500 C·mol⁻¹ (constante de Faraday = charge d'une mole d'électrons)."},
+  {f:"Rappeler l'expression de l'autonomie d'une pile ou d'une batterie de capacité Q débitant un courant I.",b:"Δt = Q / I (ex. 2800 mAh / 100 mA = 28 h)."},
+  {f:"Rappeler l'expression de la quantité d'électricité Q débitée par une pile ou une batterie.",b:"Q = I × Δt\nQ en coulombs (C) si I en A et Δt en s ; en A·h si Δt en h.\n1 A·h = 3600 C."},
+  {f:"Décrire le fonctionnement d'une pile à combustible à dihydrogène (réactifs, produit, équation, intérêt).",b:"2 H2 + O2 → 2 H2O. Le combustible est H2, le comburant O2 (de l'air). Seul rejet : de l'eau → « zéro émission » à l'usage, MAIS la production de H2 (souvent par vaporeformage du méthane) émet du CO2."},
+  {f:"Expliquer comment relier n(e⁻) à la quantité de matière de réactif consommé à l'aide d'une demi-équation.",b:"Lire les coefficients : H2 = 2H⁺ + 2e⁻ → n(e⁻) = 2 n(H2) ; Zn = Zn²⁺ + 2e⁻ → n(e⁻) = 2 n(Zn) ; Li = Li⁺ + e⁻ → n(e⁻) = n(Li). Puis m = n × M."},
+  {f:"Nommer les porteurs de charge dans les fils et dans l'électrolyte.",b:"Dans les fils (circuit extérieur) : les électrons.\nDans l'électrolyte (intérieur de la pile) : les ions (cations et anions)."},
+  {f:"Définir une électrolyse et citer les gaz produits par l'électrolyse de l'eau.",b:"Transformation forcée par un générateur (énergie électrique → chimique). Électrolyse de l'eau : 2 H2O → 2 H2 + O2. H2 se dégage à la cathode (borne −, réduction), O2 à l'anode (borne +, oxydation)."},
+  {f:"Rappeler l'expression de l'énergie électrique stockée dans une pile à partir de sa capacité.",b:"E = U × Q (E en Wh si Q en Ah ; en J si Q en C)."},
+  {f:"Distinguer une pile d'un accumulateur.",b:"Pile : conversion chimique → électrique, non rechargeable (transformation irréversible).\nAccumulateur (batterie) : rechargeable ; en charge il convertit électrique → chimique, en décharge chimique → électrique."}
+ ]},
+ {id:"acide",label:"Acide-base & pH",cat:"cat-chim",cards:[
+  {f:"Écrire l'équation d'une réaction acide-base à partir de deux couples.",b:"Acide1 + Base2 → Base1 + Acide2 (transfert d'un ion H⁺ de l'acide vers la base).\nEx. H3O⁺ + HO⁻ → 2 H2O ; CO3²⁻ + H3O⁺ → HCO3⁻ + H2O."},
+  {f:"Calculer la concentration [H3O⁺] d'une solution de pH = 7,4.",b:"[H3O⁺] = 10^(−pH) = 10^(−7,4)\n≈ 4,0 × 10⁻⁸ mol·L⁻¹"},
+  {f:"Rappeler la relation entre le pH et la concentration en ions oxonium H3O⁺.",b:"pH = −log[H3O⁺] ⟺ [H3O⁺] = 10^(−pH)  (en mol·L⁻¹)."},
+  {f:"Expliquer pourquoi le calcaire (CaCO3) permet de diminuer l'acidité d'un sol ou d'une eau.",b:"Les ions carbonate CO3²⁻ sont une base : ils consomment les ions H3O⁺ (CO3²⁻ + 2 H3O⁺ → CO2 + 3 H2O) → [H3O⁺] diminue, le pH augmente."},
+  {f:"Décrire deux méthodes pour mesurer le pH d'une solution.",b:"Papier pH (ou bandelette) : déposer une goutte avec un agitateur, comparer la couleur à l'échelle (mesure approximative).\npH-mètre : étalonner, rincer la sonde, la plonger dans la solution, lire la valeur (mesure précise)."},
+  {f:"Définir un acide et une base au sens de Brønsted.",b:"Acide : espèce capable de CÉDER un ion H⁺.\nBase : espèce capable de CAPTER un ion H⁺.\nCouple acide/base : AH / A⁻ (AH = A⁻ + H⁺)."},
+  {f:"Expliquer pourquoi les pluies (ou l'eau) deviennent acides en présence de CO2 ou de SO2.",b:"CO2 et SO2 se dissolvent dans l'eau et réagissent avec elle en formant des ions H3O⁺ → le pH diminue (pluies acides, acidification des océans)."},
+  {f:"Indiquer les valeurs du pH d'une solution acide, neutre et basique (à 25 °C).",b:"pH < 7 : acide ; pH = 7 : neutre ; pH > 7 : basique. Plus le pH est faible, plus la solution est acide."},
+  {f:"Décrire l'évolution du pH d'une solution acide que l'on dilue.",b:"[H3O⁺] diminue donc le pH augmente et se rapproche de 7 (sans jamais le dépasser pour un acide)."}
+ ]},
+ {id:"chimie",label:"Quantité de matière, solutions & sécurité",cat:"cat-chim",cards:[
+  {f:"Donner la signification du pictogramme « flamme » et les précautions associées.",b:"Produit INFLAMMABLE.\nTenir éloigné des flammes, étincelles et sources de chaleur ; récipient fermé."},
+  {f:"Donner la signification du pictogramme « flamme au-dessus d'un cercle ».",b:"Produit COMBURANT : il favorise ou aggrave un incendie.\nNe pas mettre en contact avec des produits inflammables."},
+  {f:"Donner la signification du pictogramme « corrosion » (liquide attaquant une main et une surface) et les précautions associées.",b:"Produit CORROSIF : brûle la peau, les yeux et attaque les métaux.\nPorter gants, lunettes et blouse ; manipuler sous hotte si vapeurs."},
+  {f:"Donner la signification des pictogrammes « tête de mort » et « point d'exclamation ».",b:"Tête de mort : TOXIQUE (danger mortel, même à faible dose).\nPoint d'exclamation : NOCIF ou IRRITANT.\nÉviter contact, inhalation, ingestion ; gants, lunettes."},
+  {f:"Donner la signification des pictogrammes « silhouette avec étoile », « arbre et poisson » et « bouteille de gaz ».",b:"Silhouette : danger grave pour la SANTÉ (cancérogène, toxique par inhalation…).\nArbre et poisson : dangereux pour l'ENVIRONNEMENT (ne pas jeter à l'évier).\nBouteille : GAZ SOUS PRESSION (risque d'explosion si chauffé)."},
+  {f:"Rappeler la relation entre la quantité de matière, la masse et la masse molaire.",b:"n = m / M (n en mol, m en g, M en g·mol⁻¹). Masse molaire M = somme des masses molaires atomiques (ex. M(CO2) = 12 + 2×16 = 44 g/mol)."},
+  {f:"Calculer la masse puis la quantité de matière d'un volume V de liquide de masse volumique ρ.",b:"m = ρ × V puis n = m / M = ρ × V / M."},
+  {f:"Nommer la famille associée aux groupes caractéristiques −OH, −COOH, −COO−, C=O et −NH2.",b:"−OH : alcool (éthanol)\n−COOH : acide carboxylique (acide éthanoïque)\n−COO− : ester\nC=O en bout de chaîne : aldéhyde ; dans la chaîne : cétone\n−NH2 : amine"},
+  {f:"Définir la concentration massique et la concentration en quantité de matière.",b:"Cm = m / V (g·L⁻¹) ; C = n / V (mol·L⁻¹) ; Cm = C × M. Donc n = C × V."},
+  {f:"Rappeler la relation de dilution d'un facteur F et décrire le protocole.",b:"C_fille = C_mère / F ; V_mère = V_fille / F.\nProtocole : prélever V_mère à la pipette jaugée, verser dans une fiole jaugée de V_fille, compléter avec de l'eau distillée jusqu'au trait de jauge, boucher, agiter."},
+  {f:"Définir un mélange stœchiométrique et un réactif en excès.",b:"Stœchiométrique : réactifs introduits dans les proportions de l'équation (tous consommés en même temps). Sinon, le réactif limitant est entièrement consommé, l'autre est en excès."}
+ ]},
+ {id:"sonore",label:"Ondes sonores",cat:"cat-ondes",cards:[
+  {f:"Rappeler la relation entre le niveau d'intensité sonore L et l'intensité sonore I.",b:"L = 10 × log(I / I0) en dB, avec I0 = 1,0 × 10⁻¹² W·m⁻² (seuil d'audibilité).\nInversement : I = I0 × 10^(L/10)."},
+  {f:"Définir la hauteur et le timbre d'un son.",b:"Hauteur : liée à la fréquence du fondamental (grave = basse fréquence, aigu = haute fréquence) → permet d'identifier la note.\nTimbre : lié aux harmoniques (nombre et amplitudes) → différencie deux instruments jouant la même note."},
+  {f:"Décrire l'évolution du niveau sonore avec la distance à la source.",b:"L'intensité est inversement proportionnelle au carré de la distance (I = P / (4πd²)). Distance ×2 → L − 6 dB ; distance ×10 → L − 20 dB."},
+  {f:"Distinguer un son pur d'un son complexe (signal et spectre).",b:"Son pur : signal sinusoïdal, spectre à une seule raie (fréquence f).\nSon complexe : signal périodique non sinusoïdal, spectre avec le fondamental f1 et des harmoniques fn = n × f1."},
+  {f:"Citer les seuils de danger pour l'audition.",b:"Seuil d'audibilité 0 dB ; seuil de danger ≈ 85 dB (exposition prolongée) ; seuil de douleur ≈ 120 dB. Le risque dépend du niveau ET de la durée d'exposition."},
+  {f:"Expliquer comment calculer le niveau sonore perçu avec une protection auditive ou derrière une cloison.",b:"L_perçu = L_émis − atténuation (dB). Ex. 105 dB avec bouchons atténuant de 25 dB → 80 dB."},
+  {f:"Rappeler la relation entre la fréquence du fondamental et celles des harmoniques.",b:"fn = n × f1 (n entier ≥ 2 : rang de l'harmonique). Le fondamental est la raie de plus basse fréquence."},
+  {f:"Nommer l'appareil qui mesure un niveau sonore.",b:"Le sonomètre (affiche L en dB)."},
+  {f:"Indiquer comment varie le niveau sonore quand l'intensité sonore est multipliée par 2, 10 ou 100.",b:"I × 10 → L + 10 dB ; I × 100 → L + 20 dB ; I × 2 → L + 3 dB. Les niveaux sonores ne s'additionnent pas, les intensités oui."},
+  {f:"Donner le domaine des fréquences audibles par l'être humain.",b:"20 Hz à 20 kHz. En dessous : infrasons ; au-dessus : ultrasons."},
+  {f:"Expliquer pourquoi le son ne se propage pas dans le vide.",b:"Non : c'est une onde mécanique, elle nécessite un milieu matériel (air, eau, solide). Vitesse dans l'air ≈ 340 m/s."},
+  {f:"Décrire ce que devient une onde sonore qui arrive sur une paroi.",b:"Elle est en partie réfléchie, en partie absorbée et en partie transmise : I_incidente = I_réfléchie + I_absorbée + I_transmise."}
+ ]},
+ {id:"ondes",label:"Ondes & ultrasons",cat:"cat-ondes",cards:[
+  {f:"Décrire la méthode pour déterminer la période T et la fréquence f d'un signal sur un oscillogramme.",b:"Mesurer plusieurs périodes (n·T) pour plus de précision, convertir avec la base de temps (ms/div), puis f = 1 / T (f en Hz, T en s)."},
+  {f:"Décrire une méthode pour mesurer la vitesse de propagation d'une onde.",b:"v = d / Δt : mesurer la distance d entre deux récepteurs et le retard Δt entre les signaux (oscilloscope ou acquisition). Matériel : émetteur, 2 récepteurs, règle, oscilloscope."},
+  {f:"Préciser la nature des ultrasons et justifier qu'ils sont inaudibles.",b:"Non : ce sont des ondes mécaniques (comme le son), de fréquence > 20 kHz → inaudibles pour l'homme."},
+  {f:"Rappeler l'expression permettant de mesurer une distance par écho (sonar, capteur de recul).",b:"L'onde fait un aller-retour : d = v × Δt / 2."},
+  {f:"Rappeler la relation entre la longueur d'onde, la célérité et la fréquence.",b:"λ = v / f = v × T (λ en m, v en m/s, f en Hz)."},
+  {f:"Indiquer si la vitesse de propagation d'une onde mécanique dépend du milieu et donner des exemples.",b:"Oui : elle dépend du milieu (et de sa température). Son : ≈ 340 m/s dans l'air, ≈ 1500 m/s dans l'eau, ≈ 5000 m/s dans l'acier."},
+  {f:"Expliquer comment reconnaître l'onde réfléchie (écho) sur un enregistrement.",b:"Elle est en retard sur l'onde émise et d'amplitude plus faible (atténuation lors de la propagation et de la réflexion)."},
+  {f:"Expliquer le principe de l'effet Doppler utilisé par un radar.",b:"Quand la source (ou la cible) se déplace, la fréquence reçue est différente de la fréquence émise ; le décalage de fréquence permet de calculer la vitesse."}
+ ]},
+ {id:"em",label:"Ondes électromagnétiques",cat:"cat-ondes",cards:[
+  {f:"Rappeler la relation permettant de calculer la longueur d'onde d'une onde électromagnétique de fréquence f.",b:"λ = c / f avec c = 3,00 × 10⁸ m·s⁻¹ (vitesse de la lumière dans le vide/l'air)."},
+  {f:"Rappeler les relations permettant de choisir la longueur d'une antenne.",b:"Antenne demi-onde : L = λ/2 ; quart d'onde : L = λ/4 ; avec λ = c/f. Plus la fréquence est grande, plus l'antenne est courte."},
+  {f:"Classer les domaines des ondes électromagnétiques et donner les limites du visible.",b:"Du plus énergétique au moins énergétique : γ < X < UV < visible (400–800 nm) < IR < micro-ondes < ondes radio. Visible : violet 400 nm → rouge 800 nm."},
+  {f:"Rappeler l'expression de l'énergie d'un photon.",b:"E = h × f = h × c / λ ; h = 6,63 × 10⁻³⁴ J·s ; en eV : diviser par 1,6 × 10⁻¹⁹. Plus λ est petite, plus le photon est énergétique (UV, X, γ : ionisants)."}
+ ]},
+ {id:"pv",label:"Panneaux photovoltaïques",cat:"cat-elec",cards:[
+  {f:"Définir le rendement d'un panneau photovoltaïque.",b:"η = P_électrique / P_lumineuse = P_élec / (E × S). Ordre de grandeur : 15 à 22 % (silicium)."},
+  {f:"Expliquer comment repérer la puissance crête (maximale) d'un panneau sur sa caractéristique.",b:"Calculer P = U × I pour plusieurs points ou lire le maximum de P = f(U) : c'est le point de puissance maximale (coude de la caractéristique I = f(U)). Pc donnée pour 1000 W/m² et 25 °C."},
+  {f:"Compléter la chaîne énergétique d'une cellule photovoltaïque.",b:"Énergie lumineuse (rayonnement) → [cellule PV] → énergie électrique (utile) + énergie thermique (pertes)."},
+  {f:"Rappeler l'expression de la puissance lumineuse reçue par un panneau.",b:"P_lum = E × S : éclairement (irradiance) E en W·m⁻² × surface S en m². Énergie reçue : E_lum = P_lum × Δt."},
+  {f:"Définir la tension à vide Uco et l'intensité de court-circuit Icc, et expliquer comment les mesurer.",b:"Uco : tension quand I = 0 (circuit ouvert) → voltmètre seul aux bornes. Icc : intensité quand U = 0 (bornes court-circuitées) → ampèremètre seul. À ces deux points, P = U × I = 0."},
+  {f:"Décrire le montage permettant de tracer la caractéristique I = f(U) d'une cellule et le rôle de la résistance variable.",b:"Voltmètre en dérivation aux bornes de la cellule, ampèremètre en série, résistance (rhéostat) variable en charge : en la faisant varier on obtient différents points de fonctionnement (U, I)."},
+  {f:"Énoncer la condition pour qu'un photon produise un courant dans une cellule photovoltaïque.",b:"L'énergie du photon E = hc/λ doit être supérieure ou égale à l'énergie de gap du semi-conducteur (≈ 1,1 eV pour le silicium → λ < 1,1 µm)."},
+  {f:"Indiquer l'effet d'une association de panneaux en série puis en parallèle.",b:"En série : les tensions s'additionnent (même courant). En parallèle : les intensités s'additionnent (même tension). La puissance totale = somme des puissances."}
+ ]},
+ {id:"rendement",label:"Énergie, puissance & rendement",cat:"cat-elec",cards:[
+  {f:"Rappeler la relation entre l'énergie, la puissance et la durée.",b:"E = P × Δt (E en J si P en W et Δt en s ; en Wh si Δt en h). Donc P = E / Δt et Δt = E / P."},
+  {f:"Définir le rendement d'un convertisseur.",b:"η = énergie (ou puissance) utile / énergie (ou puissance) absorbée = Pu / Pa (sans unité, < 1 ou < 100 %). Pertes = Pa − Pu."},
+  {f:"Compléter les chaînes énergétiques d'un moteur électrique, d'une résistance chauffante, d'une batterie et d'un moteur thermique.",b:"Moteur électrique : électrique → mécanique (+ thermique)\nRésistance : électrique → thermique\nBatterie en décharge : chimique → électrique (+ thermique)\nMoteur thermique : chimique → mécanique (+ thermique)\nRègle : absorbée → [convertisseur] → utile + pertes"},
+  {f:"Nommer l'effet responsable des pertes d'énergie dans un moteur ou un conducteur et préciser leur forme.",b:"Sous forme thermique (chaleur) : c'est l'effet Joule (P_J = R × I²)."},
+  {f:"Convertir 1 kWh en joules.",b:"1 Wh = 3600 J\n1 kWh = 3,6 × 10⁶ J = 3,6 MJ\nInversement : E(kWh) = E(J) / 3,6 × 10⁶"},
+  {f:"Définir une énergie renouvelable et une énergie non renouvelable, et citer des exemples.",b:"Renouvelable : source reconstituée à l'échelle humaine (soleil, vent, eau, biomasse, géothermie). Non renouvelable / fossile : stock limité, formé sur des millions d'années (pétrole, gaz, charbon, uranium)."},
+  {f:"Rappeler l'expression du rendement global d'une chaîne de plusieurs convertisseurs.",b:"η_global = η1 × η2 × η3 × … (produit des rendements)."},
+  {f:"Énoncer le principe de conservation de l'énergie pour un convertisseur.",b:"L'énergie se conserve : énergie absorbée = énergie utile + énergie perdue. Pour un système isolé, l'énergie totale est constante."}
+ ]},
+ {id:"elec",label:"Électricité : batteries, mesures & signaux",cat:"cat-elec",cards:[
+  {f:"Expliquer comment brancher un voltmètre et un ampèremètre.",b:"Voltmètre : en DÉRIVATION (parallèle) aux bornes du dipôle, bornes V et COM.\nAmpèremètre : en SÉRIE dans le circuit, bornes A (ou mA) et COM.\nCourant entre par A (ou V côté +) et sort par COM. Position DC (=) pour le continu, AC (~) pour l'alternatif."},
+  {f:"Rappeler l'expression de la puissance électrique reçue par un dipôle en courant continu.",b:"P = U × I (P en W, U en V, I en A)."},
+  {f:"Rappeler l'expression de l'énergie stockée dans une batterie de tension U et de capacité Q.",b:"E = U × Q → en Wh (ex. 12 V × 100 Ah = 1200 Wh = 1,2 kWh). En J : × 3600."},
+  {f:"Définir l'énergie massique d'une batterie et donner son unité.",b:"Énergie stockée par unité de masse : E_massique = E / m en Wh·kg⁻¹. Li-ion ≈ 150–250 Wh/kg, plomb ≈ 30–40 Wh/kg."},
+  {f:"Indiquer l'effet d'une association de batteries en série puis en parallèle sur la tension et la capacité.",b:"En série : les tensions s'ajoutent, la capacité (Ah) reste celle d'un élément.\nEn parallèle : la tension reste la même, les capacités s'ajoutent."},
+  {f:"Rappeler la relation entre la valeur efficace et la valeur maximale d'une tension sinusoïdale.",b:"U_eff = U_max / √2 (ex. secteur : U_eff = 230 V, U_max ≈ 325 V). Le multimètre en mode AC affiche la valeur efficace."},
+  {f:"Définir la puissance apparente, la puissance active et le facteur de puissance.",b:"S = U_eff × I_eff (en VA) ; P = k × S (en W) ; facteur de puissance k = P / S (≤ 1)."},
+  {f:"Expliquer l'intérêt d'augmenter le facteur de puissance ou de transporter l'électricité en haute tension.",b:"Pour une même puissance P, un k plus grand (ou une tension plus haute) diminue l'intensité I dans les lignes, donc les pertes par effet Joule (P_J = R × I²)."},
+  {f:"Définir l'atténuation d'un signal (en dB) dans un câble ou une fibre.",b:"Atténuation A = 10 log(P_entrée / P_sortie) en dB ; A > 0 → le signal est affaibli. Atténuation linéique α en dB/km : A = α × L."},
+  {f:"Décrire le spectre d'un signal électrique périodique non sinusoïdal.",b:"Un signal périodique non sinusoïdal est la somme d'un fondamental (f1) et d'harmoniques (n × f1). Un signal parfaitement sinusoïdal a un THD = 0 %."},
+  {f:"Comparer un supercondensateur et une batterie.",b:"Supercondensateur : charge/décharge très rapide, grande puissance, très grand nombre de cycles, mais faible énergie massique. Constante de temps τ = R × C."}
+ ]},
+ {id:"forces",label:"Mouvements & forces",cat:"cat-meca",cards:[
+  {f:"Citer les forces qui s'exercent couramment sur un système et décrire leur représentation.",b:"Poids : vertical, vers le bas\nRéaction du support : perpendiculaire au support (sans frottement)\nFrottements : opposés au mouvement\nPoussée d'Archimède : verticale, vers le haut\nTraction / propulsion\n→ Flèches partant de G, longueur proportionnelle à la valeur."},
+  {f:"Énoncer le principe fondamental de la dynamique (2e loi de Newton).",b:"Σ F⃗ = m × a⃗ (F en N, m en kg, a en m·s⁻²). La somme des forces a même direction et même sens que l'accélération."},
+  {f:"Énoncer le principe d'inertie (1re loi de Newton).",b:"Si la somme des forces est nulle (forces qui se compensent), le système est immobile ou en mouvement rectiligne uniforme (et réciproquement)."},
+  {f:"Caractériser un mouvement uniforme, accéléré ou décéléré à partir d'un graphique ou d'une chronophotographie.",b:"Rectiligne : trajectoire droite. Uniforme : v constante (points équidistants, v(t) horizontale). Accéléré : v augmente. Décéléré (ralenti) : v diminue. Uniformément accéléré : v(t) est une droite croissante (a constante)."},
+  {f:"Rappeler l'expression de l'accélération à partir de la variation de vitesse.",b:"a = Δv / Δt (m·s⁻²) ; a est la dérivée de la vitesse : a(t) = v'(t). Sur un graphique v(t) : a = coefficient directeur."},
+  {f:"Convertir une vitesse de km/h en m/s (et inversement).",b:"v(m/s) = v(km/h) / 3,6 ; v(km/h) = v(m/s) × 3,6. Ex. 90 km/h = 25 m/s."},
+  {f:"Donner les caractéristiques du poids d'un objet.",b:"Direction : verticale ; sens : vers le bas ; point d'application : centre de gravité G ; valeur : P = m × g (g = 9,81 N/kg)."},
+  {f:"Rappeler les relations permettant de calculer une vitesse moyenne et une distance parcourue.",b:"v = d / Δt ; d = v × Δt. Sur un graphique v(t), la distance parcourue = aire sous la courbe."},
+  {f:"Donner l'expression et l'effet des forces de frottement fluide.",b:"Opposées au mouvement ; f = k × v (faibles vitesses) ou f = ½ ρ S Cx v² (grandes vitesses). Quand f compense le poids, la vitesse limite est atteinte."},
+  {f:"Définir une chute libre.",b:"Un objet en chute libre n'est soumis qu'à son poids (frottements et poussée d'Archimède négligeables) : a = g ≈ 9,81 m·s⁻²."},
+  {f:"Préciser le référentiel d'étude d'un mouvement sur Terre.",b:"Référentiel terrestre (lié au sol), supposé galiléen pour des mouvements de courte durée."}
+ ]},
+ {id:"travail",label:"Travail, énergie & rotation",cat:"cat-meca",cards:[
+  {f:"Rappeler l'expression du travail d'une force constante et préciser quand il est moteur ou résistant.",b:"W(F⃗) = F × AB × cos α (J) ; α angle entre la force et le déplacement.\nα < 90° : travail moteur (W > 0) ; α > 90° : résistant (W < 0) ; α = 90° : nul."},
+  {f:"Énoncer le théorème de l'énergie cinétique.",b:"La variation d'énergie cinétique entre A et B est égale à la somme des travaux des forces : ΔEc = Ec(B) − Ec(A) = Σ W(F⃗). Utile pour une distance de freinage."},
+  {f:"Rappeler l'expression du travail du poids entre deux altitudes.",b:"W(P⃗) = m × g × (z_A − z_B) : moteur en descente (W > 0), résistant en montée (W < 0). Ne dépend pas du chemin suivi."},
+  {f:"Rappeler l'expression de l'énergie cinétique.",b:"Ec = ½ × m × v² (Ec en J, m en kg, v en m/s)."},
+  {f:"Rappeler l'expression de la puissance d'une force.",b:"P = W / Δt (W) ou P = F × v pour une force parallèle au déplacement à vitesse v."},
+  {f:"Rappeler l'expression du travail d'une force de frottement constante sur une distance d.",b:"W(f⃗) = − f × d (toujours résistant, négatif)."},
+  {f:"Rappeler la relation entre la vitesse linéaire et la vitesse angulaire.",b:"v = R × ω (v en m/s, R en m, ω en rad/s). ω = 2π × N avec N en tours/s (N tr/min ÷ 60)."},
+  {f:"Rappeler l'expression de la puissance mécanique d'un moteur en rotation.",b:"P = C × ω (P en W, C couple en N·m, ω en rad/s) → C = P / ω."}
+ ]},
+ {id:"radio",label:"Radioactivité",cat:"cat-nucl",cards:[
+  {f:"Définir l'activité A d'un échantillon radioactif et donner son unité.",b:"Nombre de désintégrations par seconde. Unité : becquerel (Bq), 1 Bq = 1 désintégration/s. A = λ × N (λ constante radioactive)."},
+  {f:"Citer les types de radioactivité et la particule émise dans chaque cas.",b:"α : noyau d'hélium ⁴₂He ; β⁻ : électron ⁰₋₁e ; β⁺ : positon ⁰₊₁e ; γ : rayonnement électromagnétique (photon) très énergétique, accompagne souvent α ou β."},
+  {f:"Définir la demi-vie t½ et expliquer comment la déterminer graphiquement.",b:"Durée au bout de laquelle la moitié des noyaux initialement présents se sont désintégrés (l'activité est divisée par 2).\nGraphiquement : lire A0, chercher A0/2 sur l'axe vertical, lire l'abscisse correspondante."},
+  {f:"Calculer l'activité restante après n demi-vies et indiquer quand elle devient négligeable.",b:"A = A0 / 2ⁿ après n demi-vies (t = n × t½). Après 10 t½ : A = A0/1024 ≈ 0,1 % de A0 → considérée négligeable.\nModèle : A(t) = A0 × e^(−λt)."},
+  {f:"Énoncer les lois de conservation utilisées pour écrire l'équation d'une désintégration radioactive.",b:"Lois de conservation (Soddy) : conservation du nombre de masse A et du nombre de charge Z.\nEx. β⁻ : ⁶⁰₂₇Co → ⁶⁰₂₈Ni + ⁰₋₁e."},
+  {f:"Rappeler l'expression de l'énergie d'un photon γ (ou X) en fonction de sa longueur d'onde.",b:"E = h × f = h × c / λ avec h = 6,63 × 10⁻³⁴ J·s ; 1 eV = 1,6 × 10⁻¹⁹ J."}
+ ]},
+ {id:"nucl",label:"Énergie nucléaire",cat:"cat-nucl",cards:[
+  {f:"Distinguer la fission et la fusion nucléaires.",b:"Fission : un noyau lourd (U-235), percuté par un neutron, se scinde en deux noyaux plus légers + neutrons (centrales nucléaires).\nFusion : deux noyaux légers (isotopes de H) s'unissent pour former un noyau plus lourd (Soleil, ITER)."},
+  {f:"Rappeler l'expression de l'énergie libérée par une réaction nucléaire.",b:"E = |Δm| × c² avec Δm = m(produits) − m(réactifs) (perte de masse, en kg) et c = 3,00 × 10⁸ m·s⁻¹. E en J."},
+  {f:"Décrire la méthode pour calculer le nombre de noyaux contenus dans une masse m d'uranium.",b:"N = m / m(noyau) ou N = n × N_A = (m/M) × N_A avec N_A = 6,02 × 10²³ mol⁻¹. Énergie totale = N × E(1 réaction)."},
+  {f:"Expliquer pourquoi il faut enrichir l'uranium.",b:"L'uranium naturel contient seulement ≈ 0,7 % d'U-235 (seul isotope fissile) ; il faut ≈ 3 à 5 % pour entretenir la réaction en chaîne dans un réacteur."},
+  {f:"Définir le rendement d'une centrale nucléaire et donner un ordre de grandeur.",b:"η = P_électrique / P_thermique (≈ 33 % pour une centrale nucléaire) : 2/3 de l'énergie est cédée sous forme thermique à la source froide (rivière, mer)."}
+ ]},
+ {id:"mesure",label:"Mesures, incertitudes & capteurs",cat:"cat-mesur",cards:[
+  {f:"Expliquer comment écrire correctement le résultat d'une mesure.",b:"x = (valeur ± u(x)) unité. On arrondit u(x) à 1 ou 2 chiffres significatifs (par excès) et la valeur au même rang décimal. Ex. T = (23,0 ± 0,3) °C."},
+  {f:"Rappeler l'expression de l'incertitude-type de type B (mesure unique, notice de l'appareil).",b:"u(x) = précision / √3 (précision Δ donnée par la notice, ou demi-graduation). Multimètre : Δ = x % de la lecture + n digits."},
+  {f:"Décrire le calcul de l'incertitude-type de type A (série de mesures).",b:"Calculer la moyenne x̄ et l'écart-type expérimental σ(n−1) (calculatrice) ; u(x̄) = σ(n−1) / √n."},
+  {f:"Expliquer comment comparer une mesure à une valeur de référence (z-score).",b:"z = |x_mes − x_ref| / u(x). Si z ≤ 2 : résultats compatibles ; sinon non compatibles."},
+  {f:"Expliquer la signification de CTN pour une thermistance.",b:"Coefficient de Température Négatif : la résistance DIMINUE quand la température augmente."}
+ ]}
+];
+
+
+/* ══ EXERCICES (sujets découpés) ═══════════════════════════════ */
+const EXERCICES = [
+  {annee:2026,pays:"Antilles-Guyane",session:"Juin",num:"Exercice 1",titre:"Isolation écologique (laine de chanvre)",notions:["Transfert thermique"],ancien:false,fichier:"2026_Antilles-Guyane_Juin_Ex1_Isolation-ecologique-laine-de-chanvre.pdf",url_sujet:"https://drive.google.com/file/d/1WUtuhvlBqxL6TCgr2KO7cfqDZGwcJCW8/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1WUtuhvlBqxL6TCgr2KO7cfqDZGwcJCW8/preview",url_correction:null},
+  {annee:2026,pays:"Antilles-Guyane",session:"Juin",num:"Exercice 2",titre:"La voiture à hydrogène",notions:["Oxydoréduction", "Piles et accumulateur", "Changement d'état"],ancien:false,fichier:"2026_Antilles-Guyane_Juin_Ex2_La-voiture-a-hydrogene.pdf",url_sujet:"https://drive.google.com/file/d/1J2C1KaGqjplJICHz4JbWRXMgzHUu_JYb/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1J2C1KaGqjplJICHz4JbWRXMgzHUu_JYb/preview",url_correction:null},
+  {annee:2026,pays:"Antilles-Guyane",session:"Juin",num:"Exercice 4",titre:"Étude expérimentale d'un panneau photovoltaïque",notions:["Panneaux photovoltaïques", "Rendement", "Incertitudes type-A", "Convertisseur"],ancien:false,fichier:"2026_Antilles-Guyane_Juin_Ex4_Etude-experimentale-d-un-panneau-photovoltaique.pdf",url_sujet:"https://drive.google.com/file/d/13-q9FBffghIoivvA8WiKCmsc1LAd0f0_/view?usp=sharing",url_preview:"https://drive.google.com/file/d/13-q9FBffghIoivvA8WiKCmsc1LAd0f0_/preview",url_correction:null},
+  {annee:2026,pays:"Métropole",session:"Juin",num:"Exercice 1",titre:"Refroidir une boisson",notions:["Énergie interne", "Changement d'état", "Incertitudes type-B"],ancien:false,fichier:"2026_Metropole_Juin_Ex1_Refroidir-une-boisson.pdf",url_sujet:"https://drive.google.com/file/d/1ysfDrsx5Ki2oW-ETUdBrlQerPg1JoAZl/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ysfDrsx5Ki2oW-ETUdBrlQerPg1JoAZl/preview",url_correction:null},
+  {annee:2026,pays:"Métropole",session:"Juin",num:"Exercice 2",titre:"Étude d'une Tiny house",notions:["Transfert thermique", "Panneaux photovoltaïques", "Convertisseur"],ancien:false,fichier:"2026_Metropole_Juin_Ex2_Etude-d-une-Tiny-house.pdf",url_sujet:"https://drive.google.com/file/d/17sVu7z21FOXIIankoUwJGOCu6KSEJVMF/view?usp=sharing",url_preview:"https://drive.google.com/file/d/17sVu7z21FOXIIankoUwJGOCu6KSEJVMF/preview",url_correction:null},
+  {annee:2026,pays:"Métropole",session:"Juin",num:"Exercice 4",titre:"Rouler avec une pile à combustible",notions:["Oxydoréduction", "Piles et accumulateur", "Ondes électromagnétiques"],ancien:false,fichier:"2026_Metropole_Juin_Ex4_Rouler-avec-une-pile-a-combustible.pdf",url_sujet:"https://drive.google.com/file/d/10-GlcPEsNs_qzi-5aD7GE9m12XH6d2yO/view?usp=sharing",url_preview:"https://drive.google.com/file/d/10-GlcPEsNs_qzi-5aD7GE9m12XH6d2yO/preview",url_correction:null},
+  {annee:2026,pays:"Polynésie",session:"Juin",num:"Exercice 1",titre:"Hélicoptère et vitesse du son",notions:["Mouvement et forces", "Mouvement rotatif"],ancien:false,fichier:"2026_Polynesie_Juin_Ex1_Helicoptere-et-vitesse-du-son.pdf",url_sujet:"https://drive.google.com/file/d/1o9f4-CT_aott714-lPtV4zaK2RKXQ-30/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1o9f4-CT_aott714-lPtV4zaK2RKXQ-30/preview",url_correction:null},
+  {annee:2026,pays:"Polynésie",session:"Juin",num:"Exercice 2",titre:"Un débitmètre défectueux ?",notions:["Notions d'ondes"],ancien:false,fichier:"2026_Polynesie_Juin_Ex2_Un-debitmetre-defectueux.pdf",url_sujet:"https://drive.google.com/file/d/1gaOoeMP_VIUAFWvORyWINrn8X0NZuZXQ/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1gaOoeMP_VIUAFWvORyWINrn8X0NZuZXQ/preview",url_correction:null},
+  {annee:2026,pays:"Polynésie",session:"Juin",num:"Exercice 4",titre:"Seulement un changement de couleurs ? (drainage minier)",notions:["Oxydoréduction", "Acide-base"],ancien:false,fichier:"2026_Polynesie_Juin_Ex4_Seulement-un-changement-de-couleurs-drainage-minier.pdf",url_sujet:"https://drive.google.com/file/d/1ST4hiKGv_29H9i4pg11aUAb6XXpU77ta/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ST4hiKGv_29H9i4pg11aUAb6XXpU77ta/preview",url_correction:null},
+  {annee:2025,pays:"Métropole",session:"Juin",num:"Exercice 1",titre:"Pertes dans le réseau électrique",notions:["Signaux électriques", "Transport électricité"],ancien:false,fichier:"2025_Metropole_Juin_Ex1_Pertes-dans-le-reseau-electrique.pdf",url_sujet:"https://drive.google.com/file/d/1FK3DbSjK1eahP4t4soVGd8gFihN7Cyva/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1FK3DbSjK1eahP4t4soVGd8gFihN7Cyva/preview",url_correction:null},
+  {annee:2025,pays:"Métropole",session:"Juin",num:"Exercice 2",titre:"La flamme et la vasque olympiques",notions:["Combustion", "Énergie interne", "Mouvement et forces"],ancien:false,fichier:"2025_Metropole_Juin_Ex2_La-flamme-et-la-vasque-olympiques.pdf",url_sujet:"https://drive.google.com/file/d/1EgTe6N4UhyvVDXqtQQDcAcNy088mieAb/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1EgTe6N4UhyvVDXqtQQDcAcNy088mieAb/preview",url_correction:null},
+  {annee:2025,pays:"Métropole",session:"Juin",num:"Exercice 4",titre:"Au cœur d'un réacteur nucléaire",notions:["Nucléaire", "Rendement", "Changement d'état", "Oxydoréduction", "Corrosion"],ancien:false,fichier:"2025_Metropole_Juin_Ex4_Au-coeur-d-un-reacteur-nucleaire.pdf",url_sujet:"https://drive.google.com/file/d/1M1ewR3Y5QvH_xFy60z6GNdC9V7Djk3OG/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1M1ewR3Y5QvH_xFy60z6GNdC9V7Djk3OG/preview",url_correction:null},
+  {annee:2025,pays:"Métropole",session:"Septembre",num:"Exercice 1",titre:"Une coulée comme Léon Marchand",notions:["Mouvement et forces", "Forces de frottement"],ancien:false,fichier:"2025_Metropole_Septembre_Ex1_Une-coulee-comme-Leon-Marchand.pdf",url_sujet:"https://drive.google.com/file/d/16S4EmwHrb9xSQSqxBrYifRKU0STbLrqw/view?usp=sharing",url_preview:"https://drive.google.com/file/d/16S4EmwHrb9xSQSqxBrYifRKU0STbLrqw/preview",url_correction:null},
+  {annee:2025,pays:"Métropole",session:"Septembre",num:"Exercice 2",titre:"Classe énergétique d'un logement",notions:["Transfert thermique", "Énergie interne"],ancien:false,fichier:"2025_Metropole_Septembre_Ex2_Classe-energetique-d-un-logement.pdf",url_sujet:"https://drive.google.com/file/d/1xODBAt6fGZMg7oaKIcWpbB9mkkXrUm1w/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1xODBAt6fGZMg7oaKIcWpbB9mkkXrUm1w/preview",url_correction:null},
+  {annee:2025,pays:"Métropole",session:"Septembre",num:"Exercice 4",titre:"Puissance d'une installation (lave-linge)",notions:["Signaux électriques", "Énergie interne", "Acide-base"],ancien:false,fichier:"2025_Metropole_Septembre_Ex4_Puissance-d-une-installation-lave-linge.pdf",url_sujet:"https://drive.google.com/file/d/1b_s-gdXk3LuzXAn3zbdWOHgY79cFwg-9/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1b_s-gdXk3LuzXAn3zbdWOHgY79cFwg-9/preview",url_correction:null},
+  {annee:2025,pays:"NC",session:"Novembre",num:"Exercice 1",titre:"Conditions d'utilisation d'un médicament (lutécium 177)",notions:["Radioactivité"],ancien:false,fichier:"2025_NC_Novembre_Ex1_Conditions-d-utilisation-d-un-medicament-lutecium-177.pdf",url_sujet:"https://drive.google.com/file/d/1ivPnTPvoYnXuialYKr0PJAWWll8p7q_v/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ivPnTPvoYnXuialYKr0PJAWWll8p7q_v/preview",url_correction:null},
+  {annee:2025,pays:"NC",session:"Novembre",num:"Exercice 2",titre:"Mesure de vitesse par temps de pluie (radar)",notions:["Ondes électromagnétiques", "Notions d'ondes"],ancien:false,fichier:"2025_NC_Novembre_Ex2_Mesure-de-vitesse-par-temps-de-pluie-radar.pdf",url_sujet:"https://drive.google.com/file/d/1kguQ_Cdl9aJWclpfaQi8jU1Tzu82f4Oh/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1kguQ_Cdl9aJWclpfaQi8jU1Tzu82f4Oh/preview",url_correction:null},
+  {annee:2025,pays:"NC",session:"Novembre",num:"Exercice 4",titre:"Chaudière à condensation",notions:["Combustion", "Changement d'état", "Énergie interne"],ancien:false,fichier:"2025_NC_Novembre_Ex4_Chaudiere-a-condensation.pdf",url_sujet:"https://drive.google.com/file/d/1Wc4U2uYW0uFTwmkaEq6pjjPDbnL0Yr9L/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Wc4U2uYW0uFTwmkaEq6pjjPDbnL0Yr9L/preview",url_correction:null},
+  {annee:2025,pays:"Polynésie",session:"Juin",num:"Exercice 1",titre:"Accélération d'un véhicule",notions:["Mouvement et forces"],ancien:false,fichier:"2025_Polynesie_Juin_Ex1_Acceleration-d-un-vehicule.pdf",url_sujet:"https://drive.google.com/file/d/1351Nt5F1V_2jYwiXrNgMViuo8bBhqTTU/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1351Nt5F1V_2jYwiXrNgMViuo8bBhqTTU/preview",url_correction:null},
+  {annee:2025,pays:"Polynésie",session:"Juin",num:"Exercice 2",titre:"Préserver son audition",notions:["Ondes sonores"],ancien:false,fichier:"2025_Polynesie_Juin_Ex2_Preserver-son-audition.pdf",url_sujet:"https://drive.google.com/file/d/1MzRaioVp3qy77kNLgn2fpqWJbe26nCbs/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1MzRaioVp3qy77kNLgn2fpqWJbe26nCbs/preview",url_correction:null},
+  {annee:2025,pays:"Polynésie",session:"Juin",num:"Exercice 4",titre:"Un traitement respectueux de la biodiversité (pH d'un étang)",notions:["Acide-base"],ancien:false,fichier:"2025_Polynesie_Juin_Ex4_Un-traitement-respectueux-de-la-biodiversite-pH-d-un-etang.pdf",url_sujet:"https://drive.google.com/file/d/19BvGsxDonmVyd8-6T2epOKMxNR4mPC9W/view?usp=sharing",url_preview:"https://drive.google.com/file/d/19BvGsxDonmVyd8-6T2epOKMxNR4mPC9W/preview",url_correction:null},
+  {annee:2024,pays:"Métropole",session:"Juin",num:"Exercice 1",titre:"Le son lors d'un concert",notions:["Ondes sonores"],ancien:false,fichier:"2024_Metropole_Juin_Ex1_Le-son-lors-d-un-concert.pdf",url_sujet:"https://drive.google.com/file/d/1E3-Tdd7I1855uL34o23r46BVNAtVqQMR/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1E3-Tdd7I1855uL34o23r46BVNAtVqQMR/preview",url_correction:null},
+  {annee:2024,pays:"Métropole",session:"Juin",num:"Exercice 2",titre:"Le cobalt 60",notions:["Radioactivité", "Ondes électromagnétiques"],ancien:false,fichier:"2024_Metropole_Juin_Ex2_Le-cobalt-60.pdf",url_sujet:"https://drive.google.com/file/d/10-PpxbTaQnnS-oE9_vbJueyUqeckrnoI/view?usp=sharing",url_preview:"https://drive.google.com/file/d/10-PpxbTaQnnS-oE9_vbJueyUqeckrnoI/preview",url_correction:null},
+  {annee:2024,pays:"Métropole",session:"Juin",num:"Exercice 4",titre:"Rouler moins vite pour moins polluer",notions:["Mouvement et forces", "Combustion"],ancien:false,fichier:"2024_Metropole_Juin_Ex4_Rouler-moins-vite-pour-moins-polluer.pdf",url_sujet:"https://drive.google.com/file/d/1E4Ou6IWDFMW0VOX1_DqFWt8-Y01bumlO/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1E4Ou6IWDFMW0VOX1_DqFWt8-Y01bumlO/preview",url_correction:null},
+  {annee:2024,pays:"Métropole",session:"Septembre",num:"Exercice 1",titre:"Isolation phonique d'une plaque",notions:["Ondes sonores"],ancien:false,fichier:"2024_Metropole_Septembre_Ex1_Isolation-phonique-d-une-plaque.pdf",url_sujet:"https://drive.google.com/file/d/1kGJiEK2nUFcIbRMPr0afk9JVK3TLok9x/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1kGJiEK2nUFcIbRMPr0afk9JVK3TLok9x/preview",url_correction:null},
+  {annee:2024,pays:"Métropole",session:"Septembre",num:"Exercice 2",titre:"Pluies acides et nettoyage laser",notions:["Acide-base", "Ondes électromagnétiques"],ancien:false,fichier:"2024_Metropole_Septembre_Ex2_Pluies-acides-et-nettoyage-laser.pdf",url_sujet:"https://drive.google.com/file/d/1I9bOTSMtQsO4LfRlTpio20f2Qd7t9YmL/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1I9bOTSMtQsO4LfRlTpio20f2Qd7t9YmL/preview",url_correction:null},
+  {annee:2024,pays:"Métropole",session:"Septembre",num:"Exercice 4",titre:"Mouvement d'un drone",notions:["Mouvement et forces", "Ondes électromagnétiques"],ancien:false,fichier:"2024_Metropole_Septembre_Ex4_Mouvement-d-un-drone.pdf",url_sujet:"https://drive.google.com/file/d/1QBpGjpnONFO9KR08vumwM7fre32wKO4z/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1QBpGjpnONFO9KR08vumwM7fre32wKO4z/preview",url_correction:null},
+  {annee:2024,pays:"Polynésie",session:"Juillet",num:"Exercice 1",titre:"Refroidissement d'un soda",notions:["Transfert thermique"],ancien:false,fichier:"2024_Polynesie_Juillet_Ex1_Refroidissement-d-un-soda.pdf",url_sujet:"https://drive.google.com/file/d/1R8SnF3lby7Qub4SW7QeHmN8hOGJZz_-j/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1R8SnF3lby7Qub4SW7QeHmN8hOGJZz_-j/preview",url_correction:null},
+  {annee:2024,pays:"Polynésie",session:"Juillet",num:"Exercice 2",titre:"Anode sacrificielle",notions:["Corrosion", "Oxydoréduction"],ancien:false,fichier:"2024_Polynesie_Juillet_Ex2_Anode-sacrificielle.pdf",url_sujet:"https://drive.google.com/file/d/16IsZZi0IpJE3BiSPfZ1BPv0DriXSO0et/view?usp=sharing",url_preview:"https://drive.google.com/file/d/16IsZZi0IpJE3BiSPfZ1BPv0DriXSO0et/preview",url_correction:null},
+  {annee:2024,pays:"Polynésie",session:"Juillet",num:"Exercice 4",titre:"Accorder un piano et isoler une pièce",notions:["Ondes sonores"],ancien:false,fichier:"2024_Polynesie_Juillet_Ex4_Accorder-un-piano-et-isoler-une-piece.pdf",url_sujet:"https://drive.google.com/file/d/1uWUW1Z-EHaoXMAq7Mo1-DzKrSUB5EnoY/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1uWUW1Z-EHaoXMAq7Mo1-DzKrSUB5EnoY/preview",url_correction:null},
+  {annee:2023,pays:"Métropole",session:"Mars",num:"Exercice 1",titre:"Viscosimètre à chute de bille",notions:["Mouvement et forces", "Forces de frottement"],ancien:false,fichier:"2023_Metropole_Mars_Ex1_Viscosimetre-a-chute-de-bille.pdf",url_sujet:"https://drive.google.com/file/d/1aQKEfqeGi5uiN2LENo2TZyNmXeu6s1q3/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1aQKEfqeGi5uiN2LENo2TZyNmXeu6s1q3/preview",url_correction:null},
+  {annee:2023,pays:"Métropole",session:"Mars",num:"Exercice 2",titre:"Capteur à ultrasons d'aide au stationnement",notions:["Notions d'ondes"],ancien:false,fichier:"2023_Metropole_Mars_Ex2_Capteur-a-ultrasons-d-aide-au-stationnement.pdf",url_sujet:"https://drive.google.com/file/d/1URkbE8G4OBtMlX3XmJLU3NclMJdrgm83/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1URkbE8G4OBtMlX3XmJLU3NclMJdrgm83/preview",url_correction:null},
+  {annee:2023,pays:"Métropole",session:"Mars",num:"Exercice 4",titre:"Bouteille isotherme et purification de l'eau",notions:["Transfert thermique", "Énergie interne"],ancien:false,fichier:"2023_Metropole_Mars_Ex4_Bouteille-isotherme-et-purification-de-l-eau.pdf",url_sujet:"https://drive.google.com/file/d/1MPt2EC082Y0ro1aZgvI9-brcDbkSFAXG/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1MPt2EC082Y0ro1aZgvI9-brcDbkSFAXG/preview",url_correction:null},
+  {annee:2023,pays:"Métropole",session:"Septembre",num:"Exercice 1",titre:"Lave-linge et thermistance",notions:["Énergie interne", "Capteurs"],ancien:false,fichier:"2023_Metropole_Septembre_Ex1_Lave-linge-et-thermistance.pdf",url_sujet:"https://drive.google.com/file/d/1NI8ZmMnLF4axRYzd_1MvluTinCpg-fBj/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1NI8ZmMnLF4axRYzd_1MvluTinCpg-fBj/preview",url_correction:null},
+  {annee:2023,pays:"Métropole",session:"Septembre",num:"Exercice 2",titre:"Voiture solaire miniature",notions:["Panneaux photovoltaïques", "Piles et accumulateur", "Oxydoréduction", "Convertisseur"],ancien:false,fichier:"2023_Metropole_Septembre_Ex2_Voiture-solaire-miniature.pdf",url_sujet:"https://drive.google.com/file/d/1IOV_vHvhqciHBtalLvnUZ7LB4fpCSL0G/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1IOV_vHvhqciHBtalLvnUZ7LB4fpCSL0G/preview",url_correction:null},
+  {annee:2023,pays:"Métropole",session:"Septembre",num:"Exercice 4",titre:"Roulements à billes corrodés",notions:["Corrosion", "Oxydoréduction", "Forces de frottement", "Mouvement et forces"],ancien:false,fichier:"2023_Metropole_Septembre_Ex4_Roulements-a-billes-corrodes.pdf",url_sujet:"https://drive.google.com/file/d/1GM9g8bIlSIm9OqiKqtGtCkvyUKhDPTo6/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1GM9g8bIlSIm9OqiKqtGtCkvyUKhDPTo6/preview",url_correction:null},
+  {annee:2023,pays:"Mexique",session:"Mars",num:"Exercice 1",titre:"Supercondensateur",notions:["Signaux électriques"],ancien:false,fichier:"2023_Mexique_Mars_Ex1_Supercondensateur.pdf",url_sujet:"https://drive.google.com/file/d/1zLkUp2YtNWs0fzXKE2cRExidMf4nABWe/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1zLkUp2YtNWs0fzXKE2cRExidMf4nABWe/preview",url_correction:null},
+  {annee:2023,pays:"Mexique",session:"Mars",num:"Exercice 2",titre:"Saut en parachute",notions:["Mouvement et forces", "Forces de frottement"],ancien:false,fichier:"2023_Mexique_Mars_Ex2_Saut-en-parachute.pdf",url_sujet:"https://drive.google.com/file/d/1LQnJ3CfzpkJw-7JwJpnxGsnY9vChx0Md/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1LQnJ3CfzpkJw-7JwJpnxGsnY9vChx0Md/preview",url_correction:null},
+  {annee:2023,pays:"Mexique",session:"Mars",num:"Exercice 4",titre:"Bruit et avion à hydrogène à l'aéroport",notions:["Ondes sonores", "Incertitudes type-A", "Oxydoréduction", "Piles et accumulateur", "Combustion"],ancien:false,fichier:"2023_Mexique_Mars_Ex4_Bruit-et-avion-a-hydrogene-a-l-aeroport.pdf",url_sujet:"https://drive.google.com/file/d/1-0wUPiQHf62dpAWifrEB4JLqPVkytcUm/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1-0wUPiQHf62dpAWifrEB4JLqPVkytcUm/preview",url_correction:null},
+  {annee:2023,pays:"NC",session:"Août",num:"Exercice 1",titre:"Moteur à éthanol",notions:["Combustion"],ancien:false,fichier:"2023_NC_Aout_Ex1_Moteur-a-ethanol.pdf",url_sujet:"https://drive.google.com/file/d/17xYuauYTd-ciNeaNnjHZdoqPPNq17NLL/view?usp=sharing",url_preview:"https://drive.google.com/file/d/17xYuauYTd-ciNeaNnjHZdoqPPNq17NLL/preview",url_correction:null},
+  {annee:2023,pays:"NC",session:"Août",num:"Exercice 2",titre:"Douche solaire",notions:["Transfert thermique", "Panneaux photothermique", "Énergie interne", "Incertitudes type-B"],ancien:false,fichier:"2023_NC_Aout_Ex2_Douche-solaire.pdf",url_sujet:"https://drive.google.com/file/d/1f1YKHNPJp1inyxHaMsh5uAhN9w2PeLwC/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1f1YKHNPJp1inyxHaMsh5uAhN9w2PeLwC/preview",url_correction:null},
+  {annee:2023,pays:"NC",session:"Août",num:"Exercice 4",titre:"Un saxophone dans l'ISS",notions:["Ondes sonores", "Ondes électromagnétiques"],ancien:false,fichier:"2023_NC_Aout_Ex4_Un-saxophone-dans-l-ISS.pdf",url_sujet:"https://drive.google.com/file/d/12r_4_e00rBJAmAIGhJ2HGU1sl1IUOtKM/view?usp=sharing",url_preview:"https://drive.google.com/file/d/12r_4_e00rBJAmAIGhJ2HGU1sl1IUOtKM/preview",url_correction:null},
+  {annee:2023,pays:"Polynésie",session:"Mars",num:"Exercice 1",titre:"Four à pyrolyse",notions:["Énergie interne"],ancien:false,fichier:"2023_Polynesie_Mars_Ex1_Four-a-pyrolyse.pdf",url_sujet:"https://drive.google.com/file/d/1xx1l4QuKUc4df37a8KIsH7Px_aCyRBva/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1xx1l4QuKUc4df37a8KIsH7Px_aCyRBva/preview",url_correction:null},
+  {annee:2023,pays:"Polynésie",session:"Mars",num:"Exercice 2",titre:"Mesurer la température sur Mars grâce au son",notions:["Ondes sonores", "Notions d'ondes"],ancien:false,fichier:"2023_Polynesie_Mars_Ex2_Mesurer-la-temperature-sur-Mars-grace-au-son.pdf",url_sujet:"https://drive.google.com/file/d/1-CK-UbFNNb3N7UVfUaFxrZbfN49aivQ-/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1-CK-UbFNNb3N7UVfUaFxrZbfN49aivQ-/preview",url_correction:null},
+  {annee:2023,pays:"Polynésie",session:"Mars",num:"Exercice 4",titre:"Chaulage d'un sol et d'un bassin",notions:["Acide-base"],ancien:false,fichier:"2023_Polynesie_Mars_Ex4_Chaulage-d-un-sol-et-d-un-bassin.pdf",url_sujet:"https://drive.google.com/file/d/1CJWGf19PALcXbUU6u3UTnRSwSvQx-fir/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1CJWGf19PALcXbUU6u3UTnRSwSvQx-fir/preview",url_correction:null},
+  {annee:2023,pays:"Réunion",session:"Mars",num:"Exercice 1",titre:"Bouteille isotherme",notions:["Transfert thermique"],ancien:false,fichier:"2023_Reunion_Mars_Ex1_Bouteille-isotherme.pdf",url_sujet:"https://drive.google.com/file/d/1rdY7lzez4PqeQirqqVovnVhSdbEgWsOF/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1rdY7lzez4PqeQirqqVovnVhSdbEgWsOF/preview",url_correction:null},
+  {annee:2023,pays:"Réunion",session:"Mars",num:"Exercice 2",titre:"Poêle à granulés",notions:["Signaux électriques", "Incertitudes type-B"],ancien:false,fichier:"2023_Reunion_Mars_Ex2_Poele-a-granules.pdf",url_sujet:"https://drive.google.com/file/d/1XfcU0BJPYcgHnLTKoYPLHrQeRRM7cMGk/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1XfcU0BJPYcgHnLTKoYPLHrQeRRM7cMGk/preview",url_correction:null},
+  {annee:2023,pays:"Réunion",session:"Mars",num:"Exercice 4",titre:"Mine de sel",notions:["Mouvement et forces", "Combustion"],ancien:false,fichier:"2023_Reunion_Mars_Ex4_Mine-de-sel.pdf",url_sujet:"https://drive.google.com/file/d/1QEiEn9ABjFMy1OoR3m6txIMCP_Z4lQi_/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1QEiEn9ABjFMy1OoR3m6txIMCP_Z4lQi_/preview",url_correction:null},
+  {annee:2022,pays:"Mayotte",session:"Mai",num:"Exercice 1",titre:"Décollage d'un avion électrique",notions:["Mouvement et forces"],ancien:false,fichier:"2022_Mayotte_Mai_Ex1_Decollage-d-un-avion-electrique.pdf",url_sujet:"https://drive.google.com/file/d/1mROAPTget_cYqx5V0YhhfLKzVjNaYcey/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1mROAPTget_cYqx5V0YhhfLKzVjNaYcey/preview",url_correction:null},
+  {annee:2022,pays:"Mayotte",session:"Mai",num:"Exercice 2",titre:"Batterie du robot Romeo",notions:["Piles et accumulateur", "Oxydoréduction", "Incertitudes type-A"],ancien:false,fichier:"2022_Mayotte_Mai_Ex2_Batterie-du-robot-Romeo.pdf",url_sujet:"https://drive.google.com/file/d/1bg6MIN4kxHKhlI0GdN_chWcbFYt1P-LR/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1bg6MIN4kxHKhlI0GdN_chWcbFYt1P-LR/preview",url_correction:null},
+  {annee:2022,pays:"Mayotte",session:"Mai",num:"Exercice 4A",titre:"Effaroucheur d'oiseaux",notions:["Ondes sonores", "Notions d'ondes", "Incertitudes type-B"],ancien:false,fichier:"2022_Mayotte_Mai_Ex4A_Effaroucheur-d-oiseaux.pdf",url_sujet:"https://drive.google.com/file/d/13B3yb8prEvOfgTN4oI3gm7_VWdnye0ze/view?usp=sharing",url_preview:"https://drive.google.com/file/d/13B3yb8prEvOfgTN4oI3gm7_VWdnye0ze/preview",url_correction:null},
+  {annee:2022,pays:"Mayotte",session:"Mai",num:"Exercice 4B",titre:"Dégivrage d'une aile d'avion",notions:["Énergie interne", "Changement d'état", "Incertitudes type-B", "Convertisseur"],ancien:false,fichier:"2022_Mayotte_Mai_Ex4B_Degivrage-d-une-aile-d-avion.pdf",url_sujet:"https://drive.google.com/file/d/1cbdVxd8cTGMDCIyyE9x-rI-RY6_m-OwH/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1cbdVxd8cTGMDCIyyE9x-rI-RY6_m-OwH/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Septembre",num:"Exercice 1",titre:"Pile au jus d'orange",notions:["Piles et accumulateur", "Oxydoréduction"],ancien:false,fichier:"2022_Metropole_Septembre_Ex1_Pile-au-jus-d-orange.pdf",url_sujet:"https://drive.google.com/file/d/1dlcEibWUMS2pvKkfclnbZzqe5K7S8iFV/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1dlcEibWUMS2pvKkfclnbZzqe5K7S8iFV/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Septembre",num:"Exercice 2",titre:"Talkie-walkie",notions:["Ondes électromagnétiques", "Ondes sonores"],ancien:false,fichier:"2022_Metropole_Septembre_Ex2_Talkie-walkie.pdf",url_sujet:"https://drive.google.com/file/d/1HZ6lBjnUcBmapupV2GaNT6P4SZu_tW3S/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1HZ6lBjnUcBmapupV2GaNT6P4SZu_tW3S/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Septembre",num:"Exercice 4A",titre:"VTT à assistance électrique",notions:["Mouvement et forces", "Rendement"],ancien:false,fichier:"2022_Metropole_Septembre_Ex4A_VTT-a-assistance-electrique.pdf",url_sujet:"https://drive.google.com/file/d/1bBKgf7pYNeQiCFHqFxf7M33ebKJTapPj/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1bBKgf7pYNeQiCFHqFxf7M33ebKJTapPj/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Septembre",num:"Exercice 4B",titre:"Produits ménagers",notions:["Acide-base", "Énergie interne"],ancien:false,fichier:"2022_Metropole_Septembre_Ex4B_Produits-menagers.pdf",url_sujet:"https://drive.google.com/file/d/1W8iCryYj8J3we6Vue12IGO-VNYr2OMiW/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1W8iCryYj8J3we6Vue12IGO-VNYr2OMiW/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Mai",num:"Exercice 1",titre:"Refroidissement du lait",notions:["Transfert thermique"],ancien:false,fichier:"2022_Metropole_Mai_Ex1_Refroidissement-du-lait.pdf",url_sujet:"https://drive.google.com/file/d/10sSOjP1zMaXAeV5YImhhkwYI8f6nFZKn/view?usp=sharing",url_preview:"https://drive.google.com/file/d/10sSOjP1zMaXAeV5YImhhkwYI8f6nFZKn/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Mai",num:"Exercice 2",titre:"Cordes et câble de guitare",notions:["Oxydoréduction", "Corrosion", "Ondes sonores", "Signaux électriques"],ancien:false,fichier:"2022_Metropole_Mai_Ex2_Cordes-et-cable-de-guitare.pdf",url_sujet:"https://drive.google.com/file/d/1QmLgB9Y-DCXvR43Hpx10krSSH5Bjikpa/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1QmLgB9Y-DCXvR43Hpx10krSSH5Bjikpa/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Mai",num:"Exercice 4A",titre:"Produit détachant et lessive",notions:["Acide-base", "Oxydoréduction", "Ondes électromagnétiques"],ancien:false,fichier:"2022_Metropole_Mai_Ex4A_Produit-detachant-et-lessive.pdf",url_sujet:"https://drive.google.com/file/d/18iygcjXgV9c5LWzrYRwYLsLVvltVtCcz/view?usp=sharing",url_preview:"https://drive.google.com/file/d/18iygcjXgV9c5LWzrYRwYLsLVvltVtCcz/preview",url_correction:null},
+  {annee:2022,pays:"Métropole",session:"Mai",num:"Exercice 4B",titre:"Dormir en refuge",notions:["Panneaux photovoltaïques", "Combustion", "Changement d'état"],ancien:false,fichier:"2022_Metropole_Mai_Ex4B_Dormir-en-refuge.pdf",url_sujet:"https://drive.google.com/file/d/1YmSdYt3Xzjhxq0NdMefIsQlfBzi9HxJ4/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1YmSdYt3Xzjhxq0NdMefIsQlfBzi9HxJ4/preview",url_correction:null},
+  {annee:2022,pays:"NC",session:"Octobre",num:"Exercice 1",titre:"Saut en parachute",notions:["Mouvement et forces", "Forces de frottement"],ancien:false,fichier:"2022_NC_Octobre_Ex1_Saut-en-parachute.pdf",url_sujet:"https://drive.google.com/file/d/1x4lGrdoVrwJHyluV1ymlX6IAmTh7CMGO/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1x4lGrdoVrwJHyluV1ymlX6IAmTh7CMGO/preview",url_correction:null},
+  {annee:2022,pays:"NC",session:"Octobre",num:"Exercice 2",titre:"Électrolyse de l'eau",notions:["Oxydoréduction", "Rendement"],ancien:false,fichier:"2022_NC_Octobre_Ex2_Electrolyse-de-l-eau.pdf",url_sujet:"https://drive.google.com/file/d/1S25y56NIRHnDwDMIgg66fXbQNammopfv/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1S25y56NIRHnDwDMIgg66fXbQNammopfv/preview",url_correction:null},
+  {annee:2022,pays:"NC",session:"Octobre",num:"Exercice 4A",titre:"Communication RFID",notions:["Ondes électromagnétiques"],ancien:false,fichier:"2022_NC_Octobre_Ex4A_Communication-RFID.pdf",url_sujet:"https://drive.google.com/file/d/1PoupLE0bLc-f_wTBZB0TMarvsrR7iq4F/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1PoupLE0bLc-f_wTBZB0TMarvsrR7iq4F/preview",url_correction:null},
+  {annee:2022,pays:"NC",session:"Octobre",num:"Exercice 4B",titre:"Maison sans chauffage",notions:["Transfert thermique"],ancien:false,fichier:"2022_NC_Octobre_Ex4B_Maison-sans-chauffage.pdf",url_sujet:"https://drive.google.com/file/d/1fAQt62jKPEjiCsgXpQkzZw7ASPJ5V7Bz/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1fAQt62jKPEjiCsgXpQkzZw7ASPJ5V7Bz/preview",url_correction:null},
+  {annee:2022,pays:"Polynésie",session:"Mai",num:"Exercice 1",titre:"Refroidissement d'une boisson chaude",notions:["Transfert thermique"],ancien:false,fichier:"2022_Polynesie_Mai_Ex1_Refroidissement-d-une-boisson-chaude.pdf",url_sujet:"https://drive.google.com/file/d/1mGSQ5QoS02pyL5MB3BP9e26EfLlh0sdD/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1mGSQ5QoS02pyL5MB3BP9e26EfLlh0sdD/preview",url_correction:null},
+  {annee:2022,pays:"Polynésie",session:"Mai",num:"Exercice 2",titre:"Le son d'un violon",notions:["Ondes sonores"],ancien:false,fichier:"2022_Polynesie_Mai_Ex2_Le-son-d-un-violon.pdf",url_sujet:"https://drive.google.com/file/d/1109qUGOgsflJjj5F_WDCqWEgp-Cd3eTa/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1109qUGOgsflJjj5F_WDCqWEgp-Cd3eTa/preview",url_correction:null},
+  {annee:2022,pays:"Polynésie",session:"Mai",num:"Exercice 4A",titre:"Pile à combustible au méthanol",notions:["Piles et accumulateur", "Oxydoréduction"],ancien:false,fichier:"2022_Polynesie_Mai_Ex4A_Pile-a-combustible-au-methanol.pdf",url_sujet:"https://drive.google.com/file/d/1AVMs1hi3w0tyRh-nxxIcUe2_lsJrb4Me/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1AVMs1hi3w0tyRh-nxxIcUe2_lsJrb4Me/preview",url_correction:null},
+  {annee:2022,pays:"Polynésie",session:"Mai",num:"Exercice 4B",titre:"Solar Impulse et kérosène",notions:["Combustion"],ancien:false,fichier:"2022_Polynesie_Mai_Ex4B_Solar-Impulse-et-kerosene.pdf",url_sujet:"https://drive.google.com/file/d/1vY3TXoXOT07B3hRhxBX9CLumPILVqa9I/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1vY3TXoXOT07B3hRhxBX9CLumPILVqa9I/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Mars",num:"Exercice 1",titre:"Décollage de la fusée Ariane (son)",notions:["Ondes sonores"],ancien:false,fichier:"2021_Metropole_Mars_Ex1_Decollage-de-la-fusee-Ariane-son.pdf",url_sujet:"https://drive.google.com/file/d/1xYmVOuUI4e4uT8tZjkBY6Gt4WW7Y3Uju/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1xYmVOuUI4e4uT8tZjkBY6Gt4WW7Y3Uju/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Mars",num:"Exercice 2",titre:"Voiture solaire et pile saline",notions:["Panneaux photovoltaïques", "Piles et accumulateur", "Oxydoréduction", "Convertisseur"],ancien:false,fichier:"2021_Metropole_Mars_Ex2_Voiture-solaire-et-pile-saline.pdf",url_sujet:"https://drive.google.com/file/d/1LAMhkwNUYMXkwXMK19Qzzhmeubznsthb/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1LAMhkwNUYMXkwXMK19Qzzhmeubznsthb/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Mars",num:"Exercice 4A",titre:"Combustibles solides pour randonner léger",notions:["Combustion", "Énergie interne", "Changement d'état"],ancien:false,fichier:"2021_Metropole_Mars_Ex4A_Combustibles-solides-pour-randonner-leger.pdf",url_sujet:"https://drive.google.com/file/d/1Ec65UYGE-XIuMUjwf2gCxPdVmoMouIqr/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Ec65UYGE-XIuMUjwf2gCxPdVmoMouIqr/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Mars",num:"Exercice 4B",titre:"Polystyrène extrudé et isolation des murs",notions:["Transfert thermique"],ancien:false,fichier:"2021_Metropole_Mars_Ex4B_Polystyrene-extrude-et-isolation-des-murs.pdf",url_sujet:"https://drive.google.com/file/d/19jq0Pkw7fGebsunq2PGMob4aitCl5SH8/view?usp=sharing",url_preview:"https://drive.google.com/file/d/19jq0Pkw7fGebsunq2PGMob4aitCl5SH8/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Juillet",num:"Exercice 1",titre:"Four de recuit de détente",notions:["Énergie interne"],ancien:false,fichier:"2021_Metropole_Juillet_Ex1_Four-de-recuit-de-detente.pdf",url_sujet:"https://drive.google.com/file/d/1UShFuzob0lfZHFvXZqodeA5zac-Ifvbx/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1UShFuzob0lfZHFvXZqodeA5zac-Ifvbx/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Juillet",num:"Exercice 2",titre:"Volet roulant de piscine autonome",notions:["Mouvement rotatif", "Piles et accumulateur", "Panneaux photovoltaïques", "Rendement", "Convertisseur"],ancien:false,fichier:"2021_Metropole_Juillet_Ex2_Volet-roulant-de-piscine-autonome.pdf",url_sujet:"https://drive.google.com/file/d/1cfgi0wZDVHiJJRW33ja0EhNThLbsPwRt/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1cfgi0wZDVHiJJRW33ja0EhNThLbsPwRt/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Juillet",num:"Exercice 4A",titre:"L'électrolyse au sel",notions:["Oxydoréduction", "Acide-base"],ancien:false,fichier:"2021_Metropole_Juillet_Ex4A_L-electrolyse-au-sel.pdf",url_sujet:"https://drive.google.com/file/d/17KqeBwtMq6P5Mm1CBG2kekrXOY6NGc-t/view?usp=sharing",url_preview:"https://drive.google.com/file/d/17KqeBwtMq6P5Mm1CBG2kekrXOY6NGc-t/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Juillet",num:"Exercice 4B",titre:"Casque audio à réduction de bruit",notions:["Ondes sonores"],ancien:false,fichier:"2021_Metropole_Juillet_Ex4B_Casque-audio-a-reduction-de-bruit.pdf",url_sujet:"https://drive.google.com/file/d/1Kt05hsNFbhipTdA36ia1M3E-35580-9k/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Kt05hsNFbhipTdA36ia1M3E-35580-9k/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Septembre",num:"Exercice 1",titre:"Préparation d'un verre d'eau (fonte de glace)",notions:["Énergie interne", "Changement d'état"],ancien:false,fichier:"2021_Metropole_Septembre_Ex1_Preparation-d-un-verre-d-eau-fonte-de-glace.pdf",url_sujet:"https://drive.google.com/file/d/1rW58NIPv4aDr5am9SwuWCIJ-2BNEJhaU/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1rW58NIPv4aDr5am9SwuWCIJ-2BNEJhaU/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Septembre",num:"Exercice 2",titre:"Profondeur d'un trou de forage",notions:["Mouvement et forces", "Incertitudes type-A", "Notions d'ondes"],ancien:false,fichier:"2021_Metropole_Septembre_Ex2_Profondeur-d-un-trou-de-forage.pdf",url_sujet:"https://drive.google.com/file/d/1M8ZnKbGgz8E37zZfCMdZPq_6lIeThfpe/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1M8ZnKbGgz8E37zZfCMdZPq_6lIeThfpe/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Septembre",num:"Exercice 4A",titre:"Stockage d'une carotte de glace",notions:["Transfert thermique"],ancien:false,fichier:"2021_Metropole_Septembre_Ex4A_Stockage-d-une-carotte-de-glace.pdf",url_sujet:"https://drive.google.com/file/d/1Aog2psBYFw5eqR-3lSD3-ieZv0g3sWQc/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Aog2psBYFw5eqR-3lSD3-ieZv0g3sWQc/preview",url_correction:null},
+  {annee:2021,pays:"Métropole",session:"Septembre",num:"Exercice 4B",titre:"Analyse de l'eau d'un échantillon de glace",notions:["Acide-base", "Combustion", "Rendement", "Convertisseur"],ancien:false,fichier:"2021_Metropole_Septembre_Ex4B_Analyse-de-l-eau-d-un-echantillon-de-glace.pdf",url_sujet:"https://drive.google.com/file/d/1qDrgpLJD686CzIQxEOo3tmcAqti-KgQs/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1qDrgpLJD686CzIQxEOo3tmcAqti-KgQs/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 1",session:"",num:"Exercice 1",titre:"Four et panneaux solaires",notions:["Transfert thermique", "Panneaux photovoltaïques", "Rendement"],ancien:false,fichier:"2021_Sujet-zero-1_Ex1_Four-et-panneaux-solaires.pdf",url_sujet:"https://drive.google.com/file/d/1kyF6dqH7fdciZPpJBZECuJhCA0yny-E0/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1kyF6dqH7fdciZPpJBZECuJhCA0yny-E0/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 1",session:"",num:"Exercice 2",titre:"Voiture radiocommandée et accumulateur",notions:["Piles et accumulateur", "Oxydoréduction"],ancien:false,fichier:"2021_Sujet-zero-1_Ex2_Voiture-radiocommandee-et-accumulateur.pdf",url_sujet:"https://drive.google.com/file/d/1GpIyeh-jC_pBelMDSLOyd0kM7EF7VRn5/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1GpIyeh-jC_pBelMDSLOyd0kM7EF7VRn5/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 1",session:"",num:"Exercice 4",titre:"Golf : mouvement d'une balle",notions:["Mouvement et forces", "Forces de frottement"],ancien:false,fichier:"2021_Sujet-zero-1_Ex4_Golf-mouvement-d-une-balle.pdf",url_sujet:"https://drive.google.com/file/d/1e4EdXW8F2EE3d6XuCeEt_2QwRAjeldKP/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1e4EdXW8F2EE3d6XuCeEt_2QwRAjeldKP/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 2",session:"",num:"Exercice 1",titre:"Alimentation en eau des canons à neige",notions:["Statique des fluides", "Capteurs"],ancien:false,fichier:"2021_Sujet-zero-2_Ex1_Alimentation-en-eau-des-canons-a-neige.pdf",url_sujet:"https://drive.google.com/file/d/1iUqDEGdpmOUcu3N1iTNyZNePJZXyE06n/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1iUqDEGdpmOUcu3N1iTNyZNePJZXyE06n/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 2",session:"",num:"Exercice 2",titre:"Local technique (panneau solaire, pompe)",notions:["Panneaux photovoltaïques", "Signaux électriques"],ancien:false,fichier:"2021_Sujet-zero-2_Ex2_Local-technique-panneau-solaire-pompe.pdf",url_sujet:"https://drive.google.com/file/d/1JGFpbbXKkErDEryeVo1yb5YUNwJjVRRO/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1JGFpbbXKkErDEryeVo1yb5YUNwJjVRRO/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 2",session:"",num:"Exercice 3",titre:"Contrôle de l'eau du bassin",notions:["Incertitudes type-A", "Ondes électromagnétiques", "Acide-base"],ancien:false,fichier:"2021_Sujet-zero-2_Ex3_Controle-de-l-eau-du-bassin.pdf",url_sujet:"https://drive.google.com/file/d/1fqs7Gz0qt_V6pro-iTGst0juGkCWDi8W/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1fqs7Gz0qt_V6pro-iTGst0juGkCWDi8W/preview",url_correction:null},
+  {annee:2021,pays:"Sujet zéro 2",session:"",num:"Exercice 4",titre:"Remonte-pente",notions:["Mouvement et forces", "Rendement", "Convertisseur"],ancien:false,fichier:"2021_Sujet-zero-2_Ex4_Remonte-pente.pdf",url_sujet:"https://drive.google.com/file/d/1ySn0ayhcR_981IARXkM0aMh4VvT39fgs/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ySn0ayhcR_981IARXkM0aMh4VvT39fgs/preview",url_correction:null},
+  {annee:2020,pays:"Métropole",session:"Septembre",num:"Partie A",titre:"Implantation d'une centrale photovoltaïque",notions:["Panneaux photovoltaïques", "Rendement", "Convertisseur"],ancien:true,fichier:"2020_Metropole_Septembre_A_Implantation-d-une-centrale-photovoltaique.pdf",url_sujet:"https://drive.google.com/file/d/1w8l8X5cHfTkVeGjEIP49RekfjZG_qbWg/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1w8l8X5cHfTkVeGjEIP49RekfjZG_qbWg/preview",url_correction:null},
+  {annee:2020,pays:"Métropole",session:"Septembre",num:"Partie B",titre:"Étude d'un drone",notions:["Piles et accumulateur", "Oxydoréduction", "Mouvement et forces"],ancien:true,fichier:"2020_Metropole_Septembre_B_Etude-d-un-drone.pdf",url_sujet:"https://drive.google.com/file/d/1P_fMMa50LO7hOSHgONAA8TjCdQVKq1Mv/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1P_fMMa50LO7hOSHgONAA8TjCdQVKq1Mv/preview",url_correction:null},
+  {annee:2020,pays:"Métropole",session:"Septembre",num:"Partie C",titre:"Maintenance des panneaux (portée radio, thermographie, nettoyage)",notions:["Ondes électromagnétiques", "Panneaux photovoltaïques"],ancien:true,fichier:"2020_Metropole_Septembre_C_Maintenance-des-panneaux-portee-radio-thermographie-nettoyag.pdf",url_sujet:"https://drive.google.com/file/d/1GQXBujN5B7VfQzk2I_8nLk2NcONB_dGP/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1GQXBujN5B7VfQzk2I_8nLk2NcONB_dGP/preview",url_correction:null},
+  {annee:2019,pays:"Antilles-Guyane",session:"Juin",num:"Partie A",titre:"Le Soleil comme source d'énergie (Energy Observer)",notions:["Panneaux photovoltaïques", "Ondes électromagnétiques", "Rendement"],ancien:true,fichier:"2019_Antilles-Guyane_Juin_A_Le-Soleil-comme-source-d-energie-Energy-Observer.pdf",url_sujet:"https://drive.google.com/file/d/1xzKDMuVLeApSxYS6pKHdING-KOSL2n12/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1xzKDMuVLeApSxYS6pKHdING-KOSL2n12/preview",url_correction:null},
+  {annee:2019,pays:"Antilles-Guyane",session:"Juin",num:"Partie B",titre:"L'hydrogène, un vecteur énergétique",notions:["Radioactivité", "Piles et accumulateur", "Oxydoréduction", "Combustion"],ancien:true,fichier:"2019_Antilles-Guyane_Juin_B_L-hydrogene-un-vecteur-energetique.pdf",url_sujet:"https://drive.google.com/file/d/1R3M6x0x7jMNm41xRQCo-iS4nCvxPrOdK/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1R3M6x0x7jMNm41xRQCo-iS4nCvxPrOdK/preview",url_correction:null},
+  {annee:2019,pays:"Antilles-Guyane",session:"Juin",num:"Partie C",titre:"Energy Observer fait du kite surf",notions:["Capteurs", "Mouvement et forces"],ancien:true,fichier:"2019_Antilles-Guyane_Juin_C_Energy-Observer-fait-du-kite-surf.pdf",url_sujet:"https://drive.google.com/file/d/1ChbfQ7rPQXY3ghO17f86UEd6zhLJV-J-/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ChbfQ7rPQXY3ghO17f86UEd6zhLJV-J-/preview",url_correction:null},
+  {annee:2019,pays:"Métropole",session:"Juin",num:"Partie A",titre:"Irrigation des cultures",notions:["Panneaux photovoltaïques", "Rendement", "Statique des fluides", "Incertitudes type-B", "Convertisseur"],ancien:true,fichier:"2019_Metropole_Juin_A_Irrigation-des-cultures.pdf",url_sujet:"https://drive.google.com/file/d/1sIdHW9xVNExE-HCMXp9y8goxCwsPQq1Y/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1sIdHW9xVNExE-HCMXp9y8goxCwsPQq1Y/preview",url_correction:null},
+  {annee:2019,pays:"Métropole",session:"Juin",num:"Partie B",titre:"Éclairage autonome (lampe à gravité)",notions:["Mouvement et forces", "Rendement", "Convertisseur"],ancien:true,fichier:"2019_Metropole_Juin_B_Eclairage-autonome-lampe-a-gravite.pdf",url_sujet:"https://drive.google.com/file/d/19p-LmJ0xn50siao7UsYwGZjoQKEuYQ4V/view?usp=sharing",url_preview:"https://drive.google.com/file/d/19p-LmJ0xn50siao7UsYwGZjoQKEuYQ4V/preview",url_correction:null},
+  {annee:2019,pays:"Métropole",session:"Juin",num:"Partie C",titre:"Cuiseur économe",notions:["Combustion", "Énergie interne"],ancien:true,fichier:"2019_Metropole_Juin_C_Cuiseur-econome.pdf",url_sujet:"https://drive.google.com/file/d/1e_2oLmS5X8fZDJ6bxWEABzMW_8TCLKp5/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1e_2oLmS5X8fZDJ6bxWEABzMW_8TCLKp5/preview",url_correction:null},
+  {annee:2019,pays:"Métropole",session:"Septembre",num:"Partie A",titre:"Propulsion du voilier Amasia",notions:["Rendement", "Piles et accumulateur", "Convertisseur"],ancien:true,fichier:"2019_Metropole_Septembre_A_Propulsion-du-voilier-Amasia.pdf",url_sujet:"https://drive.google.com/file/d/1HvGgvB-2G_FiBCkh7_pnBCtR6LKBy76w/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1HvGgvB-2G_FiBCkh7_pnBCtR6LKBy76w/preview",url_correction:null},
+  {annee:2019,pays:"Métropole",session:"Septembre",num:"Partie B",titre:"Vie à bord : batteries et détartrage",notions:["Piles et accumulateur", "Oxydoréduction", "Acide-base", "Convertisseur"],ancien:true,fichier:"2019_Metropole_Septembre_B_Vie-a-bord-batteries-et-detartrage.pdf",url_sujet:"https://drive.google.com/file/d/134ZC3tBz72DYAZbSL0nmZPVno5g4OK8T/view?usp=sharing",url_preview:"https://drive.google.com/file/d/134ZC3tBz72DYAZbSL0nmZPVno5g4OK8T/preview",url_correction:null},
+  {annee:2019,pays:"Métropole",session:"Septembre",num:"Partie C",titre:"Missions scientifiques (balise, thermistance)",notions:["Ondes électromagnétiques", "Capteurs"],ancien:true,fichier:"2019_Metropole_Septembre_C_Missions-scientifiques-balise-thermistance.pdf",url_sujet:"https://drive.google.com/file/d/1KA4aCZkJLDsq8dd44MX3axgP-bVJvS2-/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1KA4aCZkJLDsq8dd44MX3axgP-bVJvS2-/preview",url_correction:null},
+  {annee:2019,pays:"NC",session:"Novembre",num:"Partie A",titre:"Production et stockage de l'énergie (Solar Impulse)",notions:["Panneaux photovoltaïques", "Piles et accumulateur", "Oxydoréduction", "Combustion"],ancien:true,fichier:"2019_NC_Novembre_A_Production-et-stockage-de-l-energie-Solar-Impulse.pdf",url_sujet:"https://drive.google.com/file/d/1PqJbDba7xLEgM5yJ7Kx6Yep0E-RjyAwc/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1PqJbDba7xLEgM5yJ7Kx6Yep0E-RjyAwc/preview",url_correction:null},
+  {annee:2019,pays:"NC",session:"Novembre",num:"Partie B",titre:"Le matériau du squelette",notions:["Mouvement et forces"],ancien:true,fichier:"2019_NC_Novembre_B_Le-materiau-du-squelette.pdf",url_sujet:"https://drive.google.com/file/d/1yUZiflgSC3ad9szHA8QPN_xDTjn4hTHJ/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1yUZiflgSC3ad9szHA8QPN_xDTjn4hTHJ/preview",url_correction:null},
+  {annee:2019,pays:"NC",session:"Novembre",num:"Partie C",titre:"Le vol de croisière et sa consommation",notions:["Mouvement et forces", "Rendement"],ancien:true,fichier:"2019_NC_Novembre_C_Le-vol-de-croisiere-et-sa-consommation.pdf",url_sujet:"https://drive.google.com/file/d/1qpGnsCNf6HBSkdUbQwsdGcFIC0m0WYGR/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1qpGnsCNf6HBSkdUbQwsdGcFIC0m0WYGR/preview",url_correction:null},
+  {annee:2019,pays:"Polynésie",session:"Juin",num:"Partie A",titre:"Principe de l'énergie thermique des mers",notions:["Transfert thermique", "Changement d'état", "Énergie interne"],ancien:true,fichier:"2019_Polynesie_Juin_A_Principe-de-l-energie-thermique-des-mers.pdf",url_sujet:"https://drive.google.com/file/d/1RytQNIoC54Lwivx-qPrScRkgbIxgQx49/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1RytQNIoC54Lwivx-qPrScRkgbIxgQx49/preview",url_correction:null},
+  {annee:2019,pays:"Polynésie",session:"Juin",num:"Partie B",titre:"Prélèvement des eaux froides (sonar, pression)",notions:["Statique des fluides", "Notions d'ondes"],ancien:true,fichier:"2019_Polynesie_Juin_B_Prelevement-des-eaux-froides-sonar-pression.pdf",url_sujet:"https://drive.google.com/file/d/1r9HuLh-H_kZdP6lbUOTizO3ZHtc1TR7n/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1r9HuLh-H_kZdP6lbUOTizO3ZHtc1TR7n/preview",url_correction:null},
+  {annee:2019,pays:"Polynésie",session:"Juin",num:"Partie C",titre:"Valorisation des eaux profondes (biodiesel, détartrant)",notions:["Combustion", "Acide-base"],ancien:true,fichier:"2019_Polynesie_Juin_C_Valorisation-des-eaux-profondes-biodiesel-detartrant.pdf",url_sujet:"https://drive.google.com/file/d/1zqAJr_xZH7FZ49A3rXy4r7QPYMBAWzvu/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1zqAJr_xZH7FZ49A3rXy4r7QPYMBAWzvu/preview",url_correction:null},
+  {annee:2018,pays:"Antilles-Guyane",session:"Juin",num:"Partie A",titre:"Déplacements motorisés et santé",notions:["Ondes électromagnétiques", "Statique des fluides"],ancien:true,fichier:"2018_Antilles-Guyane_Juin_A_Deplacements-motorises-et-sante.pdf",url_sujet:"https://drive.google.com/file/d/1biUwuOaF2-2v34xQ0Y8_58f65V_gV9Iu/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1biUwuOaF2-2v34xQ0Y8_58f65V_gV9Iu/preview",url_correction:null},
+  {annee:2018,pays:"Antilles-Guyane",session:"Juin",num:"Partie B",titre:"Enjeux pour l'environnement (CO2)",notions:["Combustion"],ancien:true,fichier:"2018_Antilles-Guyane_Juin_B_Enjeux-pour-l-environnement-CO2.pdf",url_sujet:"https://drive.google.com/file/d/12Ug9d03PwbkYAH0DN71JEdwdOa97RjQf/view?usp=sharing",url_preview:"https://drive.google.com/file/d/12Ug9d03PwbkYAH0DN71JEdwdOa97RjQf/preview",url_correction:null},
+  {annee:2018,pays:"Antilles-Guyane",session:"Juin",num:"Partie C",titre:"Optimiser un véhicule hybride",notions:["Rendement", "Piles et accumulateur", "Oxydoréduction", "Mouvement et forces", "Panneaux photovoltaïques", "Convertisseur"],ancien:true,fichier:"2018_Antilles-Guyane_Juin_C_Optimiser-un-vehicule-hybride.pdf",url_sujet:"https://drive.google.com/file/d/12ZUk682WTyOjCUUA-swzEUdSgKrf4aZr/view?usp=sharing",url_preview:"https://drive.google.com/file/d/12ZUk682WTyOjCUUA-swzEUdSgKrf4aZr/preview",url_correction:null},
+  {annee:2018,pays:"Métropole",session:"Juin",num:"Partie A",titre:"Station électrique mobile à Haïti",notions:["Panneaux photovoltaïques"],ancien:true,fichier:"2018_Metropole_Juin_A_Station-electrique-mobile-a-Haiti.pdf",url_sujet:"https://drive.google.com/file/d/1zjax0ck6xIHOIm-Yj2koo5eLTsscXfwH/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1zjax0ck6xIHOIm-Yj2koo5eLTsscXfwH/preview",url_correction:null},
+  {annee:2018,pays:"Métropole",session:"Juin",num:"Partie B",titre:"Anémomètre et éoliennes",notions:["Capteurs", "Ondes électromagnétiques", "Signaux électriques"],ancien:true,fichier:"2018_Metropole_Juin_B_Anemometre-et-eoliennes.pdf",url_sujet:"https://drive.google.com/file/d/1pCafdhzUCaBOLgpxpUEiyrFVZDN3dnNx/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1pCafdhzUCaBOLgpxpUEiyrFVZDN3dnNx/preview",url_correction:null},
+  {annee:2018,pays:"Métropole",session:"Juin",num:"Partie C",titre:"Accumulateurs et groupe électrogène",notions:["Piles et accumulateur", "Oxydoréduction", "Combustion"],ancien:true,fichier:"2018_Metropole_Juin_C_Accumulateurs-et-groupe-electrogene.pdf",url_sujet:"https://drive.google.com/file/d/1MZ8XpwownINhaOaBG9FvUxSVGE1uH_QX/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1MZ8XpwownINhaOaBG9FvUxSVGE1uH_QX/preview",url_correction:null},
+  {annee:2018,pays:"Métropole",session:"Septembre",num:"Partie 1",titre:"Panneaux solaires de Solar Impulse 2",notions:["Panneaux photovoltaïques", "Ondes électromagnétiques"],ancien:true,fichier:"2018_Metropole_Septembre_P1_Panneaux-solaires-de-Solar-Impulse-2.pdf",url_sujet:"https://drive.google.com/file/d/1Er7p9ItoQHEaG8T-zydHhoHUkSQcjsIp/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Er7p9ItoQHEaG8T-zydHhoHUkSQcjsIp/preview",url_correction:null},
+  {annee:2018,pays:"Métropole",session:"Septembre",num:"Partie 2",titre:"Batteries de Solar Impulse 2",notions:["Piles et accumulateur", "Oxydoréduction"],ancien:true,fichier:"2018_Metropole_Septembre_P2_Batteries-de-Solar-Impulse-2.pdf",url_sujet:"https://drive.google.com/file/d/1gZ6pJu0JSp0eySH-uk3T6EiTadLTtAXA/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1gZ6pJu0JSp0eySH-uk3T6EiTadLTtAXA/preview",url_correction:null},
+  {annee:2018,pays:"Métropole",session:"Septembre",num:"Partie 3",titre:"Plan de vol de Solar Impulse 2",notions:["Mouvement et forces", "Forces de frottement"],ancien:true,fichier:"2018_Metropole_Septembre_P3_Plan-de-vol-de-Solar-Impulse-2.pdf",url_sujet:"https://drive.google.com/file/d/1dPbW5LHTGaTKNsHl7St8sbQlb9oqH42A/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1dPbW5LHTGaTKNsHl7St8sbQlb9oqH42A/preview",url_correction:null},
+  {annee:2018,pays:"NC",session:"Juin",num:"Partie A",titre:"Les éoliennes de l'île d'Utsira",notions:["Mouvement et forces", "Rendement", "Convertisseur"],ancien:true,fichier:"2018_NC_Juin_A_Les-eoliennes-de-l-ile-d-Utsira.pdf",url_sujet:"https://drive.google.com/file/d/1g9nJtcEqdSAVVUimf8J9iTnyshTrXJmP/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1g9nJtcEqdSAVVUimf8J9iTnyshTrXJmP/preview",url_correction:null},
+  {annee:2018,pays:"NC",session:"Juin",num:"Partie B",titre:"Production de dihydrogène par électrolyse",notions:["Oxydoréduction", "Statique des fluides"],ancien:true,fichier:"2018_NC_Juin_B_Production-de-dihydrogene-par-electrolyse.pdf",url_sujet:"https://drive.google.com/file/d/1oHAgc0HijP7vE9pkmSOoZXdpHobFO6RA/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1oHAgc0HijP7vE9pkmSOoZXdpHobFO6RA/preview",url_correction:null},
+  {annee:2018,pays:"NC",session:"Juin",num:"Partie C",titre:"Production d'électricité (pile à combustible)",notions:["Piles et accumulateur", "Oxydoréduction", "Combustion", "Rendement"],ancien:true,fichier:"2018_NC_Juin_C_Production-d-electricite-pile-a-combustible.pdf",url_sujet:"https://drive.google.com/file/d/1O6zYLm3e5OWr7rSTl7nIV3hVpvh5KTN-/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1O6zYLm3e5OWr7rSTl7nIV3hVpvh5KTN-/preview",url_correction:null},
+  {annee:2018,pays:"NC",session:"Remplacement",num:"Partie A",titre:"La Formule 1 hybride",notions:["Combustion", "Rendement", "Mouvement et forces", "Convertisseur"],ancien:true,fichier:"2018_NC_Remplacement_A_La-Formule-1-hybride.pdf",url_sujet:"https://drive.google.com/file/d/1lZ-z1wctr1y-V6o9S6Vn3L8j2ptPudLg/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1lZ-z1wctr1y-V6o9S6Vn3L8j2ptPudLg/preview",url_correction:null},
+  {annee:2018,pays:"NC",session:"Remplacement",num:"Partie B",titre:"La Formule E, 100 % électrique",notions:["Piles et accumulateur", "Oxydoréduction", "Signaux électriques", "Mouvement rotatif", "Mouvement et forces", "Ondes sonores", "Convertisseur"],ancien:true,fichier:"2018_NC_Remplacement_B_La-Formule-E-100-electrique.pdf",url_sujet:"https://drive.google.com/file/d/1_NgujHPOKCzTNsQ15kgqLyoiU5S-7bgI/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1_NgujHPOKCzTNsQ15kgqLyoiU5S-7bgI/preview",url_correction:null},
+  {annee:2018,pays:"NC",session:"Remplacement",num:"Partie C",titre:"Un sport sous haute surveillance",notions:["Ondes électromagnétiques", "Statique des fluides"],ancien:true,fichier:"2018_NC_Remplacement_C_Un-sport-sous-haute-surveillance.pdf",url_sujet:"https://drive.google.com/file/d/14u_d9NBwzeMDqCswug2WbFSxvb5_4vtB/view?usp=sharing",url_preview:"https://drive.google.com/file/d/14u_d9NBwzeMDqCswug2WbFSxvb5_4vtB/preview",url_correction:null},
+  {annee:2018,pays:"Polynésie",session:"Juin",num:"Partie A",titre:"Mécanique du robot tondeuse",notions:["Mouvement et forces", "Rendement", "Convertisseur"],ancien:true,fichier:"2018_Polynesie_Juin_A_Mecanique-du-robot-tondeuse.pdf",url_sujet:"https://drive.google.com/file/d/1Pfp_PCNYnsh-dmkDpLKMUUJ-HMFYyLjv/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Pfp_PCNYnsh-dmkDpLKMUUJ-HMFYyLjv/preview",url_correction:null},
+  {annee:2018,pays:"Polynésie",session:"Juin",num:"Partie B",titre:"Autonomie du robot tondeuse",notions:["Piles et accumulateur", "Signaux électriques"],ancien:true,fichier:"2018_Polynesie_Juin_B_Autonomie-du-robot-tondeuse.pdf",url_sujet:"https://drive.google.com/file/d/1NLgvU4rKZsHISxsQm-pFpWOB6gmpqJno/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1NLgvU4rKZsHISxsQm-pFpWOB6gmpqJno/preview",url_correction:null},
+  {annee:2018,pays:"Polynésie",session:"Juin",num:"Partie C",titre:"Entretien de la pelouse (pH, pompe)",notions:["Acide-base", "Statique des fluides"],ancien:true,fichier:"2018_Polynesie_Juin_C_Entretien-de-la-pelouse-pH-pompe.pdf",url_sujet:"https://drive.google.com/file/d/1nYs08N-Vnm3haBdwid73dvprhBPpnG6I/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1nYs08N-Vnm3haBdwid73dvprhBPpnG6I/preview",url_correction:null},
+  {annee:2018,pays:"Polynésie",session:"Septembre",num:"Partie A",titre:"Ensoleillement : centrale PV et stockage",notions:["Panneaux photovoltaïques", "Piles et accumulateur", "Oxydoréduction", "Convertisseur"],ancien:true,fichier:"2018_Polynesie_Septembre_A_Ensoleillement-centrale-PV-et-stockage.pdf",url_sujet:"https://drive.google.com/file/d/1JxD_VO91IK-ve-80elHb4NQB8GLE9PnS/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1JxD_VO91IK-ve-80elHb4NQB8GLE9PnS/preview",url_correction:null},
+  {annee:2018,pays:"Polynésie",session:"Septembre",num:"Partie B",titre:"Relief : centrale hydraulique",notions:["Statique des fluides", "Rendement", "Mouvement et forces"],ancien:true,fichier:"2018_Polynesie_Septembre_B_Relief-centrale-hydraulique.pdf",url_sujet:"https://drive.google.com/file/d/1JC3Tb0-sCz_OehV7Zbv5O959gNzpwLMy/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1JC3Tb0-sCz_OehV7Zbv5O959gNzpwLMy/preview",url_correction:null},
+  {annee:2018,pays:"Polynésie",session:"Septembre",num:"Partie C",titre:"Biomasse : bagasse et biogaz",notions:["Combustion", "Changement d'état"],ancien:true,fichier:"2018_Polynesie_Septembre_C_Biomasse-bagasse-et-biogaz.pdf",url_sujet:"https://drive.google.com/file/d/11Al9HjG56oUp4WgNsg8k8T3ND4GFW7fJ/view?usp=sharing",url_preview:"https://drive.google.com/file/d/11Al9HjG56oUp4WgNsg8k8T3ND4GFW7fJ/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Juin",num:"Partie A",titre:"Mécanique du saut en chute libre",notions:["Mouvement et forces", "Forces de frottement"],ancien:true,fichier:"2017_Antilles-Guyane_Juin_A_Mecanique-du-saut-en-chute-libre.pdf",url_sujet:"https://drive.google.com/file/d/1HwXb_MQMat2cCwUpN7TRXXzhrz2o3iUo/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1HwXb_MQMat2cCwUpN7TRXXzhrz2o3iUo/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Juin",num:"Partie B",titre:"Déclenchement automatique du parachute (capteur)",notions:["Capteurs", "Statique des fluides"],ancien:true,fichier:"2017_Antilles-Guyane_Juin_B_Declenchement-automatique-du-parachute-capteur.pdf",url_sujet:"https://drive.google.com/file/d/1fss7icGEjvs5bv8Samw4bIdTYCWljKK_/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1fss7icGEjvs5bv8Samw4bIdTYCWljKK_/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Juin",num:"Partie C",titre:"Chargeur portable autonome",notions:["Panneaux photovoltaïques", "Piles et accumulateur", "Oxydoréduction"],ancien:true,fichier:"2017_Antilles-Guyane_Juin_C_Chargeur-portable-autonome.pdf",url_sujet:"https://drive.google.com/file/d/1zbtuQGqG4zmkk5ACPbUXmow3I-sr6Dne/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1zbtuQGqG4zmkk5ACPbUXmow3I-sr6Dne/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Septembre",num:"Partie A",titre:"Le solaire (thermique et photovoltaïque)",notions:["Panneaux photothermique", "Panneaux photovoltaïques", "Ondes électromagnétiques", "Convertisseur"],ancien:true,fichier:"2017_Antilles-Guyane_Septembre_A_Le-solaire-thermique-et-photovoltaique.pdf",url_sujet:"https://drive.google.com/file/d/1Btt-G6m5fNPpM2f1CUaZjbW7nD4O8tFs/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1Btt-G6m5fNPpM2f1CUaZjbW7nD4O8tFs/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Septembre",num:"Partie B",titre:"L'éolien",notions:["Mouvement et forces", "Rendement", "Convertisseur"],ancien:true,fichier:"2017_Antilles-Guyane_Septembre_B_L-eolien.pdf",url_sujet:"https://drive.google.com/file/d/1F17IzOhxLy0t8Nc5w-UhgaqMRuXHjneW/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1F17IzOhxLy0t8Nc5w-UhgaqMRuXHjneW/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Septembre",num:"Partie C",titre:"Protection des matériels (anodisation)",notions:["Oxydoréduction", "Corrosion"],ancien:true,fichier:"2017_Antilles-Guyane_Septembre_C_Protection-des-materiels-anodisation.pdf",url_sujet:"https://drive.google.com/file/d/1phtIr7Vl6quW0_wVQH-k7tVSkao0K4BG/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1phtIr7Vl6quW0_wVQH-k7tVSkao0K4BG/preview",url_correction:null},
+  {annee:2017,pays:"Antilles-Guyane",session:"Septembre",num:"Partie D",titre:"Stockage de l'énergie (dihydrogène)",notions:["Oxydoréduction", "Rendement"],ancien:true,fichier:"2017_Antilles-Guyane_Septembre_D_Stockage-de-l-energie-dihydrogene.pdf",url_sujet:"https://drive.google.com/file/d/1x333BYsLoBSfppwggOaDOMDeetm5cj21/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1x333BYsLoBSfppwggOaDOMDeetm5cj21/preview",url_correction:null},
+  {annee:2017,pays:"Métropole",session:"Juin",num:"Partie A",titre:"Panneaux photovoltaïques de la tour Elithis",notions:["Panneaux photovoltaïques", "Rendement", "Convertisseur"],ancien:true,fichier:"2017_Metropole_Juin_A_Panneaux-photovoltaiques-de-la-tour-Elithis.pdf",url_sujet:"https://drive.google.com/file/d/1vOnEnTVtZV--O5zuvxp5nz1qLDNsoBZp/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1vOnEnTVtZV--O5zuvxp5nz1qLDNsoBZp/preview",url_correction:null},
+  {annee:2017,pays:"Métropole",session:"Juin",num:"Partie B",titre:"Laboratoire de radiologie et alimentation en eau",notions:["Ondes électromagnétiques", "Statique des fluides"],ancien:true,fichier:"2017_Metropole_Juin_B_Laboratoire-de-radiologie-et-alimentation-en-eau.pdf",url_sujet:"https://drive.google.com/file/d/1PJYtiTMsknjRlqqKQoRqu-8o-5bbHfpn/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1PJYtiTMsknjRlqqKQoRqu-8o-5bbHfpn/preview",url_correction:null},
+  {annee:2017,pays:"Métropole",session:"Juin",num:"Partie C",titre:"Chauffage de la tour Elithis (chaudière à granulés)",notions:["Combustion", "Changement d'état", "Rendement", "Convertisseur"],ancien:true,fichier:"2017_Metropole_Juin_C_Chauffage-de-la-tour-Elithis-chaudiere-a-granules.pdf",url_sujet:"https://drive.google.com/file/d/11od8lnCwJ0tMFeAlbSwljlRaRtzkwwFk/view?usp=sharing",url_preview:"https://drive.google.com/file/d/11od8lnCwJ0tMFeAlbSwljlRaRtzkwwFk/preview",url_correction:null},
+  {annee:2017,pays:"Métropole",session:"Septembre",num:"Partie A",titre:"Examens médicaux (scanner, IRM)",notions:["Ondes électromagnétiques"],ancien:true,fichier:"2017_Metropole_Septembre_A_Examens-medicaux-scanner-IRM.pdf",url_sujet:"https://drive.google.com/file/d/1vbPUUcO9SbBhLW1CjHbrDsmRe6ajnUrF/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1vbPUUcO9SbBhLW1CjHbrDsmRe6ajnUrF/preview",url_correction:null},
+  {annee:2017,pays:"Métropole",session:"Septembre",num:"Partie B",titre:"Test à l'effort",notions:["Mouvement et forces"],ancien:true,fichier:"2017_Metropole_Septembre_B_Test-a-l-effort.pdf",url_sujet:"https://drive.google.com/file/d/1evvUJGsg-lKeODz3FS2g7LhvRRN7xoNQ/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1evvUJGsg-lKeODz3FS2g7LhvRRN7xoNQ/preview",url_correction:null},
+  {annee:2017,pays:"Métropole",session:"Septembre",num:"Partie C",titre:"Entraînement : sudation et énergie",notions:["Changement d'état", "Mouvement et forces", "Rendement", "Convertisseur"],ancien:true,fichier:"2017_Metropole_Septembre_C_Entrainement-sudation-et-energie.pdf",url_sujet:"https://drive.google.com/file/d/1PPxr-B8T1y2R3_2DjQGgJaNnvkftrFs1/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1PPxr-B8T1y2R3_2DjQGgJaNnvkftrFs1/preview",url_correction:null},
+  {annee:2017,pays:"NC",session:"Mars",num:"Partie A",titre:"Examen médical du pilote (technétium 99)",notions:["Radioactivité", "Ondes électromagnétiques"],ancien:true,fichier:"2017_NC_Mars_A_Examen-medical-du-pilote-technetium-99.pdf",url_sujet:"https://drive.google.com/file/d/1nuGyj_QrCADuxoqkI4g6Rmd_c5q0wPNP/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1nuGyj_QrCADuxoqkI4g6Rmd_c5q0wPNP/preview",url_correction:null},
+  {annee:2017,pays:"NC",session:"Mars",num:"Partie B",titre:"Échanges énergétiques soleil-cellules-batteries",notions:["Panneaux photovoltaïques", "Piles et accumulateur", "Oxydoréduction", "Rendement", "Convertisseur"],ancien:true,fichier:"2017_NC_Mars_B_Echanges-energetiques-soleil-cellules-batteries.pdf",url_sujet:"https://drive.google.com/file/d/1bRnxGaZN6TI4fTug73K0GVfo1F2c95nk/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1bRnxGaZN6TI4fTug73K0GVfo1F2c95nk/preview",url_correction:null},
+  {annee:2017,pays:"NC",session:"Mars",num:"Partie C",titre:"Et si Solar Impulse 2 avait des moteurs thermiques ?",notions:["Combustion", "Rendement", "Convertisseur"],ancien:true,fichier:"2017_NC_Mars_C_Et-si-Solar-Impulse-2-avait-des-moteurs-thermiques.pdf",url_sujet:"https://drive.google.com/file/d/1ss-3vT8nUNwfP3aPGwFAFwqtMuj9QlOV/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1ss-3vT8nUNwfP3aPGwFAFwqtMuj9QlOV/preview",url_correction:null},
+  {annee:2017,pays:"Polynésie",session:"Juin",num:"Partie A",titre:"Batteries lithium fer phosphate et capteurs",notions:["Piles et accumulateur", "Oxydoréduction", "Panneaux photovoltaïques"],ancien:true,fichier:"2017_Polynesie_Juin_A_Batteries-lithium-fer-phosphate-et-capteurs.pdf",url_sujet:"https://drive.google.com/file/d/10RAVeSfov3JGg_T9IfQIBeKNEGRuxkAw/view?usp=sharing",url_preview:"https://drive.google.com/file/d/10RAVeSfov3JGg_T9IfQIBeKNEGRuxkAw/preview",url_correction:null},
+  {annee:2017,pays:"Polynésie",session:"Juin",num:"Partie B",titre:"Un passeur zéro émission (gazole)",notions:["Combustion", "Capteurs"],ancien:true,fichier:"2017_Polynesie_Juin_B_Un-passeur-zero-emission-gazole.pdf",url_sujet:"https://drive.google.com/file/d/1nHLJwlD3JvBG5fe3RWWvtyY6-N58AJcH/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1nHLJwlD3JvBG5fe3RWWvtyY6-N58AJcH/preview",url_correction:null},
+  {annee:2017,pays:"Polynésie",session:"Juin",num:"Partie C",titre:"Hydrodynamique du passeur",notions:["Mouvement et forces", "Forces de frottement"],ancien:true,fichier:"2017_Polynesie_Juin_C_Hydrodynamique-du-passeur.pdf",url_sujet:"https://drive.google.com/file/d/1OghBQM34tUsUQA08WezAr6spDWZhuS7L/view?usp=sharing",url_preview:"https://drive.google.com/file/d/1OghBQM34tUsUQA08WezAr6spDWZhuS7L/preview",url_correction:null}
+];
+
+/* ══ ANNALES LOGIC ═════════════════════════════════════════════ */
+const state={search:"",region:"",notions:[],year:"",cat:"",mode:"sujets"};
+
+function notionBadge(n){
+  const cat=CAT_MAP[n]||"cat-mesur";
+  return `<span class="notion-badge ${cat}"><span class="notion-badge-bar"></span><span class="notion-badge-text">${n}</span></span>`;
+}
+
+function cardHTML(s,idx){
+  const badges=s.notions.map(notionBadge).join("");
+  const sess=s.session?` · ${s.session}`:"";
+  const dominantCat=CAT_MAP[s.notions[0]]||"cat-mesur";
+  return `<article class="subject-card ${dominantCat}-card" data-annee="${s.annee}" data-pays="${s.pays}" data-idx="${idx}" onclick="openPdfByIdx(parseInt(this.dataset.idx))">
+    <div class="card-meta"><div class="card-region">${s.pays}</div><div class="card-date">${s.annee}${sess}</div></div>
+    <div class="card-notions">${badges}</div>
+    <div class="card-actions">${!s.url_sujet?`<span class="btn-newtab-inline" style="cursor:default;opacity:.6">⏳ Sujet bientôt en ligne</span>`:`
+      <a class="btn-pdf" href="${s.url_sujet}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+        <svg width="11" height="12" viewBox="0 0 12 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 1v8M3.5 6.5 6 9l2.5-2.5"/><path d="M1 10v1a1 1 0 001 1h8a1 1 0 001-1v-1"/></svg>Ouvrir ↗
+      </a>
+      <span class="btn-newtab-inline" onclick="event.stopPropagation();openPdfByIdx(${idx})">👁 Visionner</span>`}
+      ${s.url_correction?`<a class="btn-corr" href="${s.url_correction}" target="_blank" rel="noopener" onclick="event.stopPropagation()">✅ Correction ↗</a>`:""}
+    </div>
+  </article>`;
+}
+
+function exoCardHTML(e,idx){
+  const badges=e.notions.map(notionBadge).join("");
+  const sess=e.session?` · ${e.session}`:"";
+  const dominantCat=CAT_MAP[e.notions[0]]||"cat-mesur";
+  const anc=e.ancien?`<span class="badge-ancien" title="Sujet de l'ancien programme (avant 2021)">ancien prog.</span>`:"";
+  return `<article class="subject-card ${dominantCat}-card" data-idx="${idx}" onclick="openExoByIdx(parseInt(this.dataset.idx))">
+    <div class="card-meta"><div class="card-region">${e.pays}${anc}</div><div class="card-date">${e.annee}${sess}</div></div>
+    <div class="card-exo-title"><span class="card-exo-num">${e.num}</span> – ${e.titre}</div>
+    <div class="card-notions">${badges}</div>
+    <div class="card-actions">${!e.url_sujet?`<span class="btn-newtab-inline" style="cursor:default;opacity:.6">⏳ Exercice bientôt en ligne</span>`:`
+      <a class="btn-pdf" href="${e.url_sujet}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+        <svg width="11" height="12" viewBox="0 0 12 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 1v8M3.5 6.5 6 9l2.5-2.5"/><path d="M1 10v1a1 1 0 001 1h8a1 1 0 001-1v-1"/></svg>Ouvrir ↗
+      </a>
+      <span class="btn-newtab-inline" onclick="event.stopPropagation();openExoByIdx(${idx})">👁 Visionner</span>`}
+    </div>
+  </article>`;
+}
+function openExoByIdx(idx){const e=EXERCICES[idx]; if(!e.url_sujet)return; openPdf({...e,titre:`${e.pays} ${e.annee}${e.session?" "+e.session:""} – ${e.num} : ${e.titre}`});}
+
+function openPdfByIdx(idx){ if(!ANNALES[idx].url_sujet)return; openPdf(ANNALES[idx]); }
+
+function render(){
+  const q=state.search.toLowerCase();
+  const exo=state.mode==="exercices";
+  const DATA=exo?EXERCICES:ANNALES;
+  const filtered=DATA.filter(s=>{
+    if(state.year&&String(s.annee)!==String(state.year))return false;
+    if(state.region&&s.pays!==state.region)return false;
+    if(state.notions.length&&!s.notions.some(n=>state.notions.map(x=>x.toLowerCase()).includes(n.toLowerCase())))return false;
+    if(state.cat&&!s.notions.some(n=>(CAT_MAP[n]||"")===state.cat))return false;
+    if(q){const hay=(s.pays+" "+s.annee+" "+s.session+" "+(s.titre||"")+" "+s.notions.join(" ")).toLowerCase();if(!hay.includes(q))return false;}
+    return true;
+  });
+  const byYear={};
+  filtered.forEach(s=>{if(!byYear[s.annee])byYear[s.annee]=[];byYear[s.annee].push(s);});
+  const years=Object.keys(byYear).sort((a,b)=>b-a);
+  const list=document.getElementById("subjectsList");
+  if(!filtered.length){list.innerHTML=`<div class="no-results"><strong>Aucun résultat</strong>Essayez d'élargir votre recherche.</div>`;}
+  else{list.innerHTML=years.map(y=>`<div class="year-group-label">Baccalauréat ${y}</div><div class="subjects-grid">`+byYear[y].map(s=>exo?exoCardHTML(s,EXERCICES.indexOf(s)):cardHTML(s,ANNALES.indexOf(s))).join("")+"</div>").join("");}
+  document.getElementById("countNum").textContent=filtered.length;
+  document.getElementById("countLabel").textContent=exo?"exercice(s)":"sujet(s)";
+  document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active",b.dataset.mode===state.mode));
+  document.getElementById("modeHint").textContent=exo
+    ?(state.notions.length||state.cat?"Exercices de tous les sujets qui traitent la notion choisie. Les sujets 2017-2020 (ancien programme) sont signalés.":"Chaque sujet est découpé en exercices. Choisissez une notion pour ne réviser que celle-ci.")
+    :"";
+  const hasFilt=q||state.year||state.region||state.notions.length||state.cat;
+  document.getElementById("filterClear").classList[hasFilt?"add":"remove"]("visible");
+}
+
+document.getElementById("searchInput").addEventListener("input",e=>{state.search=e.target.value;render();});
+document.getElementById("regionSelect").addEventListener("change",e=>{state.region=e.target.value;render();});
+function renderNotionChips(){
+  const div=document.getElementById("notionChips");
+  div.innerHTML=state.notions.map(n=>`<span class="notion-chip">${n}<button class="notion-chip-x" onclick="removeNotion('${n.replace(/'/g,"\\'")}')">×</button></span>`).join("");
+  const sel=document.getElementById("notionAdd");
+  sel.firstElementChild.textContent=state.notions.length>=3?"Limite 3 notions":"+ Ajouter une notion…";
+  sel.disabled=state.notions.length>=3;
+}
+function removeNotion(n){
+  state.notions=state.notions.filter(x=>x!==n);
+  renderNotionChips();render();
+}
+document.getElementById("notionAdd").addEventListener("change",function(){
+  const val=this.value;
+  if(!val)return;
+  this.value="";
+  if(state.notions.length>=3||state.notions.includes(val))return;
+  state.notions.push(val);
+  state.cat="";state.mode="exercices";
+  document.querySelectorAll(".leg-pill").forEach(p=>p.style.fontWeight="");
+  renderNotionChips();render();
+});
+document.getElementById("modeToggle").addEventListener("click",e=>{
+  const b=e.target.closest(".mode-btn");if(!b)return;state.mode=b.dataset.mode;render();
+});
+document.getElementById("yearPills").addEventListener("click",e=>{
+  const pill=e.target.closest(".year-pill");if(!pill)return;
+  document.querySelectorAll(".year-pill").forEach(p=>p.classList.remove("active"));
+  pill.classList.add("active");state.year=pill.dataset.year;render();
+});
+document.querySelectorAll(".leg-pill").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const cat=btn.dataset.filterCat;
+    if(state.cat===cat){state.cat="";btn.style.fontWeight="";}
+    else{state.cat=cat;state.mode="exercices";document.querySelectorAll(".leg-pill").forEach(p=>p.style.fontWeight="");btn.style.fontWeight="700";}
+    state.notions=[];renderNotionChips();render();
+  });
+});
+document.getElementById("filterClear").addEventListener("click",()=>{
+  state.search=state.region=state.year=state.cat="";state.notions=[];
+  document.getElementById("searchInput").value="";
+  document.getElementById("regionSelect").value="";
+  renderNotionChips();
+  document.querySelectorAll(".year-pill").forEach(p=>p.classList.remove("active"));
+  document.querySelector(".year-pill[data-year='']").classList.add("active");
+  document.querySelectorAll(".leg-pill").forEach(p=>p.style.fontWeight="");
+  render();
+});
+
+/* ══ PDF MODAL ══════════════════════════════════════════════════ */
+let currentSubj=null;
+let corrVisible=false;
+
+function getFileId(url){
+  const m=url&&url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  return m?m[1]:null;
+}
+function getAltUrl(url){
+  const id=getFileId(url);
+  if(!id)return null;
+  return `https://docs.google.com/viewer?url=https%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D${id}%26export%3Ddownload&embedded=true`;
+}
+let altViewMode=false;
+
+function openPdf(s){
+  currentSubj=s;corrVisible=false;altViewMode=false;
+  const modal=document.getElementById("pdfModal");
+  document.getElementById("pdfModalTitle").textContent=s.titre;
+  document.getElementById("btnNewtab").href=s.url_sujet;
+  const btnCorr=document.getElementById("btnToggleCorr");
+  if(s.url_correction){btnCorr.style.display="";btnCorr.textContent="Afficher la correction";btnCorr.classList.remove("active");}
+  else{btnCorr.style.display="none";}
+  const btnAlt=document.getElementById("btnAltView");
+  const canEmbed=(s.url_preview||s.url_sujet||"").includes("drive.google.com");
+  btnAlt.style.display=canEmbed?"":"none";
+  btnAlt.textContent="🔄 Affichage alternatif";
+  btnAlt.classList.remove("active");
+  document.getElementById("pdfCorrPane").style.display="none";
+  loadSujetPane(s,false);
+  modal.style.display="flex";
+  document.body.style.overflow="hidden";
+}
+
+function loadSujetPane(s,alt){
+  const sujetPane=document.getElementById("pdfSujetPane");
+  sujetPane.style.display="";
+  const previewUrl=s.url_preview||s.url_sujet;
+  const canEmbed=previewUrl&&previewUrl.includes("drive.google.com");
+  if(!canEmbed){
+    sujetPane.innerHTML=`<div class="pdf-pane-label">📄 Sujet</div><div class="pdf-mobile-fallback"><strong>Aperçu non disponible</strong><p>Ce document ne peut pas être affiché directement ici.<br>Utilise le bouton ci-dessous pour l'ouvrir dans un nouvel onglet.</p><a href="${s.url_sujet}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--accent);color:#fff;border-radius:var(--r);text-decoration:none;font-weight:600;font-size:.9rem">↗ Ouvrir le sujet</a></div>`;
+    return;
+  }
+  const src=alt?(getAltUrl(previewUrl)||previewUrl):previewUrl;
+  sujetPane.innerHTML=`<div class="pdf-pane-label">📄 Sujet</div><iframe id="pdfSujetIframe" title="Sujet" src="${src}" allow="autoplay"></iframe>`;
+}
+
+document.getElementById("btnAltView").addEventListener("click",function(){
+  if(!currentSubj)return;
+  altViewMode=!altViewMode;
+  this.textContent=altViewMode?"↩ Mode normal":"🔄 Affichage alternatif";
+  this.classList.toggle("active",altViewMode);
+  loadSujetPane(currentSubj,altViewMode);
+});
+
+function closePdf(){
+  document.getElementById("pdfModal").style.display="none";
+  document.body.style.overflow="";
+  document.getElementById("pdfSujetIframe")&&(document.getElementById("pdfSujetIframe").src="");
+  document.getElementById("pdfCorrIframe")&&(document.getElementById("pdfCorrIframe").src="");
+}
+
+document.getElementById("btnClosePdf").addEventListener("click",closePdf);
+document.getElementById("pdfBackdrop").addEventListener("click",closePdf);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePdf();});
+
+document.getElementById("btnToggleCorr").addEventListener("click",function(){
+  if(!currentSubj||!currentSubj.url_correction)return;
+  corrVisible=!corrVisible;
+  const pane=document.getElementById("pdfCorrPane");
+  if(corrVisible){
+    pane.style.display="";
+    const corrPreview=currentSubj.url_preview_corr||currentSubj.url_correction;
+    pane.innerHTML=`<div class="pdf-pane-label">✅ Correction</div><iframe id="pdfCorrIframe" title="Correction" src="${corrPreview}" allow="autoplay"></iframe>`;
+    this.textContent="Masquer la correction";this.classList.add("active");
+  } else {
+    pane.style.display="none";
+    this.textContent="Afficher la correction";this.classList.remove("active");
+  }
+});
+
+/* ══ TAB NAVIGATION ══════════════════════════════════════════ */
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const tab=btn.dataset.tab;
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c=>c.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-"+tab).classList.add("active");
+    closePdf();
+  });
+});
+
+/* ══ THEME ════════════════════════════════════════════════════ */
+const root=document.documentElement;
+let themePref=(()=>{try{return localStorage.getItem("sti2d-theme")||"auto";}catch(e){return"auto";}})();
+function applyTheme(t){
+  if(t==="dark")root.setAttribute("data-theme","dark");
+  else if(t==="light")root.setAttribute("data-theme","light");
+  else root.removeAttribute("data-theme");
+  try{localStorage.setItem("sti2d-theme",t);}catch(e){}
+}
+document.getElementById("themeToggle").addEventListener("click",()=>{
+  themePref=themePref==="dark"?"light":themePref==="light"?"auto":"dark";
+  applyTheme(themePref);
+});
+applyTheme(themePref);
+
+/* ══ QCM LOGIC ════════════════════════════════════════════════ */
+let qcmState={notion:null,qIdx:0,score:0,answered:false};
+
+function buildQcmGrid(){
+  const grid=document.getElementById("qcmNotionGrid");
+  grid.innerHTML=QCM_DATA.map(n=>`
+    <div class="notion-pick-card ${n.cat}" onclick="startQcm('${n.id}')">
+      <div><div class="npcard-label">${n.label}</div><div class="npcard-count">${n.questions.length} questions</div></div>
+    </div>`).join("");
+}
+
+function startQcm(id){
+  const notion=QCM_DATA.find(n=>n.id===id);
+  if(!notion)return;
+  qcmState={notion,qIdx:0,score:0,answered:false};
+  document.getElementById("qcmSelector").style.display="none";
+  document.getElementById("qcmScore").classList.remove("active");
+  document.getElementById("qcmScreen").classList.add("active");
+  showQcmQuestion();
+}
+
+function showQcmQuestion(){
+  const {notion,qIdx}=qcmState;
+  const q=notion.questions[qIdx];
+  const total=notion.questions.length;
+  document.getElementById("qcmNotionTag").textContent=notion.label;
+  document.getElementById("qcmCounter").textContent=`${qIdx+1} / ${total}`;
+  document.getElementById("qcmProgressFill").style.width=`${(qIdx/total)*100}%`;
+  document.getElementById("qcmQuestion").textContent=q.q;
+  const letters=["A","B","C","D"];
+  document.getElementById("qcmOptions").innerHTML=q.opts.map((o,i)=>
+    `<button class="qcm-opt" data-i="${i}" onclick="answerQcm(${i})"><span class="qcm-opt-letter">${letters[i]}</span>${o}</button>`
+  ).join("");
+  document.getElementById("qcmExplication").classList.remove("show");
+  document.getElementById("btnNext").classList.remove("show");
+  qcmState.answered=false;
+}
+
+function answerQcm(i){
+  if(qcmState.answered)return;
+  qcmState.answered=true;
+  const q=qcmState.notion.questions[qcmState.qIdx];
+  const opts=document.querySelectorAll(".qcm-opt");
+  opts.forEach((btn,idx)=>{
+    btn.disabled=true;
+    if(idx===q.c)btn.classList.add("correct");
+    else if(idx===i&&i!==q.c)btn.classList.add("wrong");
+  });
+  if(i===q.c)qcmState.score++;
+  document.getElementById("qcmExplicationText").textContent=q.e;
+  document.getElementById("qcmExplication").classList.add("show");
+  const isLast=qcmState.qIdx>=qcmState.notion.questions.length-1;
+  const btnNext=document.getElementById("btnNext");
+  btnNext.textContent=isLast?"Voir le score →":"Question suivante →";
+  btnNext.classList.add("show");
+}
+
+document.getElementById("btnNext").addEventListener("click",()=>{
+  const {notion,qIdx}=qcmState;
+  if(qIdx>=notion.questions.length-1){showQcmScore();}
+  else{qcmState.qIdx++;showQcmQuestion();}
+});
+
+function showQcmScore(){
+  document.getElementById("qcmScreen").classList.remove("active");
+  const score=qcmState.score,total=qcmState.notion.questions.length;
+  const pct=Math.round(score/total*100);
+  document.getElementById("scoreCircle").textContent=`${score}/${total}`;
+  const labels=pct>=80?"Excellent ! 🎉":pct>=60?"Bien ! 👍":pct>=40?"Peut mieux faire 📚":"À retravailler 💪";
+  document.getElementById("scoreLabel").textContent=labels;
+  document.getElementById("scoreSub").textContent=`${pct}% de bonnes réponses sur ${total} questions — ${qcmState.notion.label}`;
+  document.getElementById("qcmScore").classList.add("active");
+}
+
+document.getElementById("btnRetry").addEventListener("click",()=>{startQcm(qcmState.notion.id);});
+document.getElementById("btnBackQcm").addEventListener("click",()=>{
+  document.getElementById("qcmScore").classList.remove("active");
+  document.getElementById("qcmScreen").classList.remove("active");
+  document.getElementById("qcmSelector").style.display="";
+});
+
+/* ══ FLASHCARD LOGIC ══════════════════════════════════════════ */
+let flashState={notion:null,idx:0,flipped:false};
+
+function buildFlashGrid(){
+  const grid=document.getElementById("flashNotionGrid");
+  grid.innerHTML=FLASH_DATA.map(n=>`
+    <div class="notion-pick-card ${n.cat}" onclick="startFlash('${n.id}')">
+      <div><div class="npcard-label">${n.label}</div><div class="npcard-count">${n.cards.length} cartes</div></div>
+    </div>`).join("");
+}
+
+function startFlash(id){
+  const notion=FLASH_DATA.find(n=>n.id===id);
+  if(!notion)return;
+  flashState={notion,idx:0,flipped:false};
+  document.getElementById("flashSelector").style.display="none";
+  document.getElementById("flashDeck").classList.add("active");
+  document.getElementById("flashDeckNotion").textContent=notion.label;
+  showFlashCard();
+}
+
+function showFlashCard(){
+  const {notion,idx,flipped}=flashState;
+  const card=notion.cards[idx];
+  document.getElementById("flashCounter").textContent=`${idx+1} / ${notion.cards.length}`;
+  document.getElementById("flashFront").textContent=card.f;
+  document.getElementById("flashBack").textContent=card.b;
+  const fc=document.getElementById("flashcard");
+  fc.classList.remove("flipped");flashState.flipped=false;
+  document.getElementById("flashFlipBtn").textContent="Retourner";
+  document.getElementById("flashPrev").disabled=idx===0;
+  document.getElementById("flashNext").disabled=idx===notion.cards.length-1;
+}
+
+function flipFlash(){
+  flashState.flipped=!flashState.flipped;
+  document.getElementById("flashcard").classList.toggle("flipped",flashState.flipped);
+  document.getElementById("flashFlipBtn").textContent=flashState.flipped?"Retourner la carte":"Voir la réponse";
+}
+
+document.getElementById("flashScene").addEventListener("click",flipFlash);
+document.getElementById("flashFlipBtn").addEventListener("click",flipFlash);
+document.getElementById("flashPrev").addEventListener("click",()=>{if(flashState.idx>0){flashState.idx--;showFlashCard();}});
+document.getElementById("flashNext").addEventListener("click",()=>{if(flashState.idx<flashState.notion.cards.length-1){flashState.idx++;showFlashCard();}});
+document.getElementById("btnBackFlash").addEventListener("click",()=>{
+  document.getElementById("flashDeck").classList.remove("active");
+  document.getElementById("flashSelector").style.display="";
+});
+
+/* ══ INIT ═════════════════════════════════════════════════════ */
+buildQcmGrid();
+buildFlashGrid();
+render();
+</script>
