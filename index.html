@@ -266,6 +266,10 @@ select.filter-select:focus{border-color:var(--accent)}
 </div>
 
 <!-- ══ TAB: ANNALES ══════════════════════════════════════════════ -->
+<noscript><div style="margin:16px;padding:14px 16px;border-radius:10px;background:#FFF4E5;border:1px solid #F5C27A;color:#5A3A00;font-family:sans-serif;font-size:15px;line-height:1.45">
+<strong>Le site ne peut pas s'afficher dans cet aperçu.</strong><br>
+Vous l'avez probablement ouvert depuis un mail, Fichiers ou une messagerie : cet aperçu n'exécute pas le site.
+Ouvrez-le dans un vrai navigateur (Safari, Chrome) via son adresse en ligne, ou sur un ordinateur.</div></noscript>
 <div id="tab-annales" class="tab-content active">
   <!-- Legend -->
   <div class="legend">
@@ -482,90 +486,185 @@ const CAT_MAP = {
 
 /* ══ QCM DATA ══════════════════════════════════════════════════ */
 const QCM_DATA = [
- {id:"frott",label:"Forces de frottement",cat:"cat-meca",questions:[
-  {q:"Un objet de 5 kg glisse sur un plan horizontal (g=10 m/s²). Avec μk=0,4, la force de frottement cinétique vaut :",opts:["20 N","2 N","50 N","0,08 N"],c:0,e:"N = mg = 50 N ; fc = μk×N = 0,4×50 = 20 N."},
-  {q:"La force de frottement cinétique sur un objet en mouvement est :",opts:["Dans le sens du mouvement","Opposée au mouvement","Perpendiculaire au mouvement","Nulle"],c:1,e:"La force de frottement cinétique s'oppose toujours au mouvement relatif."},
-  {q:"Pour un plan incliné d'angle θ, la réaction normale N d'un objet de masse m est :",opts:["N = mg","N = mg sinθ","N = mg cosθ","N = mg tanθ"],c:2,e:"La réaction normale est perpendiculaire au plan : N = mg cosθ."},
-  {q:"En général, la relation entre μk (cinétique) et μs (statique) est :",opts:["μk > μs","μk = μs","μk < μs","Sans relation"],c:2,e:"Il faut plus de force pour démarrer le glissement que pour le maintenir, donc μs > μk."},
-  {q:"Au seuil du glissement (glissement imminent), la force de frottement statique fs_max vaut :",opts:["μk × N","μs × N","mg","0"],c:1,e:"fs_max = μs × N. Tant que fs < μs×N, l'objet reste immobile."},
-  {q:"Un objet de 2 kg est sur un plan incliné à 30°. N vaut environ (g=10 m/s²) :",opts:["10 N","17,3 N","20 N","14,1 N"],c:1,e:"N = mg cos30° = 2×10×0,866 ≈ 17,3 N."}
+ {id:"mesure",label:"Mesures et incertitudes",cat:"cat-mesur",questions:[
+  {q:"Combien de chiffres significatifs compte la valeur 0,0450 m ?",opts:["3", "5", "2", "4"],c:0,e:"Les zéros à gauche ne comptent pas ; le zéro final compte : 4, 5, 0 → 3 chiffres significatifs."},
+  {q:"Un élève réalise 10 mesures d'une même grandeur. Pour évaluer l'incertitude-type, il utilise une évaluation…",opts:["de type B (notice de l'appareil)", "de type C", "de type A (statistique)", "par simple lecture de la dernière mesure"],c:2,e:"Une série de mesures répétées s'exploite statistiquement : c'est une évaluation de type A, u = σ(n−1)/√n."},
+  {q:"Pour une série de n mesures d'écart-type expérimental σ(n−1), l'incertitude-type sur la moyenne vaut :",opts:["σ(n−1) × n", "σ(n−1) / √n", "σ(n−1) / n", "σ(n−1) × √n"],c:1,e:"u(x̄) = σ(n−1)/√n : plus on fait de mesures, plus l'incertitude sur la moyenne diminue."},
+  {q:"La notice d'un thermomètre indique une précision de ± 0,5 °C. L'incertitude-type de type B vaut environ :",opts:["0,29 °C", "0,87 °C", "0,25 °C", "0,5 °C"],c:0,e:"u = précision/√3 = 0,5/1,73 ≈ 0,29 °C."},
+  {q:"Quelle écriture du résultat est correcte ?",opts:["U = (12,3 ± 0,1) V", "U = (12,35 ± 0,1)", "U = 12,347 ± 0,1 V", "U = 12 ± 0,1 V"],c:0,e:"On arrondit la valeur au même rang que l'incertitude et on n'oublie pas l'unité : U = (12,3 ± 0,1) V."},
+  {q:"On compare une mesure à une valeur de référence avec z = |x − x_réf| / u(x). Les deux valeurs sont compatibles si :",opts:["z ≤ 2", "z ≥ 10", "z = 0 exactement", "z ≥ 2"],c:0,e:"Par convention, un écart inférieur ou égal à 2 incertitudes-types est jugé acceptable."},
+  {q:"Avec 30 mesures au lieu de 10 (même écart-type), l'incertitude-type sur la moyenne est :",opts:["divisée par environ 1,7", "divisée par 3", "inchangée", "multipliée par 3"],c:0,e:"u ∝ 1/√n : √(30/10) = √3 ≈ 1,7."},
+  {q:"L'incertitude-type d'une mesure exprime :",opts:["l'erreur exacte commise", "la dispersion des valeurs qu'on peut raisonnablement attribuer à la grandeur", "la précision du calcul de la calculatrice", "le nombre de mesures effectuées"],c:1,e:"L'incertitude ne donne pas l'erreur (inconnue) mais l'étendue raisonnable autour de la valeur mesurée."},
+  {q:"Un chronomètre affiche 12,5 s avec une incertitude-type de 0,2 s. L'incertitude relative vaut environ :",opts:["16 %", "0,2 %", "2,5 %", "1,6 %"],c:3,e:"u/x = 0,2/12,5 = 0,016 = 1,6 %."},
+  {q:"Un résultat de mesure complet comprend :",opts:["l'unité seulement", "la valeur et le nombre de mesures", "seulement la valeur", "la valeur, l'incertitude et l'unité"],c:3,e:"Exemple : L = (25,4 ± 0,2) cm."}
  ]},
- {id:"therm",label:"Transfert thermique",cat:"cat-therm",questions:[
-  {q:"La résistance thermique d'une paroi (épaisseur e, conductivité λ, surface S) est :",opts:["Rth = λS/e","Rth = e/(λS)","Rth = λ/(eS)","Rth = eS/λ"],c:1,e:"Rth = e/(λ·S) en K/W. Grande λ = bonne conductivité = Rth petite."},
-  {q:"Le flux thermique φ (en W) à travers une paroi de résistance Rth soumise à ΔT est :",opts:["φ = ΔT × Rth","φ = Rth / ΔT","φ = ΔT / Rth","φ = ΔT − Rth"],c:2,e:"φ = ΔT / Rth (analogue à I = U/R en électricité)."},
-  {q:"Deux parois en série ont Rth1=0,5 K/W et Rth2=1,2 K/W. La résistance totale est :",opts:["0,7 K/W","1,7 K/W","0,6 K/W","2,4 K/W"],c:1,e:"En série : Rth_total = Rth1 + Rth2 = 0,5 + 1,2 = 1,7 K/W."},
-  {q:"Le mode de transfert thermique qui se propage sans support matériel (dans le vide) est :",opts:["La conduction","La convection","Le rayonnement","La diffusion"],c:2,e:"Le rayonnement thermique (ondes électromagnétiques infrarouges) ne nécessite pas de matière."},
-  {q:"La conductivité thermique λ est grande pour les matériaux :",opts:["Isolants","Bons conducteurs de chaleur","Transparents","Légers"],c:1,e:"Grand λ ↔ bon conducteur de chaleur. Ex : cuivre λ≈400 W/(m·K), laine de verre λ≈0,04 W/(m·K)."}
+ {id:"puissance",label:"Énergie, puissance et rendement",cat:"cat-elec",questions:[
+  {q:"La relation entre énergie E, puissance P et durée Δt est :",opts:["E = P + Δt", "E = P / Δt", "E = P × Δt", "E = Δt / P"],c:2,e:"E = P × Δt (J si P en W et Δt en s ; Wh si Δt en h)."},
+  {q:"Un radiateur de 1 500 W fonctionne 2 h. Il consomme :",opts:["1,5 kWh", "3 000 kWh", "750 Wh", "3 kWh"],c:3,e:"E = 1 500 W × 2 h = 3 000 Wh = 3 kWh."},
+  {q:"1 kWh vaut :",opts:["3,6 × 10⁶ J", "1 000 J", "3,6 × 10³ kJ seulement si P = 1 W", "3 600 J"],c:0,e:"1 kWh = 1 000 W × 3 600 s = 3,6 × 10⁶ J."},
+  {q:"Le rendement d'un convertisseur est défini par :",opts:["η = P_absorbée / P_utile", "η = P_pertes / P_utile", "η = P_utile − P_absorbée", "η = P_utile / P_absorbée"],c:3,e:"η = P_utile / P_absorbée, toujours inférieur à 1 (ou 100 %)."},
+  {q:"Un moteur absorbe 200 W et fournit 150 W de puissance mécanique. Son rendement vaut :",opts:["75 %", "133 %", "50 %", "25 %"],c:0,e:"η = 150/200 = 0,75 = 75 %."},
+  {q:"Dans un moteur électrique, l'énergie perdue l'est principalement sous forme :",opts:["thermique", "chimique", "lumineuse", "nucléaire"],c:0,e:"Les pertes (effet Joule, frottements) se dissipent sous forme de chaleur."},
+  {q:"Deux convertisseurs de rendements 0,9 et 0,8 sont placés l'un après l'autre. Le rendement global vaut :",opts:["1,7", "0,72", "0,85", "0,1"],c:1,e:"η_global = η1 × η2 = 0,9 × 0,8 = 0,72."},
+  {q:"La puissance moyenne d'un appareil qui consomme 0,6 kWh en 30 min est :",opts:["18 kW", "0,3 kW", "0,02 kW", "1,2 kW"],c:3,e:"P = E/Δt = 0,6 kWh / 0,5 h = 1,2 kW."},
+  {q:"Le watt est équivalent à :",opts:["1 Wh", "1 J/s", "1 V/A", "1 J·s"],c:1,e:"1 W = 1 J par seconde."},
+  {q:"Un convertisseur absorbe 500 W avec un rendement de 80 %. La puissance perdue vaut :",opts:["100 W", "20 W", "400 W", "80 W"],c:0,e:"P_utile = 0,8 × 500 = 400 W ; pertes = 500 − 400 = 100 W."}
  ]},
- {id:"energie",label:"Énergie interne & Changement d'état",cat:"cat-therm",questions:[
-  {q:"La quantité de chaleur échangée lors d'un changement de température ΔT (masse m, chaleur spécifique c) est :",opts:["Q = m/c·ΔT","Q = m·c·ΔT","Q = mc/ΔT","Q = cΔT/m"],c:1,e:"Q = m·c·ΔT. Unité : J. Attention à l'unité de c : J/(kg·K)."},
-  {q:"La chaleur spécifique de l'eau vaut environ :",opts:["1000 J/(kg·K)","2100 J/(kg·K)","4180 J/(kg·K)","8360 J/(kg·K)"],c:2,e:"c_eau = 4180 J/(kg·K). Valeur importante à mémoriser."},
-  {q:"Lors d'un changement d'état, la température du corps :",opts:["Augmente","Diminue","Reste constante","Varie aléatoirement"],c:2,e:"Pendant un changement d'état, T reste constante (palier). L'énergie sert à modifier l'état, pas la température."},
-  {q:"L'énergie pour changer l'état de m kg (chaleur latente L) est :",opts:["Q = m/L","Q = mL","Q = L/m","Q = L+m"],c:1,e:"Q = m·L. Chaleur latente de fusion de la glace : L ≈ 334 000 J/kg."},
-  {q:"On chauffe 0,200 kg d'eau de 20°C à 100°C (c=4180 J/(kg·K)). L'énergie absorbée est :",opts:["836 J","8 360 J","66 880 J","418 J"],c:2,e:"Q = 0,200 × 4180 × (100−20) = 0,200 × 4180 × 80 = 66 880 J ≈ 66,9 kJ."}
+ {id:"piles",label:"Piles, accumulateurs et oxydoréduction",cat:"cat-chim",questions:[
+  {q:"Un oxydant est une espèce capable de :",opts:["céder des protons H⁺", "capter des protons H⁺", "céder des électrons", "capter des électrons"],c:3,e:"Oxydant : capte des électrons. Réducteur : en cède."},
+  {q:"À l'anode d'une pile en fonctionnement se produit :",opts:["une oxydation", "une réduction", "une neutralisation", "une combustion"],c:0,e:"Anode = oxydation (borne −) ; cathode = réduction (borne +)."},
+  {q:"Dans le circuit extérieur d'une pile, les électrons circulent :",opts:["de la borne − vers la borne +", "de la borne + vers la borne −", "dans les deux sens alternativement", "dans l'électrolyte uniquement"],c:0,e:"Les électrons partent de l'anode (−) vers la cathode (+) ; le courant conventionnel va en sens inverse."},
+  {q:"Dans l'électrolyte, le courant est assuré par :",opts:["des électrons", "des ions", "des photons", "des neutrons"],c:1,e:"Dans les fils : électrons ; dans l'électrolyte : déplacement des ions."},
+  {q:"Dans la demi-équation H₂ = 2 H⁺ + 2 e⁻, le dihydrogène est :",opts:["une base", "l'oxydant, il est réduit", "un acide", "le réducteur, il est oxydé"],c:3,e:"H₂ perd des électrons : c'est le réducteur, il subit une oxydation."},
+  {q:"La capacité d'une batterie s'exprime en :",opts:["V", "W", "Wh", "A·h"],c:3,e:"La capacité est une quantité d'électricité : Q = I × Δt, en A·h (ou en coulombs)."},
+  {q:"Une batterie de 12 V et 50 A·h stocke une énergie de :",opts:["50 Wh", "4,2 Wh", "600 Wh", "62 Wh"],c:2,e:"E = U × Q = 12 V × 50 A·h = 600 Wh."},
+  {q:"Ce qui distingue un accumulateur d'une pile :",opts:["il ne contient pas d'oxydant", "il fournit une tension plus grande", "il est rechargeable (transformation réversible)", "il ne contient pas d'électrolyte"],c:2,e:"Un accumulateur peut être rechargé : en charge, il convertit l'énergie électrique en énergie chimique."},
+  {q:"Pour écrire l'équation d'oxydoréduction à partir de deux demi-équations, il faut :",opts:["additionner sans rien changer", "garder les électrons dans le bilan", "ajuster les coefficients pour que les électrons échangés se compensent", "soustraire les deux demi-équations"],c:2,e:"Les électrons cédés par le réducteur sont tous captés par l'oxydant : ils n'apparaissent pas dans le bilan."},
+  {q:"La quantité d'électricité Q et la quantité de matière d'électrons échangés sont liées par :",opts:["Q = n(e⁻) × F", "Q = n(e⁻) / F", "Q = F / n(e⁻)", "Q = n(e⁻) × U"],c:0,e:"Q = n(e⁻) × F avec F = 96 500 C·mol⁻¹."}
  ]},
- {id:"combustion",label:"Combustion",cat:"cat-chim",questions:[
-  {q:"La combustion complète du méthane CH₄ produit :",opts:["CO + H₂O","CO₂ + H₂O","CO₂ + H₂","C + H₂O"],c:1,e:"CH₄ + 2O₂ → CO₂ + 2H₂O. Combustion complète : produits = CO₂ et H₂O."},
-  {q:"Le PCI (Pouvoir Calorifique Inférieur) représente :",opts:["L'énergie libérée avec condensation de l'eau","L'énergie libérée sans condensation de l'eau","La température max de la flamme","La masse du combustible"],c:1,e:"PCI = énergie dégagée quand l'eau produite reste vapeur. PCS inclut la condensation, donc PCS > PCI."},
-  {q:"La combustion incomplète d'un hydrocarbure produit notamment :",opts:["Plus de CO₂","Du CO (monoxyde de carbone)","De l'O₂","Du H₂"],c:1,e:"Manque d'O₂ → combustion incomplète → formation de CO (toxique). Combustion complète → CO₂."},
-  {q:"Dans C₃H₈ + 5O₂ → 3CO₂ + 4H₂O, le coefficient stœchiométrique de l'O₂ est :",opts:["3","4","5","8"],c:2,e:"5 molécules d'O₂ sont nécessaires pour brûler complètement 1 molécule de propane C₃H₈."},
-  {q:"L'unité du PCI d'un combustible solide est typiquement :",opts:["Watt (W)","J/kg","mol/L","kg/J"],c:1,e:"PCI en J/kg (solides/liquides) ou kWh/m³ (gaz). Ex : PCI méthane ≈ 50 MJ/kg."}
+ {id:"sinus",label:"Signaux électriques sinusoïdaux",cat:"cat-elec",questions:[
+  {q:"Une tension u(t) = U_max·cos(ωt) a une période T = 20 ms. Sa fréquence vaut :",opts:["0,05 Hz", "20 Hz", "500 Hz", "50 Hz"],c:3,e:"f = 1/T = 1/0,020 s = 50 Hz."},
+  {q:"La valeur efficace d'une tension sinusoïdale d'amplitude U_max est :",opts:["U_max × 2", "U_max × √2", "U_max / 2", "U_max / √2"],c:3,e:"U_eff = U_max/√2 (ex. secteur : 325 V → 230 V)."},
+  {q:"La tension du secteur a pour valeur efficace 230 V. Son amplitude vaut environ :",opts:["163 V", "460 V", "325 V", "230 V"],c:2,e:"U_max = 230 × √2 ≈ 325 V."},
+  {q:"La pulsation ω est liée à la fréquence f par :",opts:["ω = 1/f", "ω = π f", "ω = 2π f", "ω = f / 2π"],c:2,e:"ω = 2πf, en rad/s."},
+  {q:"La puissance apparente S d'un appareil en alternatif s'exprime en :",opts:["J", "var", "W", "VA"],c:3,e:"S = U_eff × I_eff, en voltampères (VA)."},
+  {q:"Le facteur de puissance k est défini par :",opts:["k = P / S", "k = U / I", "k = S / P", "k = P × S"],c:0,e:"k = P/S, compris entre 0 et 1."},
+  {q:"Un appareil reçoit P = 900 W sous 230 V efficace avec I_eff = 5 A. Son facteur de puissance vaut environ :",opts:["1,28", "0,5", "0,95", "0,78"],c:3,e:"S = 230 × 5 = 1 150 VA ; k = 900/1 150 ≈ 0,78."},
+  {q:"Pour mesurer une tension alternative, le multimètre doit être réglé en :",opts:["AC (~)", "A", "DC (=)", "Ω"],c:0,e:"Position AC (~) : le multimètre affiche alors la valeur efficace."},
+  {q:"Sur un oscilloscope réglé à 5 ms/div, une période occupe 4 divisions. La fréquence vaut :",opts:["50 Hz", "5 Hz", "200 Hz", "20 Hz"],c:0,e:"T = 4 × 5 ms = 20 ms ; f = 1/T = 50 Hz."},
+  {q:"La puissance active P reçue par un appareil en alternatif s'exprime en :",opts:["Wh", "W", "VA", "V"],c:1,e:"P = k × U_eff × I_eff, en watts."}
  ]},
- {id:"acide",label:"Acide-base",cat:"cat-chim",questions:[
-  {q:"Le pH d'une solution de HCl (acide fort) à C=0,01 mol/L est :",opts:["pH=1","pH=2","pH=7","pH=12"],c:1,e:"HCl totalement dissocié : [H₃O⁺]=C=10⁻² mol/L → pH = −log(10⁻²) = 2."},
-  {q:"La relation entre pKa et pKb d'un couple acide/base conjugué (à 25°C) est :",opts:["pKa × pKb = 7","pKa + pKb = 7","pKa + pKb = 14","pKa − pKb = 14"],c:2,e:"pKa + pKb = pKe = 14 à 25°C. Relation fondamentale."},
-  {q:"À l'équivalence d'un dosage acide-base :",opts:["pH=7 toujours","n_acide réagi = n_base réagi","n_acide = 0","pH est minimum"],c:1,e:"Équivalence : quantités de matière d'acide et de base exactement neutralisées. Le pH≠7 en général."},
-  {q:"Pour pH = pKa, les concentrations de AH et A⁻ sont :",opts:["[AH] > [A⁻]","[AH] = [A⁻]","[AH] < [A⁻]","[A⁻] = 0"],c:1,e:"Henderson-Hasselbalch : pH = pKa + log([A⁻]/[AH]). Si pH=pKa → log(1)=0 → [AH]=[A⁻]."},
-  {q:"Une solution tampon est une solution qui :",opts:["A toujours pH=7","Résiste aux variations de pH","Ne contient pas d'acide","Est toujours basique"],c:1,e:"Solution tampon : mélange acide faible + base conjuguée. Résiste aux variations de pH (ajout modéré d'acide/base)."}
+ {id:"transport",label:"Transport de l'électricité",cat:"cat-elec",questions:[
+  {q:"Les pertes par effet Joule dans une ligne de résistance R parcourue par un courant I valent :",opts:["R / I", "R × I²", "U × I²", "R × I"],c:1,e:"P_J = R × I² : elles dépendent du carré de l'intensité."},
+  {q:"Pourquoi transporte-t-on l'électricité sous très haute tension ?",opts:["Pour augmenter l'intensité", "Pour que le courant aille plus vite", "Pour éviter d'utiliser des transformateurs", "Pour diminuer l'intensité et donc les pertes par effet Joule"],c:3,e:"À puissance égale (P = U × I), une tension plus haute donne une intensité plus faible, donc moins de pertes."},
+  {q:"Si l'intensité dans une ligne est divisée par 2, les pertes par effet Joule sont :",opts:["inchangées", "multipliées par 2", "divisées par 2", "divisées par 4"],c:3,e:"P_J = R I² : (I/2)² = I²/4."},
+  {q:"L'appareil qui permet d'élever ou d'abaisser une tension alternative est :",opts:["un redresseur", "un onduleur", "un transformateur", "un disjoncteur"],c:2,e:"Le transformateur modifie la valeur d'une tension alternative."},
+  {q:"Un transformateur parfait abaisse la tension de 20 000 V à 400 V. Le rapport de transformation U₂/U₁ vaut :",opts:["0,2", "0,02", "50", "20"],c:1,e:"m = U₂/U₁ = 400/20 000 = 0,02."},
+  {q:"Augmenter le facteur de puissance d'une installation permet :",opts:["de supprimer la puissance active", "d'augmenter la tension du réseau", "d'augmenter l'intensité appelée", "de diminuer l'intensité appelée pour une même puissance active"],c:3,e:"P = k × U × I : pour P donnée, un k plus grand réduit I, donc les pertes en ligne."},
+  {q:"La résistance d'un câble augmente quand :",opts:["on utilise du cuivre plutôt que de l'acier", "sa section augmente", "sa longueur diminue", "sa longueur augmente"],c:3,e:"R = ρ L / S : proportionnelle à la longueur, inversement proportionnelle à la section."},
+  {q:"Un convertisseur qui transforme une tension continue en tension alternative est :",opts:["un transformateur", "un redresseur", "un onduleur", "un hacheur"],c:2,e:"L'onduleur (continu → alternatif) est utilisé par exemple en sortie des panneaux photovoltaïques."},
+  {q:"Le rôle d'un disjoncteur est de :",opts:["stocker l'énergie", "couper le circuit en cas de surintensité", "élever la tension", "transformer l'alternatif en continu"],c:1,e:"Il protège l'installation en ouvrant le circuit si l'intensité est trop grande."},
+  {q:"Une ligne transporte 1 MW. Sous 400 kV au lieu de 20 kV, l'intensité est :",opts:["400 fois plus petite", "20 fois plus petite", "20 fois plus grande", "inchangée"],c:1,e:"I = P/U : U × 20 ⇒ I ÷ 20 (et les pertes ÷ 400)."}
  ]},
- {id:"piles",label:"Piles et accumulateurs",cat:"cat-chim",questions:[
-  {q:"Dans une pile électrochimique, l'oxydation a lieu à :",opts:["La cathode (pôle +)","L'anode (pôle −)","Les deux électrodes","L'électrolyte"],c:1,e:"Anode = oxydation (perte d'électrons). Cathode = réduction. Mémo : OxydAtion→Anode."},
-  {q:"Un accumulateur se distingue d'une pile par :",opts:["Il est plus petit","Il est rechargeable","Il a une tension plus élevée","Il n'a pas d'électrolyte"],c:1,e:"Accumulateur : réaction réversible → rechargeable. Pile : réaction irréversible → usage unique."},
-  {q:"La tension à vide d'une pile est mesurée :",opts:["Quand elle débite du courant","Sans courant circulant","Après décharge complète","À haute température"],c:1,e:"Tension à vide (FEM) = tension sans courant. Avec courant : U = E − r·I (chute sur résistance interne r)."},
-  {q:"L'unité de la capacité d'un accumulateur est :",opts:["Watt (W)","Volt (V)","Ampère-heure (Ah)","Ohm (Ω)"],c:2,e:"Capacité en Ah (ou mAh). Énergie stockée = Capacité × Tension. Ex : 3,7 V × 3000 mAh = 11,1 Wh."},
-  {q:"La corrosion d'un métal est un phénomène :",opts:["De réduction","D'oxydation","Neutre","De condensation"],c:1,e:"Corrosion = oxydation du métal (perte d'électrons). Ex : Fe → Fe²⁺ + 2e⁻ (rouille)."}
+ {id:"therm",label:"Transferts thermiques",cat:"cat-therm",questions:[
+  {q:"Le transfert thermique qui se fait de proche en proche dans un solide, sans déplacement de matière, est :",opts:["la conduction", "la convection", "l'évaporation", "le rayonnement"],c:0,e:"Conduction : sans déplacement de matière, typique des solides."},
+  {q:"Le mode de transfert thermique qui peut se faire dans le vide est :",opts:["aucun", "le rayonnement", "la convection", "la conduction"],c:1,e:"Le rayonnement (ondes électromagnétiques) n'a pas besoin de support matériel."},
+  {q:"Un transfert thermique se fait spontanément :",opts:["du corps chaud vers le corps froid", "du corps froid vers le corps chaud", "du plus lourd vers le plus léger", "dans les deux sens à la fois"],c:0,e:"Toujours du chaud vers le froid, jusqu'à l'équilibre thermique."},
+  {q:"La résistance thermique d'une paroi d'épaisseur e, de conductivité λ et de surface S vaut :",opts:["R = S / (λ e)", "R = λ e / S", "R = e / (λ S)", "R = λ S / e"],c:2,e:"R_th = e/(λS), en K·W⁻¹."},
+  {q:"Pour une paroi faite de plusieurs couches, la résistance thermique totale :",opts:["est la moyenne des résistances", "est la plus grande des résistances", "est le produit des résistances", "est la somme des résistances"],c:3,e:"Couches en série : R_tot = R₁ + R₂ + …"},
+  {q:"Une paroi de résistance R = 2,0 K·W⁻¹ sépare 20 °C et 0 °C. Le flux thermique vaut :",opts:["0,1 W", "40 W", "10 W", "22 W"],c:2,e:"Φ = ΔT/R = 20/2,0 = 10 W."},
+  {q:"Un bon isolant thermique a une conductivité thermique λ :",opts:["très grande", "très faible", "égale à celle des métaux", "négative"],c:1,e:"Plus λ est faible, moins le matériau conduit la chaleur (laine ≈ 0,04 W·m⁻¹·K⁻¹)."},
+  {q:"Pour un même matériau, doubler l'épaisseur d'isolant :",opts:["ne change rien", "double le flux thermique", "divise le flux thermique par 2", "divise le flux par 4"],c:2,e:"R double (R ∝ e) donc Φ = ΔT/R est divisé par 2."},
+  {q:"Le flux thermique s'exprime en :",opts:["W", "J", "K·W⁻¹", "W·m⁻¹·K⁻¹"],c:0,e:"Le flux est une puissance : Φ = Q/Δt, en watts."},
+  {q:"Dans une casserole d'eau chauffée par le bas, la chaleur se répartit dans l'eau surtout par :",opts:["rayonnement", "convection", "sublimation", "conduction"],c:1,e:"L'eau chaude, moins dense, monte : mouvement de matière → convection."}
+ ]},
+ {id:"meca",label:"Mouvement et forces",cat:"cat-meca",questions:[
+  {q:"Un objet se déplace en ligne droite à vitesse constante. La somme des forces qui s'exercent sur lui est :",opts:["nulle", "dirigée vers le bas", "dirigée dans le sens du mouvement", "égale à son poids"],c:0,e:"Principe d'inertie : mouvement rectiligne uniforme ⇔ ΣF = 0."},
+  {q:"Le principe fondamental de la dynamique s'écrit :",opts:["ΣF = m × a", "ΣF = m × g × h", "ΣF = m × v", "ΣF = ½ m v²"],c:0,e:"ΣF⃗ = m a⃗ (2e loi de Newton)."},
+  {q:"Une voiture passe de 0 à 20 m/s en 10 s. Son accélération moyenne vaut :",opts:["0,5 m/s²", "2 m/s²", "200 m/s²", "20 m/s²"],c:1,e:"a = Δv/Δt = 20/10 = 2 m·s⁻²."},
+  {q:"90 km/h correspondent à :",opts:["25 m/s", "9 m/s", "324 m/s", "15 m/s"],c:0,e:"90/3,6 = 25 m/s."},
+  {q:"Le poids d'un objet de 2,0 kg (g = 9,8 N/kg) vaut :",opts:["9,8 N", "19,6 N", "0,20 N", "2,0 N"],c:1,e:"P = m g = 2,0 × 9,8 = 19,6 N."},
+  {q:"Le travail du poids d'un objet de masse m qui monte d'une hauteur h est :",opts:["− m g h", "+ m g h", "½ m g h", "nul"],c:0,e:"En montée, le poids s'oppose au déplacement : travail résistant W = − m g h."},
+  {q:"L'énergie cinétique d'un objet de 1 000 kg roulant à 10 m/s vaut :",opts:["5 kJ", "50 kJ", "100 kJ", "10 kJ"],c:1,e:"Ec = ½ m v² = 0,5 × 1 000 × 100 = 50 000 J."},
+  {q:"Le théorème de l'énergie cinétique énonce que :",opts:["ΔEc = ΣF × m", "ΔEc = somme des travaux des forces appliquées", "Ec = m g h", "Ec se conserve toujours"],c:1,e:"ΔEc = Ec(B) − Ec(A) = Σ W(F⃗) entre A et B."},
+  {q:"Un objet n'est soumis qu'à son poids. On dit qu'il est en :",opts:["mouvement uniforme", "chute libre", "rotation", "équilibre"],c:1,e:"Chute libre : seul le poids agit, a = g ≈ 9,8 m·s⁻²."},
+  {q:"Une force de frottement qui s'oppose au déplacement a un travail :",opts:["résistant (négatif)", "moteur (positif)", "égal à l'énergie cinétique", "toujours nul"],c:0,e:"W = −f × d < 0 : le frottement freine le système."}
+ ]},
+ {id:"rotation",label:"Mouvement de rotation",cat:"cat-meca",questions:[
+  {q:"Un tour complet correspond à un angle de :",opts:["1 rad", "360 rad", "π rad", "2π rad"],c:3,e:"1 tour = 2π rad = 360°."},
+  {q:"Un moteur tourne à 3 000 tr/min. Sa vitesse angulaire vaut environ :",opts:["314 rad/s", "18 850 rad/s", "50 rad/s", "3 000 rad/s"],c:0,e:"ω = 2π × 3 000/60 = 2π × 50 ≈ 314 rad/s."},
+  {q:"La vitesse d'un point situé à la distance R de l'axe de rotation vaut :",opts:["v = R × ω", "v = R / ω", "v = ω²R", "v = ω / R"],c:0,e:"v = R ω (v en m/s, ω en rad/s, R en m)."},
+  {q:"Le moment d'une force F par rapport à un axe, avec un bras de levier d, vaut :",opts:["M = F × d", "M = F + d", "M = F × d²", "M = F / d"],c:0,e:"M = F × d, en N·m."},
+  {q:"La puissance mécanique d'un moteur de couple C tournant à la vitesse angulaire ω est :",opts:["P = C / ω", "P = C × ω²", "P = ½ C ω²", "P = C × ω"],c:3,e:"P = C ω (W, N·m, rad/s)."},
+  {q:"Un moteur fournit 1 000 W à 100 rad/s. Son couple vaut :",opts:["10 N·m", "100 000 N·m", "0,1 N·m", "1 100 N·m"],c:0,e:"C = P/ω = 1 000/100 = 10 N·m."},
+  {q:"Pour qu'une même force produise un effet de rotation plus important, il faut :",opts:["diminuer sa valeur", "l'appliquer plus près de l'axe", "l'appliquer plus loin de l'axe", "l'appliquer sur l'axe"],c:2,e:"Le moment M = F × d augmente avec le bras de levier d (principe de la clé, de la porte…)."},
+  {q:"Deux points d'une même roue, l'un au bord et l'autre à mi-rayon, ont :",opts:["des vitesses angulaires différentes", "la même vitesse angulaire", "la même vitesse linéaire", "une vitesse nulle"],c:1,e:"Tous les points d'un solide en rotation ont la même ω ; v = Rω est plus grande au bord."},
+  {q:"La vitesse angulaire s'exprime en :",opts:["rad/s", "m/s", "N·m", "tr/s²"],c:0,e:"ω en radians par seconde (on convertit les tr/min : × 2π/60)."},
+  {q:"Une roue de rayon 0,30 m tourne à 10 rad/s. La vitesse d'un point de la jante vaut :",opts:["33 m/s", "0,03 m/s", "3 m/s", "10,3 m/s"],c:2,e:"v = R ω = 0,30 × 10 = 3 m/s."}
+ ]},
+ {id:"pv",label:"Photovoltaïque et photothermique",cat:"cat-elec",questions:[
+  {q:"Une cellule photovoltaïque convertit l'énergie lumineuse en énergie :",opts:["chimique", "thermique uniquement", "électrique (avec des pertes thermiques)", "mécanique"],c:2,e:"Chaîne : lumineuse → électrique (utile) + thermique (pertes)."},
+  {q:"Un capteur solaire thermique convertit l'énergie lumineuse en énergie :",opts:["nucléaire", "thermique", "électrique", "chimique"],c:1,e:"Le fluide caloporteur est chauffé : conversion photothermique."},
+  {q:"L'énergie d'un photon de fréquence f vaut :",opts:["E = f / h", "E = h × f", "E = h × f²", "E = h / f"],c:1,e:"E = h f = h c / λ, avec h = 6,63 × 10⁻³⁴ J·s."},
+  {q:"Un panneau de 1,6 m² reçoit 1 000 W/m² et fournit 320 W. Son rendement vaut :",opts:["5 %", "32 %", "50 %", "20 %"],c:3,e:"P_lum = 1 000 × 1,6 = 1 600 W ; η = 320/1 600 = 20 %."},
+  {q:"La tension à vide U_co d'une cellule se mesure :",opts:["avec un voltmètre seul branché aux bornes (circuit ouvert)", "avec un ampèremètre seul branché aux bornes", "en court-circuitant la cellule", "avec un ohmmètre"],c:0,e:"À vide, I = 0 : on mesure U_co avec un voltmètre seul."},
+  {q:"Au point de court-circuit d'une cellule (U = 0), la puissance fournie est :",opts:["égale à la puissance crête", "maximale", "négative", "nulle"],c:3,e:"P = U × I = 0 × I_cc = 0."},
+  {q:"La puissance crête d'un panneau correspond :",opts:["à sa puissance maximale dans les conditions standard (1 000 W/m², 25 °C)", "à la puissance perdue", "à sa puissance la nuit", "à la puissance lumineuse reçue"],c:0,e:"C'est le maximum de P = U × I sur la caractéristique, dans les conditions standard de test."},
+  {q:"Le rendement d'un panneau photovoltaïque diminue quand :",opts:["on l'oriente plein sud", "sa température augmente", "l'éclairement augmente", "on le nettoie"],c:1,e:"Les cellules au silicium perdent en rendement quand elles chauffent."},
+  {q:"Pour tracer la caractéristique I = f(U) d'une cellule, on fait varier :",opts:["une résistance de charge réglable", "l'heure de la journée", "la couleur de la cellule", "la fréquence de la lumière"],c:0,e:"La résistance variable impose différents points de fonctionnement (U, I)."},
+  {q:"Plusieurs cellules identiques associées en série permettent :",opts:["d'additionner les tensions", "de diminuer la puissance", "de supprimer les pertes", "d'additionner les intensités"],c:0,e:"En série les tensions s'additionnent ; en parallèle, les intensités."}
+ ]},
+ {id:"fluides",label:"Fluides et pression",cat:"cat-meca",questions:[
+  {q:"La pression est définie par :",opts:["P = F / S", "P = S / F", "P = m × g", "P = F × S"],c:0,e:"P = F/S, en pascals (Pa)."},
+  {q:"1 bar vaut :",opts:["10⁶ Pa", "1 Pa", "10³ Pa", "10⁵ Pa"],c:3,e:"1 bar = 10⁵ Pa ≈ pression atmosphérique."},
+  {q:"Dans l'eau, la pression augmente d'environ 1 bar tous les :",opts:["10 m", "1 m", "1 km", "100 m"],c:0,e:"ΔP = ρ g h = 1 000 × 9,8 × 10 ≈ 10⁵ Pa = 1 bar."},
+  {q:"La loi fondamentale de la statique des fluides s'écrit :",opts:["P = ρ V", "P = ½ ρ v²", "P_B = P_A × ρ", "P_B − P_A = ρ g (z_A − z_B)"],c:3,e:"La pression augmente quand on descend (z_B < z_A)."},
+  {q:"La pression hydrostatique dépend :",opts:["de la forme du récipient", "de la profondeur et de la masse volumique du liquide", "de la surface du liquide", "de la quantité totale de liquide"],c:1,e:"P ne dépend que de ρ, g et de la profondeur h (paradoxe hydrostatique)."},
+  {q:"Une force de 200 N s'exerce sur 0,01 m². La pression vaut :",opts:["20 000 Pa", "2 000 Pa", "2 Pa", "0,00005 Pa"],c:0,e:"P = 200/0,01 = 20 000 Pa = 0,2 bar."},
+  {q:"L'appareil qui mesure la pression d'un pneu est :",opts:["un manomètre", "un thermomètre", "un ampèremètre", "un sonomètre"],c:0,e:"Le manomètre mesure une pression (souvent relative à la pression atmosphérique)."},
+  {q:"Le débit volumique d'un fluide de vitesse v dans une conduite de section S vaut :",opts:["D = v / S", "D = ρ S v²", "D = S × v", "D = S / v"],c:2,e:"D_v = S × v, en m³/s."},
+  {q:"La masse volumique de l'eau liquide vaut environ :",opts:["1 000 kg/m³", "1 kg/m³", "10 kg/m³", "100 000 kg/m³"],c:0,e:"ρ_eau ≈ 1 000 kg·m⁻³ = 1 kg/L."},
+  {q:"À température constante, pour une quantité de gaz donnée, si on divise le volume par 2, la pression :",opts:["est divisée par 2", "double", "est multipliée par 4", "reste constante"],c:1,e:"Loi de Boyle-Mariotte : P × V = constante."}
+ ]},
+ {id:"etats",label:"Changements d'état et énergie interne",cat:"cat-therm",questions:[
+  {q:"L'énergie pour élever de ΔT la température d'une masse m de capacité thermique massique c vaut :",opts:["Q = m / (c ΔT)", "Q = m c / ΔT", "Q = m c ΔT", "Q = c ΔT / m"],c:2,e:"Q = m c ΔT (J, kg, J·kg⁻¹·K⁻¹, K)."},
+  {q:"c_eau = 4 180 J·kg⁻¹·K⁻¹ signifie qu'il faut 4 180 J pour :",opts:["faire fondre 1 kg de glace", "élever de 1 °C la température de 1 g d'eau", "vaporiser 1 kg d'eau", "élever de 1 °C la température de 1 kg d'eau"],c:3,e:"Par définition de la capacité thermique massique (1 K = 1 °C d'écart)."},
+  {q:"Pendant la fusion de la glace, la température :",opts:["augmente", "diminue", "reste constante", "oscille"],c:2,e:"Un changement d'état d'un corps pur se fait à température constante (palier)."},
+  {q:"L'énergie nécessaire à la fusion d'une masse m de glace vaut :",opts:["Q = m L_f", "Q = L_f / m", "Q = m c ΔT", "Q = m g h"],c:0,e:"Q = m × L_f, L_f étant l'énergie massique de fusion."},
+  {q:"Le passage de l'état gazeux à l'état liquide s'appelle :",opts:["la liquéfaction (condensation)", "la fusion", "la sublimation", "la vaporisation"],c:0,e:"Gaz → liquide : liquéfaction (souvent appelée condensation)."},
+  {q:"Lors de la solidification de l'eau, l'eau :",opts:["n'échange pas d'énergie", "cède de l'énergie", "perd de la masse", "reçoit de l'énergie"],c:1,e:"Solidification et liquéfaction libèrent de l'énergie (Q < 0)."},
+  {q:"Pour chauffer 2 kg d'eau de 20 °C à 70 °C, il faut environ :",opts:["418 kJ", "209 kJ", "84 kJ", "4 180 kJ"],c:0,e:"Q = 2 × 4 180 × 50 = 418 000 J."},
+  {q:"Au point triple d'un corps pur :",opts:["la température est toujours de 0 °C", "seul l'état gazeux existe", "le liquide et le gaz ne se distinguent plus", "les trois états coexistent"],c:3,e:"Point triple : solide, liquide et gaz en équilibre (pour l'eau : 0,01 °C, 611 Pa)."},
+  {q:"Une transformation qui libère de l'énergie thermique vers le milieu extérieur est dite :",opts:["endothermique", "isotherme", "exothermique", "athermique"],c:2,e:"Exothermique : la température du milieu augmente (ex. combustion)."},
+  {q:"On convertit 25 °C en kelvin :",opts:["298 K", "273 K", "25 K", "−248 K"],c:0,e:"T = 25 + 273,15 ≈ 298 K."}
+ ]},
+ {id:"nucl",label:"Radioactivité et énergie nucléaire",cat:"cat-nucl",questions:[
+  {q:"La radioactivité β⁻ correspond à l'émission :",opts:["d'un positon", "d'un électron", "d'un neutron seul", "d'un noyau d'hélium"],c:1,e:"β⁻ : émission d'un électron ⁰₋₁e (un neutron se transforme en proton)."},
+  {q:"Deux isotopes d'un même élément ont :",opts:["le même nombre de neutrons", "le même nombre de protons", "le même nombre de masse", "des propriétés chimiques différentes"],c:1,e:"Même Z (protons), nombres de neutrons différents."},
+  {q:"L'activité d'un échantillon radioactif s'exprime en :",opts:["becquerel", "sievert", "joule", "gray"],c:0,e:"1 Bq = 1 désintégration par seconde."},
+  {q:"Au bout de 3 demi-vies, l'activité d'un échantillon est :",opts:["nulle", "divisée par 6", "divisée par 3", "divisée par 8"],c:3,e:"A = A₀/2³ = A₀/8."},
+  {q:"Lors d'une désintégration, on conserve :",opts:["le nombre de neutrons", "le nombre d'électrons du cortège", "la masse totale exacte", "le nombre de masse A et le nombre de charge Z"],c:3,e:"Lois de conservation de Soddy : A et Z se conservent."},
+  {q:"Dans une centrale nucléaire, l'énergie provient :",opts:["de la combustion de l'uranium", "de la radioactivité α", "de la fusion de noyaux légers", "de la fission de noyaux lourds (uranium 235)"],c:3,e:"Un neutron provoque la fission de l'uranium 235 en deux noyaux plus légers."},
+  {q:"L'énergie libérée par une réaction nucléaire est donnée par :",opts:["E = ½ m v²", "E = m g h", "E = h f", "E = |Δm| c²"],c:3,e:"La perte de masse Δm est convertie en énergie : E = |Δm| × c²."},
+  {q:"Pour se protéger d'un rayonnement γ, le plus efficace est :",opts:["une feuille de papier", "une épaisse paroi de plomb ou de béton", "des lunettes de soleil", "une feuille d'aluminium"],c:1,e:"Le rayonnement γ est très pénétrant : il faut du plomb ou du béton, et s'éloigner de la source."},
+  {q:"La demi-vie d'un échantillon radioactif est la durée au bout de laquelle :",opts:["la moitié des noyaux initiaux se sont désintégrés", "l'activité double", "tous les noyaux se sont désintégrés", "la masse double"],c:0,e:"Au bout de t½, il reste la moitié des noyaux (et de l'activité)."},
+  {q:"La fusion nucléaire consiste à :",opts:["émettre un électron", "casser un noyau lourd", "réunir deux noyaux légers en un noyau plus lourd", "brûler de l'hydrogène avec du dioxygène"],c:2,e:"C'est la réaction qui se produit dans le Soleil."}
+ ]},
+ {id:"acide",label:"Acide-base et pH",cat:"cat-chim",questions:[
+  {q:"Selon Brønsted, un acide est une espèce capable de :",opts:["capter un électron", "céder un ion H⁺", "capter un ion H⁺", "céder un électron"],c:1,e:"Acide : donneur de H⁺ ; base : accepteur de H⁺."},
+  {q:"La relation entre le pH et la concentration en ions oxonium est :",opts:["pH = −log[H₃O⁺]", "pH = log[H₃O⁺]", "pH = 10^[H₃O⁺]", "pH = 14 − [H₃O⁺]"],c:0,e:"pH = −log[H₃O⁺] ⇔ [H₃O⁺] = 10^(−pH)."},
+  {q:"Une solution de pH = 3 a une concentration en ions H₃O⁺ de :",opts:["3 mol/L", "10³ mol/L", "0,3 mol/L", "10⁻³ mol/L"],c:3,e:"[H₃O⁺] = 10⁻³ mol·L⁻¹."},
+  {q:"À 25 °C, une solution de pH = 9 est :",opts:["impossible", "basique", "neutre", "acide"],c:1,e:"pH > 7 : solution basique."},
+  {q:"Quand le pH diminue d'une unité, la concentration en H₃O⁺ est :",opts:["divisée par 10", "inchangée", "multipliée par 10", "multipliée par 2"],c:2,e:"Échelle logarithmique : −1 en pH = ×10 sur [H₃O⁺]."},
+  {q:"On dilue 10 fois une solution d'acide fort de pH = 2. Le nouveau pH vaut :",opts:["3", "1", "2", "12"],c:0,e:"[H₃O⁺] est divisée par 10 : le pH augmente d'une unité."},
+  {q:"Dans le couple CH₃COOH / CH₃COO⁻, l'acide est :",opts:["H₃O⁺", "H₂O", "CH₃COO⁻", "CH₃COOH"],c:3,e:"L'acide est la forme qui possède le H⁺ en plus : CH₃COOH."},
+  {q:"Pour préparer une solution diluée avec précision, on utilise :",opts:["une pipette jaugée et une fiole jaugée", "une burette uniquement", "un bécher et une éprouvette", "un erlenmeyer gradué"],c:0,e:"Pipette jaugée pour prélever, fiole jaugée pour compléter au trait de jauge."},
+  {q:"L'eau pure à 25 °C a un pH de :",opts:["0", "14", "7", "1"],c:2,e:"Solution neutre : [H₃O⁺] = 10⁻⁷ mol/L."},
+  {q:"Le calcaire (CaCO₃) ajouté à un sol acide :",opts:["ne change pas le pH", "fait monter le pH", "fait baisser le pH", "rend le sol radioactif"],c:1,e:"Les ions carbonate (base) consomment les ions H₃O⁺ : le pH augmente."}
  ]},
  {id:"sonore",label:"Ondes sonores",cat:"cat-ondes",questions:[
-  {q:"La relation entre vitesse v, fréquence f et longueur d'onde λ est :",opts:["v = f/λ","v = f+λ","v = f·λ","v = λ/f"],c:2,e:"v = f × λ. Relation fondamentale des ondes. Unités : m/s = Hz × m."},
-  {q:"La vitesse du son dans l'air à 20°C est environ :",opts:["3×10⁸ m/s","1500 m/s","340 m/s","30 m/s"],c:2,e:"v_son ≈ 340 m/s à 20°C dans l'air. Elle augmente avec la température."},
-  {q:"Le niveau sonore L en décibels est donné par :",opts:["L = I/I₀","L = log(I/I₀)","L = 10 log(I/I₀)","L = 10·I/I₀"],c:2,e:"L = 10 × log₁₀(I/I₀) en dB, avec I₀ = 10⁻¹² W/m² (seuil d'audibilité)."},
-  {q:"Une onde sonore est une onde :",opts:["Transversale","Longitudinale","Électromagnétique","Lumineuse"],c:1,e:"Onde sonore = longitudinale (oscillations dans la direction de propagation). Ne se propage pas dans le vide."},
-  {q:"Si l'intensité sonore est multipliée par 10, le niveau sonore (en dB) :",opts:["Augmente de 3 dB","Augmente de 10 dB","Est multiplié par 10","Reste identique"],c:1,e:"ΔL = 10 log(10) = 10 dB. Règle : ×10 en intensité → +10 dB ; ×2 → +3 dB."}
+  {q:"Le domaine des sons audibles par l'être humain s'étend de :",opts:["20 Hz à 20 kHz", "2 Hz à 2 kHz", "20 kHz à 20 MHz", "200 Hz à 200 kHz"],c:0,e:"En dessous : infrasons ; au-dessus : ultrasons."},
+  {q:"Le son ne se propage pas :",opts:["dans l'air", "dans l'acier", "dans l'eau", "dans le vide"],c:3,e:"C'est une onde mécanique : il lui faut un milieu matériel."},
+  {q:"Le niveau d'intensité sonore est défini par :",opts:["L = log(I₀ / I)", "L = I / I₀", "L = 10 log(I / I₀)", "L = 20 I"],c:2,e:"L en dB, I₀ = 10⁻¹² W·m⁻²."},
+  {q:"Si l'intensité sonore est multipliée par 10, le niveau sonore :",opts:["augmente de 3 dB", "augmente de 10 dB", "est multiplié par 10", "double"],c:1,e:"L = 10 log(10 I/I₀) = L + 10 dB."},
+  {q:"Deux sources identiques de 80 dB fonctionnent ensemble. Le niveau total vaut environ :",opts:["90 dB", "160 dB", "80 dB", "83 dB"],c:3,e:"Les intensités s'additionnent (×2), soit +3 dB."},
+  {q:"La hauteur d'un son est liée à :",opts:["ses harmoniques", "la fréquence de son fondamental", "sa durée", "son amplitude"],c:1,e:"Grave = basse fréquence ; aigu = haute fréquence."},
+  {q:"Ce qui permet de distinguer deux instruments jouant la même note est :",opts:["la hauteur", "le timbre", "le niveau sonore", "la période"],c:1,e:"Le timbre dépend des harmoniques (nombre et amplitudes) du spectre."},
+  {q:"Un son a un fondamental de 220 Hz. Son harmonique de rang 3 a pour fréquence :",opts:["223 Hz", "660 Hz", "440 Hz", "73 Hz"],c:1,e:"f₃ = 3 × f₁ = 660 Hz."},
+  {q:"L'appareil qui mesure un niveau d'intensité sonore est :",opts:["un oscilloscope", "un sonomètre", "un luxmètre", "un voltmètre"],c:1,e:"Le sonomètre affiche L en décibels."},
+  {q:"Le seuil de danger pour l'audition (exposition prolongée) se situe vers :",opts:["140 dB", "20 dB", "50 dB", "85 dB"],c:3,e:"Au-delà de ≈ 85 dB, une exposition prolongée abîme l'oreille ; douleur vers 120 dB."}
  ]},
- {id:"em",label:"Ondes électromagnétiques",cat:"cat-ondes",questions:[
-  {q:"La vitesse de la lumière dans le vide vaut :",opts:["3×10⁶ m/s","3×10⁸ m/s","3×10¹⁰ m/s","340 m/s"],c:1,e:"c = 3×10⁸ m/s dans le vide, pour toutes les ondes EM quelle que soit leur fréquence."},
-  {q:"L'ordre croissant des longueurs d'onde dans le spectre EM est :",opts:["γ < X < UV < Visible < IR < Radio","Radio < IR < Visible < UV < X < γ","UV < Visible < IR < Radio < X < γ","Visible < Radio < UV < X < IR < γ"],c:0,e:"De courtes à longues longueurs d'onde : γ < X < UV < Visible (400-780nm) < IR < Radio."},
-  {q:"La loi de Snell-Descartes (réfraction) s'écrit :",opts:["n₁cosθ₁ = n₂cosθ₂","n₁sinθ₁ = n₂sinθ₂","n₁/sinθ₁ = n₂/sinθ₂","sinθ₁·n₁ = sinθ₂/n₂"],c:1,e:"n₁ sinθ₁ = n₂ sinθ₂. θ est l'angle par rapport à la normale à la surface de séparation."},
-  {q:"La longueur d'onde approximative de la lumière rouge visible est :",opts:["100 nm","400 nm","650 nm","1000 nm"],c:2,e:"Rouge ≈ 620-700 nm. Violet ≈ 380-420 nm. Visible entre 380 et 780 nm."},
-  {q:"Dans le vide, deux ondes EM de fréquences différentes ont :",opts:["Des vitesses différentes","La même vitesse c","Des longueurs d'onde identiques","Des indices de réfraction différents"],c:1,e:"Dans le vide, toutes les ondes EM ont la même vitesse c = 3×10⁸ m/s, quelle que soit leur fréquence."}
- ]},
- {id:"signaux",label:"Signaux électriques",cat:"cat-elec",questions:[
-  {q:"La valeur efficace d'une tension sinusoïdale d'amplitude Um est :",opts:["Ueff = Um","Ueff = Um/2","Ueff = Um/√2","Ueff = Um√2"],c:2,e:"Ueff = Um/√2 ≈ 0,707×Um. Ex : réseau 230 V → Um = 230√2 ≈ 325 V."},
-  {q:"La fréquence du réseau électrique en France est :",opts:["25 Hz","50 Hz","60 Hz","100 Hz"],c:1,e:"f = 50 Hz en France (et Europe). Période T = 20 ms. Aux USA : 60 Hz."},
-  {q:"Pour une résistance pure (cosφ=1), la puissance active P est :",opts:["P = Um×Im","P = Ueff×Ieff×0","P = Ueff×Ieff","P = Ueff²/(2R)"],c:2,e:"P = Ueff×Ieff (résistance pure). Aussi P = Ueff²/R = R×Ieff². Unité : W."},
-  {q:"La période T d'un signal de fréquence f = 50 Hz est :",opts:["T = 50 s","T = 0,5 s","T = 0,02 s","T = 2×10⁻⁴ s"],c:2,e:"T = 1/f = 1/50 = 0,02 s = 20 ms."},
-  {q:"Un oscilloscope affiche principalement :",opts:["Le courant en fonction du temps","La puissance instantanée","La tension en fonction du temps","La résistance du circuit"],c:2,e:"L'oscilloscope visualise u(t) en V (ordonnée) vs temps (abscisse). On lit T, Um, f = 1/T."}
- ]},
- {id:"rendement",label:"Rendement & Convertisseurs",cat:"cat-elec",questions:[
-  {q:"Le rendement η d'un convertisseur est défini par :",opts:["η = Pe/Ps","η = Ps/Pe","η = (Pe−Ps)/Ps","η = Pe+Ps"],c:1,e:"η = Ps/Pe (puissance utile / puissance absorbée). 0 ≤ η ≤ 1 (ou 0% à 100%)."},
-  {q:"Un moteur (Pe=2000 W, η=85%) fournit une puissance mécanique de :",opts:["2350 W","300 W","1700 W","1000 W"],c:2,e:"Ps = η×Pe = 0,85×2000 = 1700 W. Pertes = 2000−1700 = 300 W (chaleur)."},
-  {q:"Deux convertisseurs en série avec η₁=0,9 et η₂=0,8 donnent un rendement total :",opts:["1,7","0,85","0,72","1,125"],c:2,e:"η_total = η₁×η₂ = 0,9×0,8 = 0,72 (72%). Les rendements en série se multiplient."},
-  {q:"Un onduleur réalise la conversion :",opts:["CA → CC","CC → CA","Haute tension → Basse tension","Mécanique → Électrique"],c:1,e:"Onduleur : CC → CA (ex : panneaux PV → réseau). Redresseur : CA → CC (chargeur)."},
-  {q:"Les pertes dans un convertisseur sont principalement dissipées sous forme de :",opts:["Lumière","Son","Chaleur","Énergie chimique"],c:2,e:"Les pertes (effet Joule, frottements, pertes fer) se dissipent en chaleur. Pertes = Pe − Ps."}
- ]},
- {id:"pv",label:"Panneaux photovoltaïques",cat:"cat-elec",questions:[
-  {q:"Un panneau photovoltaïque réalise la conversion :",opts:["Chaleur → Électricité","Lumière → Électricité (CC)","Électricité → Lumière","Mouvement → Électricité"],c:1,e:"Effet photoélectrique dans le silicium : photons → courant continu (CC). Un onduleur convertit ensuite CC→CA."},
-  {q:"Le point MPP (Maximum Power Point) correspond à :",opts:["La tension maximale","Le courant maximal","La puissance maximale délivrée","L'irradiance maximale"],c:2,e:"MPP = point (U, I) où P = U×I est maximale. Le MPPT cherche ce point en permanence."},
-  {q:"L'irradiance solaire se mesure en :",opts:["Watts (W)","Watts par m² (W/m²)","Kilowattheures (kWh)","Ampères (A)"],c:1,e:"Irradiance = puissance lumineuse par unité de surface. Unité : W/m². Standard : 1000 W/m²."},
-  {q:"Des panneaux solaires en série permettent d'augmenter :",opts:["Le courant","La surface","La tension totale","Le rendement"],c:2,e:"Série : tensions s'additionnent, courant = courant d'un panneau. Parallèle : courants s'additionnent."},
-  {q:"Le rendement d'un panneau photovoltaïque standard (monocristallin) est d'environ :",opts:["5 à 10%","15 à 22%","40 à 50%","80 à 90%"],c:1,e:"Monocristallin : 18-22%. Polycristallin : 15-17%. Standard STC : 1000 W/m², 25°C."}
- ]},
- {id:"nucl",label:"Nucléaire & Radioactivité",cat:"cat-nucl",questions:[
-  {q:"Lors d'une désintégration α, le noyau fils par rapport au père a :",opts:["A inchangé, Z inchangé","A−4, Z−2","A+4, Z+2","A−2, Z−4"],c:1,e:"Particule α = ⁴₂He. Émission : A' = A−4, Z' = Z−2. Conservation de A et Z."},
-  {q:"Lors d'une désintégration β⁻, le noyau émet :",opts:["Un proton","Un neutron","Un électron et un antineutrino","Une particule alpha"],c:2,e:"β⁻ : n → p + e⁻ + ν̄_e. Z augmente de 1, A inchangé. Un neutron se transforme en proton."},
-  {q:"La demi-vie T½ est le temps au bout duquel :",opts:["Tous les noyaux sont désintégrés","La moitié des noyaux se sont désintégrés","L'activité double","La masse réduit de 10%"],c:1,e:"Après T½ : N = N₀/2. Après nT½ : N = N₀/2ⁿ."},
-  {q:"La loi de décroissance radioactive s'écrit :",opts:["N(t) = N₀ + λt","N(t) = N₀/(1+λt)","N(t) = N₀×2^(−t/T½)","N(t) = N₀−λt"],c:2,e:"N(t) = N₀×2^(−t/T½) ou N₀×e^(−λt) avec λ = ln2/T½."},
-  {q:"L'unité de l'activité radioactive est :",opts:["Gray (Gy)","Becquerel (Bq)","Sievert (Sv)","Joule (J)"],c:1,e:"Becquerel (Bq) = 1 désintégration/seconde. Gray (Gy) = dose absorbée. Sievert (Sv) = dose efficace."}
+ {id:"em",label:"Ondes électromagnétiques et télécommunications",cat:"cat-ondes",questions:[
+  {q:"Dans le vide, les ondes électromagnétiques se propagent à :",opts:["3,00 × 10⁵ m/s", "1 500 m/s", "340 m/s", "3,00 × 10⁸ m/s"],c:3,e:"c = 3,00 × 10⁸ m·s⁻¹ pour toutes les ondes électromagnétiques."},
+  {q:"La longueur d'onde d'une onde de fréquence f est :",opts:["λ = c / f", "λ = c × f", "λ = c / f²", "λ = f / c"],c:0,e:"λ = c/f."},
+  {q:"Une onde de 100 MHz (radio FM) a une longueur d'onde de :",opts:["0,3 m", "30 m", "3 km", "3 m"],c:3,e:"λ = 3,00 × 10⁸ / 1,00 × 10⁸ = 3 m."},
+  {q:"Le domaine visible s'étend environ de :",opts:["400 nm à 800 nm", "4 m à 8 m", "4 nm à 8 nm", "400 µm à 800 µm"],c:0,e:"Du violet (≈ 400 nm) au rouge (≈ 800 nm)."},
+  {q:"Parmi ces rayonnements, le plus énergétique est :",opts:["le visible", "les rayons X", "les ultraviolets", "l'infrarouge"],c:1,e:"L'énergie E = h c/λ augmente quand λ diminue : X > UV > visible > IR."},
+  {q:"Une antenne quart d'onde pour λ = 12 cm mesure :",opts:["48 cm", "3 cm", "12 cm", "6 cm"],c:1,e:"L = λ/4 = 3 cm."},
+  {q:"Les ultrasons utilisés par un capteur de recul sont :",opts:["des ondes mécaniques", "de la lumière", "des ondes électromagnétiques", "des rayons X"],c:0,e:"Comme le son, les ultrasons sont des ondes mécaniques (f > 20 kHz)."},
+  {q:"Une fibre optique transmet l'information sous forme :",opts:["de lumière (onde électromagnétique)", "d'ondes sonores", "d'un courant électrique", "de pression d'air"],c:0,e:"La lumière est guidée par réflexions successives dans le cœur de la fibre."},
+  {q:"L'énergie d'un photon :",opts:["est nulle dans le vide", "augmente quand sa fréquence augmente", "ne dépend pas de la fréquence", "augmente quand sa longueur d'onde augmente"],c:1,e:"E = h f : plus la fréquence est grande, plus le photon est énergétique."},
+  {q:"Les ondes utilisées par le Wi-Fi (2,4 GHz) appartiennent au domaine :",opts:["des micro-ondes", "de l'ultraviolet", "du visible", "des rayons X"],c:0,e:"Les fréquences du GHz correspondent aux micro-ondes (λ ≈ 12 cm)."}
  ]}
 ];
 
