@@ -149,6 +149,12 @@ select.filter-select:focus{border-color:var(--accent)}
 .pdf-pane:first-child{border-left:none}
 .pdf-pane-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:6px 12px;background:var(--surface-2);border-bottom:1px solid var(--border-light);flex-shrink:0}
 /*corr-mobile*/@media (max-width:760px){.pdf-modal-body.corr-on #pdfSujetPane{display:none}.pdf-modal-body.corr-on #pdfCorrPane{border-left:none}}
+/*corr-curtain*/.corr-curtain{flex:0 0 38px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;cursor:pointer;background:var(--accent);color:#fff;border:none;font-family:inherit;font-weight:600;font-size:.82rem;letter-spacing:.04em;padding:0;transition:filter .15s}
+.corr-curtain:hover{filter:brightness(1.12)}
+.corr-curtain span{writing-mode:vertical-rl;white-space:nowrap}
+.corr-curtain .chev{writing-mode:horizontal-tb;font-size:1.1rem;line-height:1}
+#pdfCorrPane{animation:corrIn .25s ease}
+@keyframes corrIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
 .pdf-pane iframe{flex:1;width:100%;border:none;background:#fff;height:100%}
 .pdf-mobile-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px;text-align:center;flex:1;color:var(--muted)}
 .pdf-mobile-fallback strong{color:var(--text);font-size:1.05rem}
@@ -498,6 +504,7 @@ Ouvrez-le dans un vrai navigateur (Safari, Chrome) via son adresse en ligne, ou 
         <div class="pdf-pane-label">📄 Sujet</div>
         <iframe id="pdfSujetIframe" title="Sujet" src=""></iframe>
       </div>
+      <button class="corr-curtain" id="corrCurtain" style="display:none" title="Afficher / masquer la correction"><b class="chev">◂</b><span>Correction</span></button>
       <div class="pdf-pane" id="pdfCorrPane" style="display:none">
         <div class="pdf-pane-label">✅ Correction</div>
         <iframe id="pdfCorrIframe" title="Correction" src=""></iframe>
@@ -1244,6 +1251,8 @@ function openPdf(s){
   const btnCorr=document.getElementById("btnToggleCorr");
   if(s.url_correction){btnCorr.style.display="";btnCorr.textContent="Afficher la correction";btnCorr.classList.remove("active");}
   else{btnCorr.style.display="none";}
+  document.getElementById("corrCurtain").style.display=s.url_correction?"":"none";
+  setCurtainLabel(false);
   const btnAlt=document.getElementById("btnAltView");
   const canEmbed=(s.url_preview||s.url_sujet||"").includes("drive.google.com");
   btnAlt.style.display=canEmbed?"":"none";
@@ -1288,21 +1297,30 @@ document.getElementById("btnClosePdf").addEventListener("click",closePdf);
 document.getElementById("pdfBackdrop").addEventListener("click",closePdf);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closePdf();});
 
-document.getElementById("btnToggleCorr").addEventListener("click",function(){
+function setCurtainLabel(on){
+  document.getElementById("corrCurtain").innerHTML=on?'<b class="chev">▸</b><span>Masquer</span>':'<b class="chev">◂</b><span>Correction</span>';
+}
+function corrPdfUrl(s){
+  const id=getFileId(s.url_correction);
+  return id&&s.url_correction.includes("drive.google.com")?`https://drive.google.com/file/d/${id}/preview`:(s.url_preview_corr||s.url_correction);
+}
+function toggleCorr(){
   if(!currentSubj||!currentSubj.url_correction)return;
   corrVisible=!corrVisible;
   document.getElementById("pdfModalBody").classList.toggle("corr-on",corrVisible);
-  const pane=document.getElementById("pdfCorrPane");
+  const pane=document.getElementById("pdfCorrPane"),btn=document.getElementById("btnToggleCorr");
   if(corrVisible){
     pane.style.display="";
-    const corrPreview=currentSubj.url_preview_corr||currentSubj.url_correction;
-    pane.innerHTML=`<div class="pdf-pane-label">✅ Correction</div><iframe id="pdfCorrIframe" title="Correction" src="${corrPreview}" allow="autoplay"></iframe>`;
-    this.textContent="Masquer la correction";this.classList.add("active");
+    pane.innerHTML=`<div class="pdf-pane-label">✅ Correction</div><iframe id="pdfCorrIframe" title="Correction" src="${corrPdfUrl(currentSubj)}" allow="autoplay"></iframe>`;
+    btn.textContent="Masquer la correction";btn.classList.add("active");
   } else {
     pane.style.display="none";
-    this.textContent="Afficher la correction";this.classList.remove("active");
+    btn.textContent="Afficher la correction";btn.classList.remove("active");
   }
-});
+  setCurtainLabel(corrVisible);
+}
+document.getElementById("btnToggleCorr").addEventListener("click",toggleCorr);
+document.getElementById("corrCurtain").addEventListener("click",toggleCorr);
 
 
 /* ══ ÉCHAUFFEMENT ══════════════════════════════════════════════ */
