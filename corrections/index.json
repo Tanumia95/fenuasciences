@@ -1,0 +1,656 @@
+{
+ "exos": [
+  "2026_Antilles-Guyane_Juin_Ex1_Isolation-ecologique-laine-de-chanvre",
+  "2026_Antilles-Guyane_Juin_Ex2_La-voiture-a-hydrogene",
+  "2026_Antilles-Guyane_Juin_Ex4_Etude-experimentale-d-un-panneau-photovoltaique",
+  "2026_Metropole_Juin_Ex1_Refroidir-une-boisson",
+  "2026_Metropole_Juin_Ex2_Etude-d-une-Tiny-house",
+  "2026_Metropole_Juin_Ex4_Rouler-avec-une-pile-a-combustible",
+  "2026_Polynesie_Juin_Ex1_Helicoptere-et-vitesse-du-son",
+  "2026_Polynesie_Juin_Ex2_Un-debitmetre-defectueux",
+  "2026_Polynesie_Juin_Ex4_Seulement-un-changement-de-couleurs-drainage-minier",
+  "2025_Metropole_Juin_Ex1_Pertes-dans-le-reseau-electrique",
+  "2025_Metropole_Juin_Ex2_La-flamme-et-la-vasque-olympiques",
+  "2025_Metropole_Juin_Ex4_Au-coeur-d-un-reacteur-nucleaire",
+  "2025_Metropole_Septembre_Ex1_Une-coulee-comme-Leon-Marchand",
+  "2025_Metropole_Septembre_Ex2_Classe-energetique-d-un-logement",
+  "2025_Metropole_Septembre_Ex4_Puissance-d-une-installation-lave-linge",
+  "2025_NC_Novembre_Ex1_Conditions-d-utilisation-d-un-medicament-lutecium-177",
+  "2025_NC_Novembre_Ex2_Mesure-de-vitesse-par-temps-de-pluie-radar",
+  "2025_NC_Novembre_Ex4_Chaudiere-a-condensation",
+  "2025_Polynesie_Juin_Ex1_Acceleration-d-un-vehicule",
+  "2025_Polynesie_Juin_Ex2_Preserver-son-audition",
+  "2025_Polynesie_Juin_Ex4_Un-traitement-respectueux-de-la-biodiversite-pH-d-un-etang",
+  "2024_Metropole_Juin_Ex1_Le-son-lors-d-un-concert",
+  "2024_Metropole_Juin_Ex2_Le-cobalt-60",
+  "2024_Metropole_Juin_Ex4_Rouler-moins-vite-pour-moins-polluer",
+  "2024_Metropole_Septembre_Ex1_Isolation-phonique-d-une-plaque",
+  "2024_Metropole_Septembre_Ex2_Pluies-acides-et-nettoyage-laser",
+  "2024_Metropole_Septembre_Ex4_Mouvement-d-un-drone",
+  "2024_Polynesie_Juillet_Ex1_Refroidissement-d-un-soda",
+  "2024_Polynesie_Juillet_Ex2_Anode-sacrificielle",
+  "2024_Polynesie_Juillet_Ex4_Accorder-un-piano-et-isoler-une-piece",
+  "2023_Metropole_Mars_Ex1_Viscosimetre-a-chute-de-bille",
+  "2023_Metropole_Mars_Ex2_Capteur-a-ultrasons-d-aide-au-stationnement",
+  "2023_Metropole_Mars_Ex4_Bouteille-isotherme-et-purification-de-l-eau",
+  "2023_Metropole_Septembre_Ex1_Lave-linge-et-thermistance",
+  "2023_Metropole_Septembre_Ex2_Voiture-solaire-miniature",
+  "2023_Metropole_Septembre_Ex4_Roulements-a-billes-corrodes",
+  "2023_Mexique_Mars_Ex1_Supercondensateur",
+  "2023_Mexique_Mars_Ex2_Saut-en-parachute",
+  "2023_Mexique_Mars_Ex4_Bruit-et-avion-a-hydrogene-a-l-aeroport",
+  "2023_NC_Aout_Ex1_Moteur-a-ethanol",
+  "2023_NC_Aout_Ex2_Douche-solaire",
+  "2023_NC_Aout_Ex4_Un-saxophone-dans-l-ISS",
+  "2023_Polynesie_Mars_Ex1_Four-a-pyrolyse",
+  "2023_Polynesie_Mars_Ex2_Mesurer-la-temperature-sur-Mars-grace-au-son",
+  "2023_Polynesie_Mars_Ex4_Chaulage-d-un-sol-et-d-un-bassin",
+  "2023_Reunion_Mars_Ex1_Bouteille-isotherme",
+  "2023_Reunion_Mars_Ex2_Poele-a-granules",
+  "2023_Reunion_Mars_Ex4_Mine-de-sel",
+  "2022_Mayotte_Mai_Ex1_Decollage-d-un-avion-electrique",
+  "2022_Mayotte_Mai_Ex2_Batterie-du-robot-Romeo",
+  "2022_Mayotte_Mai_Ex4A_Effaroucheur-d-oiseaux",
+  "2022_Mayotte_Mai_Ex4B_Degivrage-d-une-aile-d-avion",
+  "2022_Metropole_Septembre_Ex1_Pile-au-jus-d-orange",
+  "2022_Metropole_Septembre_Ex2_Talkie-walkie",
+  "2022_Metropole_Septembre_Ex4A_VTT-a-assistance-electrique",
+  "2022_Metropole_Septembre_Ex4B_Produits-menagers",
+  "2022_Metropole_Mai_Ex1_Refroidissement-du-lait",
+  "2022_Metropole_Mai_Ex2_Cordes-et-cable-de-guitare",
+  "2022_Metropole_Mai_Ex4A_Produit-detachant-et-lessive",
+  "2022_Metropole_Mai_Ex4B_Dormir-en-refuge",
+  "2022_NC_Octobre_Ex1_Saut-en-parachute",
+  "2022_NC_Octobre_Ex2_Electrolyse-de-l-eau",
+  "2022_NC_Octobre_Ex4A_Communication-RFID",
+  "2022_NC_Octobre_Ex4B_Maison-sans-chauffage",
+  "2022_Polynesie_Mai_Ex1_Refroidissement-d-une-boisson-chaude",
+  "2022_Polynesie_Mai_Ex2_Le-son-d-un-violon",
+  "2022_Polynesie_Mai_Ex4A_Pile-a-combustible-au-methanol",
+  "2022_Polynesie_Mai_Ex4B_Solar-Impulse-et-kerosene",
+  "2021_Metropole_Mars_Ex1_Decollage-de-la-fusee-Ariane-son",
+  "2021_Metropole_Mars_Ex2_Voiture-solaire-et-pile-saline",
+  "2021_Metropole_Mars_Ex4A_Combustibles-solides-pour-randonner-leger",
+  "2021_Metropole_Mars_Ex4B_Polystyrene-extrude-et-isolation-des-murs",
+  "2021_Metropole_Juillet_Ex1_Four-de-recuit-de-detente",
+  "2021_Metropole_Juillet_Ex2_Volet-roulant-de-piscine-autonome",
+  "2021_Metropole_Juillet_Ex4A_L-electrolyse-au-sel",
+  "2021_Metropole_Juillet_Ex4B_Casque-audio-a-reduction-de-bruit",
+  "2021_Metropole_Septembre_Ex1_Preparation-d-un-verre-d-eau-fonte-de-glace",
+  "2021_Metropole_Septembre_Ex2_Profondeur-d-un-trou-de-forage",
+  "2021_Metropole_Septembre_Ex4A_Stockage-d-une-carotte-de-glace",
+  "2021_Metropole_Septembre_Ex4B_Analyse-de-l-eau-d-un-echantillon-de-glace",
+  "2021_Sujet-zero-1_Ex1_Four-et-panneaux-solaires",
+  "2021_Sujet-zero-1_Ex2_Voiture-radiocommandee-et-accumulateur",
+  "2021_Sujet-zero-1_Ex4_Golf-mouvement-d-une-balle",
+  "2021_Sujet-zero-2_Ex1_Alimentation-en-eau-des-canons-a-neige",
+  "2021_Sujet-zero-2_Ex2_Local-technique-panneau-solaire-pompe",
+  "2021_Sujet-zero-2_Ex3_Controle-de-l-eau-du-bassin",
+  "2021_Sujet-zero-2_Ex4_Remonte-pente",
+  "2020_Metropole_Septembre_A_Implantation-d-une-centrale-photovoltaique",
+  "2020_Metropole_Septembre_B_Etude-d-un-drone",
+  "2020_Metropole_Septembre_C_Maintenance-des-panneaux-portee-radio-thermographie-nettoyag",
+  "2019_Antilles-Guyane_Juin_A_Le-Soleil-comme-source-d-energie-Energy-Observer",
+  "2019_Antilles-Guyane_Juin_B_L-hydrogene-un-vecteur-energetique",
+  "2019_Antilles-Guyane_Juin_C_Energy-Observer-fait-du-kite-surf",
+  "2019_Metropole_Juin_A_Irrigation-des-cultures",
+  "2019_Metropole_Juin_B_Eclairage-autonome-lampe-a-gravite",
+  "2019_Metropole_Juin_C_Cuiseur-econome",
+  "2019_Metropole_Septembre_A_Propulsion-du-voilier-Amasia",
+  "2019_Metropole_Septembre_B_Vie-a-bord-batteries-et-detartrage",
+  "2019_Metropole_Septembre_C_Missions-scientifiques-balise-thermistance",
+  "2019_NC_Novembre_A_Production-et-stockage-de-l-energie-Solar-Impulse",
+  "2019_NC_Novembre_B_Le-materiau-du-squelette",
+  "2019_NC_Novembre_C_Le-vol-de-croisiere-et-sa-consommation",
+  "2019_Polynesie_Juin_A_Principe-de-l-energie-thermique-des-mers",
+  "2019_Polynesie_Juin_B_Prelevement-des-eaux-froides-sonar-pression",
+  "2019_Polynesie_Juin_C_Valorisation-des-eaux-profondes-biodiesel-detartrant",
+  "2018_Antilles-Guyane_Juin_A_Deplacements-motorises-et-sante",
+  "2018_Antilles-Guyane_Juin_B_Enjeux-pour-l-environnement-CO2",
+  "2018_Antilles-Guyane_Juin_C_Optimiser-un-vehicule-hybride",
+  "2018_Metropole_Juin_A_Station-electrique-mobile-a-Haiti",
+  "2018_Metropole_Juin_B_Anemometre-et-eoliennes",
+  "2018_Metropole_Juin_C_Accumulateurs-et-groupe-electrogene",
+  "2018_Metropole_Septembre_P1_Panneaux-solaires-de-Solar-Impulse-2",
+  "2018_Metropole_Septembre_P2_Batteries-de-Solar-Impulse-2",
+  "2018_Metropole_Septembre_P3_Plan-de-vol-de-Solar-Impulse-2",
+  "2018_NC_Juin_A_Les-eoliennes-de-l-ile-d-Utsira",
+  "2018_NC_Juin_B_Production-de-dihydrogene-par-electrolyse",
+  "2018_NC_Juin_C_Production-d-electricite-pile-a-combustible",
+  "2018_NC_Remplacement_A_La-Formule-1-hybride",
+  "2018_NC_Remplacement_B_La-Formule-E-100-electrique",
+  "2018_NC_Remplacement_C_Un-sport-sous-haute-surveillance",
+  "2018_Polynesie_Juin_A_Mecanique-du-robot-tondeuse",
+  "2018_Polynesie_Juin_B_Autonomie-du-robot-tondeuse",
+  "2018_Polynesie_Juin_C_Entretien-de-la-pelouse-pH-pompe",
+  "2018_Polynesie_Septembre_A_Ensoleillement-centrale-PV-et-stockage",
+  "2018_Polynesie_Septembre_B_Relief-centrale-hydraulique",
+  "2018_Polynesie_Septembre_C_Biomasse-bagasse-et-biogaz",
+  "2017_Antilles-Guyane_Juin_A_Mecanique-du-saut-en-chute-libre",
+  "2017_Antilles-Guyane_Juin_B_Declenchement-automatique-du-parachute-capteur",
+  "2017_Antilles-Guyane_Juin_C_Chargeur-portable-autonome",
+  "2017_Antilles-Guyane_Septembre_A_Le-solaire-thermique-et-photovoltaique",
+  "2017_Antilles-Guyane_Septembre_B_L-eolien",
+  "2017_Antilles-Guyane_Septembre_C_Protection-des-materiels-anodisation",
+  "2017_Antilles-Guyane_Septembre_D_Stockage-de-l-energie-dihydrogene",
+  "2017_Metropole_Juin_A_Panneaux-photovoltaiques-de-la-tour-Elithis",
+  "2017_Metropole_Juin_B_Laboratoire-de-radiologie-et-alimentation-en-eau",
+  "2017_Metropole_Juin_C_Chauffage-de-la-tour-Elithis-chaudiere-a-granules",
+  "2017_Metropole_Septembre_A_Examens-medicaux-scanner-IRM",
+  "2017_Metropole_Septembre_B_Test-a-l-effort",
+  "2017_Metropole_Septembre_C_Entrainement-sudation-et-energie",
+  "2017_NC_Mars_A_Examen-medical-du-pilote-technetium-99",
+  "2017_NC_Mars_B_Echanges-energetiques-soleil-cellules-batteries",
+  "2017_NC_Mars_C_Et-si-Solar-Impulse-2-avait-des-moteurs-thermiques",
+  "2017_Polynesie_Juin_A_Batteries-lithium-fer-phosphate-et-capteurs",
+  "2017_Polynesie_Juin_B_Un-passeur-zero-emission-gazole",
+  "2017_Polynesie_Juin_C_Hydrodynamique-du-passeur"
+ ],
+ "sujets": [
+  {
+   "id": "2026_Antilles-Guyane_Juin_corrige",
+   "key": "2026|Antilles-Guyane|Juin",
+   "annales": "2026|Antilles-Guyane|Juin",
+   "exos": [
+    "2026_Antilles-Guyane_Juin_Ex1_Isolation-ecologique-laine-de-chanvre",
+    "2026_Antilles-Guyane_Juin_Ex2_La-voiture-a-hydrogene",
+    "2026_Antilles-Guyane_Juin_Ex4_Etude-experimentale-d-un-panneau-photovoltaique"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2026_Metropole_Juin_corrige",
+   "key": "2026|Métropole|Juin",
+   "annales": "2026|Métropole|Juin",
+   "exos": [
+    "2026_Metropole_Juin_Ex1_Refroidir-une-boisson",
+    "2026_Metropole_Juin_Ex2_Etude-d-une-Tiny-house",
+    "2026_Metropole_Juin_Ex4_Rouler-avec-une-pile-a-combustible"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2026_Polynesie_Juin_corrige",
+   "key": "2026|Polynésie|Juin",
+   "annales": "2026|Polynésie|Juin",
+   "exos": [
+    "2026_Polynesie_Juin_Ex1_Helicoptere-et-vitesse-du-son",
+    "2026_Polynesie_Juin_Ex2_Un-debitmetre-defectueux",
+    "2026_Polynesie_Juin_Ex4_Seulement-un-changement-de-couleurs-drainage-minier"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2025_Metropole_Juin_corrige",
+   "key": "2025|Métropole|Juin",
+   "annales": "2025|Métropole|Juin",
+   "exos": [
+    "2025_Metropole_Juin_Ex1_Pertes-dans-le-reseau-electrique",
+    "2025_Metropole_Juin_Ex2_La-flamme-et-la-vasque-olympiques",
+    "2025_Metropole_Juin_Ex4_Au-coeur-d-un-reacteur-nucleaire"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2025_Metropole_Septembre_corrige",
+   "key": "2025|Métropole|Septembre",
+   "annales": "2025|Métropole|Septembre",
+   "exos": [
+    "2025_Metropole_Septembre_Ex1_Une-coulee-comme-Leon-Marchand",
+    "2025_Metropole_Septembre_Ex2_Classe-energetique-d-un-logement",
+    "2025_Metropole_Septembre_Ex4_Puissance-d-une-installation-lave-linge"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2025_NC_Novembre_corrige",
+   "key": "2025|NC|Novembre",
+   "annales": "2025|NC|Novembre",
+   "exos": [
+    "2025_NC_Novembre_Ex1_Conditions-d-utilisation-d-un-medicament-lutecium-177",
+    "2025_NC_Novembre_Ex2_Mesure-de-vitesse-par-temps-de-pluie-radar",
+    "2025_NC_Novembre_Ex4_Chaudiere-a-condensation"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2025_Polynesie_Juin_corrige",
+   "key": "2025|Polynésie|Juin",
+   "annales": "2025|Polynésie|Juillet",
+   "exos": [
+    "2025_Polynesie_Juin_Ex1_Acceleration-d-un-vehicule",
+    "2025_Polynesie_Juin_Ex2_Preserver-son-audition",
+    "2025_Polynesie_Juin_Ex4_Un-traitement-respectueux-de-la-biodiversite-pH-d-un-etang"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2024_Metropole_Juin_corrige",
+   "key": "2024|Métropole|Juin",
+   "annales": "2024|Métropole|Juin",
+   "exos": [
+    "2024_Metropole_Juin_Ex1_Le-son-lors-d-un-concert",
+    "2024_Metropole_Juin_Ex2_Le-cobalt-60",
+    "2024_Metropole_Juin_Ex4_Rouler-moins-vite-pour-moins-polluer"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2024_Metropole_Septembre_corrige",
+   "key": "2024|Métropole|Septembre",
+   "annales": "2024|Métropole|Septembre",
+   "exos": [
+    "2024_Metropole_Septembre_Ex1_Isolation-phonique-d-une-plaque",
+    "2024_Metropole_Septembre_Ex2_Pluies-acides-et-nettoyage-laser",
+    "2024_Metropole_Septembre_Ex4_Mouvement-d-un-drone"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2024_Polynesie_Juillet_corrige",
+   "key": "2024|Polynésie|Juillet",
+   "annales": "2024|Polynésie|Juillet",
+   "exos": [
+    "2024_Polynesie_Juillet_Ex1_Refroidissement-d-un-soda",
+    "2024_Polynesie_Juillet_Ex2_Anode-sacrificielle",
+    "2024_Polynesie_Juillet_Ex4_Accorder-un-piano-et-isoler-une-piece"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2023_Metropole_Mars_corrige",
+   "key": "2023|Métropole|Mars",
+   "annales": "2023|Métropole|Mars",
+   "exos": [
+    "2023_Metropole_Mars_Ex1_Viscosimetre-a-chute-de-bille",
+    "2023_Metropole_Mars_Ex2_Capteur-a-ultrasons-d-aide-au-stationnement",
+    "2023_Metropole_Mars_Ex4_Bouteille-isotherme-et-purification-de-l-eau"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2023_Metropole_Septembre_corrige",
+   "key": "2023|Métropole|Septembre",
+   "annales": "2023|Métropole|Septembre",
+   "exos": [
+    "2023_Metropole_Septembre_Ex1_Lave-linge-et-thermistance",
+    "2023_Metropole_Septembre_Ex2_Voiture-solaire-miniature",
+    "2023_Metropole_Septembre_Ex4_Roulements-a-billes-corrodes"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2023_Mexique_Mars_corrige",
+   "key": "2023|Mexique|Mars",
+   "annales": "2023|Mexique|Mars",
+   "exos": [
+    "2023_Mexique_Mars_Ex1_Supercondensateur",
+    "2023_Mexique_Mars_Ex2_Saut-en-parachute",
+    "2023_Mexique_Mars_Ex4_Bruit-et-avion-a-hydrogene-a-l-aeroport"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2023_NC_Aout_corrige",
+   "key": "2023|NC|Août",
+   "annales": "2023|NC|Août",
+   "exos": [
+    "2023_NC_Aout_Ex1_Moteur-a-ethanol",
+    "2023_NC_Aout_Ex2_Douche-solaire",
+    "2023_NC_Aout_Ex4_Un-saxophone-dans-l-ISS"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2023_Polynesie_Mars_corrige",
+   "key": "2023|Polynésie|Mars",
+   "annales": "2023|Polynésie|Mars",
+   "exos": [
+    "2023_Polynesie_Mars_Ex1_Four-a-pyrolyse",
+    "2023_Polynesie_Mars_Ex2_Mesurer-la-temperature-sur-Mars-grace-au-son",
+    "2023_Polynesie_Mars_Ex4_Chaulage-d-un-sol-et-d-un-bassin"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2023_Reunion_Mars_corrige",
+   "key": "2023|Réunion|Mars",
+   "annales": "2023|Réunion|Mars",
+   "exos": [
+    "2023_Reunion_Mars_Ex1_Bouteille-isotherme",
+    "2023_Reunion_Mars_Ex2_Poele-a-granules",
+    "2023_Reunion_Mars_Ex4_Mine-de-sel"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2022_Mayotte_Mai_corrige",
+   "key": "2022|Mayotte|Mai",
+   "annales": "2022|Mayotte|Mai",
+   "exos": [
+    "2022_Mayotte_Mai_Ex1_Decollage-d-un-avion-electrique",
+    "2022_Mayotte_Mai_Ex2_Batterie-du-robot-Romeo",
+    "2022_Mayotte_Mai_Ex4A_Effaroucheur-d-oiseaux",
+    "2022_Mayotte_Mai_Ex4B_Degivrage-d-une-aile-d-avion"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2022_Metropole_Septembre_corrige",
+   "key": "2022|Métropole|Septembre",
+   "annales": "2022|Métropole|Septembre",
+   "exos": [
+    "2022_Metropole_Septembre_Ex1_Pile-au-jus-d-orange",
+    "2022_Metropole_Septembre_Ex2_Talkie-walkie",
+    "2022_Metropole_Septembre_Ex4A_VTT-a-assistance-electrique",
+    "2022_Metropole_Septembre_Ex4B_Produits-menagers"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2022_Metropole_Mai_corrige",
+   "key": "2022|Métropole|Mai",
+   "annales": "2022|Métropole|Mai",
+   "exos": [
+    "2022_Metropole_Mai_Ex1_Refroidissement-du-lait",
+    "2022_Metropole_Mai_Ex2_Cordes-et-cable-de-guitare",
+    "2022_Metropole_Mai_Ex4A_Produit-detachant-et-lessive",
+    "2022_Metropole_Mai_Ex4B_Dormir-en-refuge"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2022_NC_Octobre_corrige",
+   "key": "2022|NC|Octobre",
+   "annales": "2022|NC|Octobre",
+   "exos": [
+    "2022_NC_Octobre_Ex1_Saut-en-parachute",
+    "2022_NC_Octobre_Ex2_Electrolyse-de-l-eau",
+    "2022_NC_Octobre_Ex4A_Communication-RFID",
+    "2022_NC_Octobre_Ex4B_Maison-sans-chauffage"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2022_Polynesie_Mai_corrige",
+   "key": "2022|Polynésie|Mai",
+   "annales": "2022|Polynésie|Mai",
+   "exos": [
+    "2022_Polynesie_Mai_Ex1_Refroidissement-d-une-boisson-chaude",
+    "2022_Polynesie_Mai_Ex2_Le-son-d-un-violon",
+    "2022_Polynesie_Mai_Ex4A_Pile-a-combustible-au-methanol",
+    "2022_Polynesie_Mai_Ex4B_Solar-Impulse-et-kerosene"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2021_Metropole_Mars_corrige",
+   "key": "2021|Métropole|Mars",
+   "annales": "2021|Métropole|Mars",
+   "exos": [
+    "2021_Metropole_Mars_Ex1_Decollage-de-la-fusee-Ariane-son",
+    "2021_Metropole_Mars_Ex2_Voiture-solaire-et-pile-saline",
+    "2021_Metropole_Mars_Ex4A_Combustibles-solides-pour-randonner-leger",
+    "2021_Metropole_Mars_Ex4B_Polystyrene-extrude-et-isolation-des-murs"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2021_Metropole_Juillet_corrige",
+   "key": "2021|Métropole|Juillet",
+   "annales": "2021|Métropole|Juin",
+   "exos": [
+    "2021_Metropole_Juillet_Ex1_Four-de-recuit-de-detente",
+    "2021_Metropole_Juillet_Ex2_Volet-roulant-de-piscine-autonome",
+    "2021_Metropole_Juillet_Ex4A_L-electrolyse-au-sel",
+    "2021_Metropole_Juillet_Ex4B_Casque-audio-a-reduction-de-bruit"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2021_Metropole_Septembre_corrige",
+   "key": "2021|Métropole|Septembre",
+   "annales": "2021|Métropole|Septembre",
+   "exos": [
+    "2021_Metropole_Septembre_Ex1_Preparation-d-un-verre-d-eau-fonte-de-glace",
+    "2021_Metropole_Septembre_Ex2_Profondeur-d-un-trou-de-forage",
+    "2021_Metropole_Septembre_Ex4A_Stockage-d-une-carotte-de-glace",
+    "2021_Metropole_Septembre_Ex4B_Analyse-de-l-eau-d-un-echantillon-de-glace"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2021_Sujet-zero-1_sujet_corrige",
+   "key": "2021|Sujet zéro 1|",
+   "annales": "2021|Sujet zéro 1|",
+   "exos": [
+    "2021_Sujet-zero-1_Ex1_Four-et-panneaux-solaires",
+    "2021_Sujet-zero-1_Ex2_Voiture-radiocommandee-et-accumulateur",
+    "2021_Sujet-zero-1_Ex4_Golf-mouvement-d-une-balle"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2021_Sujet-zero-2_sujet_corrige",
+   "key": "2021|Sujet zéro 2|",
+   "annales": "2021|Sujet zéro 2|",
+   "exos": [
+    "2021_Sujet-zero-2_Ex1_Alimentation-en-eau-des-canons-a-neige",
+    "2021_Sujet-zero-2_Ex2_Local-technique-panneau-solaire-pompe",
+    "2021_Sujet-zero-2_Ex3_Controle-de-l-eau-du-bassin",
+    "2021_Sujet-zero-2_Ex4_Remonte-pente"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2020_Metropole_Septembre_corrige",
+   "key": "2020|Métropole|Septembre",
+   "annales": "2020|Métropole|Septembre",
+   "exos": [
+    "2020_Metropole_Septembre_A_Implantation-d-une-centrale-photovoltaique",
+    "2020_Metropole_Septembre_B_Etude-d-un-drone",
+    "2020_Metropole_Septembre_C_Maintenance-des-panneaux-portee-radio-thermographie-nettoyag"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2019_Antilles-Guyane_Juin_corrige",
+   "key": "2019|Antilles-Guyane|Juin",
+   "annales": "2019|Antilles-Guyane|Juin",
+   "exos": [
+    "2019_Antilles-Guyane_Juin_A_Le-Soleil-comme-source-d-energie-Energy-Observer",
+    "2019_Antilles-Guyane_Juin_B_L-hydrogene-un-vecteur-energetique",
+    "2019_Antilles-Guyane_Juin_C_Energy-Observer-fait-du-kite-surf"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2019_Metropole_Juin_corrige",
+   "key": "2019|Métropole|Juin",
+   "annales": "2019|Métropole|Juin",
+   "exos": [
+    "2019_Metropole_Juin_A_Irrigation-des-cultures",
+    "2019_Metropole_Juin_B_Eclairage-autonome-lampe-a-gravite",
+    "2019_Metropole_Juin_C_Cuiseur-econome"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2019_Metropole_Septembre_corrige",
+   "key": "2019|Métropole|Septembre",
+   "annales": "2019|Métropole|Septembre",
+   "exos": [
+    "2019_Metropole_Septembre_A_Propulsion-du-voilier-Amasia",
+    "2019_Metropole_Septembre_B_Vie-a-bord-batteries-et-detartrage",
+    "2019_Metropole_Septembre_C_Missions-scientifiques-balise-thermistance"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2019_NC_Novembre_corrige",
+   "key": "2019|NC|Novembre",
+   "annales": "2019|NC|Novembre",
+   "exos": [
+    "2019_NC_Novembre_A_Production-et-stockage-de-l-energie-Solar-Impulse",
+    "2019_NC_Novembre_B_Le-materiau-du-squelette",
+    "2019_NC_Novembre_C_Le-vol-de-croisiere-et-sa-consommation"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2019_Polynesie_Juin_corrige",
+   "key": "2019|Polynésie|Juin",
+   "annales": "2019|Polynésie|Juin",
+   "exos": [
+    "2019_Polynesie_Juin_A_Principe-de-l-energie-thermique-des-mers",
+    "2019_Polynesie_Juin_B_Prelevement-des-eaux-froides-sonar-pression",
+    "2019_Polynesie_Juin_C_Valorisation-des-eaux-profondes-biodiesel-detartrant"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_Antilles-Guyane_Juin_corrige",
+   "key": "2018|Antilles-Guyane|Juin",
+   "annales": null,
+   "exos": [
+    "2018_Antilles-Guyane_Juin_A_Deplacements-motorises-et-sante",
+    "2018_Antilles-Guyane_Juin_B_Enjeux-pour-l-environnement-CO2",
+    "2018_Antilles-Guyane_Juin_C_Optimiser-un-vehicule-hybride"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_Metropole_Juin_corrige",
+   "key": "2018|Métropole|Juin",
+   "annales": null,
+   "exos": [
+    "2018_Metropole_Juin_A_Station-electrique-mobile-a-Haiti",
+    "2018_Metropole_Juin_B_Anemometre-et-eoliennes",
+    "2018_Metropole_Juin_C_Accumulateurs-et-groupe-electrogene"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_Metropole_Septembre_corrige",
+   "key": "2018|Métropole|Septembre",
+   "annales": null,
+   "exos": [
+    "2018_Metropole_Septembre_P1_Panneaux-solaires-de-Solar-Impulse-2",
+    "2018_Metropole_Septembre_P2_Batteries-de-Solar-Impulse-2",
+    "2018_Metropole_Septembre_P3_Plan-de-vol-de-Solar-Impulse-2"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_NC_Juin_corrige",
+   "key": "2018|NC|Juin",
+   "annales": null,
+   "exos": [
+    "2018_NC_Juin_A_Les-eoliennes-de-l-ile-d-Utsira",
+    "2018_NC_Juin_B_Production-de-dihydrogene-par-electrolyse",
+    "2018_NC_Juin_C_Production-d-electricite-pile-a-combustible"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_NC_Remplacement_corrige",
+   "key": "2018|NC|Remplacement",
+   "annales": null,
+   "exos": [
+    "2018_NC_Remplacement_A_La-Formule-1-hybride",
+    "2018_NC_Remplacement_B_La-Formule-E-100-electrique",
+    "2018_NC_Remplacement_C_Un-sport-sous-haute-surveillance"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_Polynesie_Juin_corrige",
+   "key": "2018|Polynésie|Juin",
+   "annales": "2018|Polynésie|Juin",
+   "exos": [
+    "2018_Polynesie_Juin_A_Mecanique-du-robot-tondeuse",
+    "2018_Polynesie_Juin_B_Autonomie-du-robot-tondeuse",
+    "2018_Polynesie_Juin_C_Entretien-de-la-pelouse-pH-pompe"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2018_Polynesie_Septembre_corrige",
+   "key": "2018|Polynésie|Septembre",
+   "annales": null,
+   "exos": [
+    "2018_Polynesie_Septembre_A_Ensoleillement-centrale-PV-et-stockage",
+    "2018_Polynesie_Septembre_B_Relief-centrale-hydraulique",
+    "2018_Polynesie_Septembre_C_Biomasse-bagasse-et-biogaz"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2017_Antilles-Guyane_Juin_corrige",
+   "key": "2017|Antilles-Guyane|Juin",
+   "annales": null,
+   "exos": [
+    "2017_Antilles-Guyane_Juin_A_Mecanique-du-saut-en-chute-libre",
+    "2017_Antilles-Guyane_Juin_B_Declenchement-automatique-du-parachute-capteur",
+    "2017_Antilles-Guyane_Juin_C_Chargeur-portable-autonome"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2017_Antilles-Guyane_Septembre_corrige",
+   "key": "2017|Antilles-Guyane|Septembre",
+   "annales": null,
+   "exos": [
+    "2017_Antilles-Guyane_Septembre_A_Le-solaire-thermique-et-photovoltaique",
+    "2017_Antilles-Guyane_Septembre_B_L-eolien",
+    "2017_Antilles-Guyane_Septembre_C_Protection-des-materiels-anodisation",
+    "2017_Antilles-Guyane_Septembre_D_Stockage-de-l-energie-dihydrogene"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2017_Metropole_Juin_corrige",
+   "key": "2017|Métropole|Juin",
+   "annales": null,
+   "exos": [
+    "2017_Metropole_Juin_A_Panneaux-photovoltaiques-de-la-tour-Elithis",
+    "2017_Metropole_Juin_B_Laboratoire-de-radiologie-et-alimentation-en-eau",
+    "2017_Metropole_Juin_C_Chauffage-de-la-tour-Elithis-chaudiere-a-granules"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2017_Metropole_Septembre_corrige",
+   "key": "2017|Métropole|Septembre",
+   "annales": null,
+   "exos": [
+    "2017_Metropole_Septembre_A_Examens-medicaux-scanner-IRM",
+    "2017_Metropole_Septembre_B_Test-a-l-effort",
+    "2017_Metropole_Septembre_C_Entrainement-sudation-et-energie"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2017_NC_Mars_corrige",
+   "key": "2017|NC|Mars",
+   "annales": null,
+   "exos": [
+    "2017_NC_Mars_A_Examen-medical-du-pilote-technetium-99",
+    "2017_NC_Mars_B_Echanges-energetiques-soleil-cellules-batteries",
+    "2017_NC_Mars_C_Et-si-Solar-Impulse-2-avait-des-moteurs-thermiques"
+   ],
+   "complete": true
+  },
+  {
+   "id": "2017_Polynesie_Juin_corrige",
+   "key": "2017|Polynésie|Juin",
+   "annales": null,
+   "exos": [
+    "2017_Polynesie_Juin_A_Batteries-lithium-fer-phosphate-et-capteurs",
+    "2017_Polynesie_Juin_B_Un-passeur-zero-emission-gazole",
+    "2017_Polynesie_Juin_C_Hydrodynamique-du-passeur"
+   ],
+   "complete": true
+  }
+ ]
+}
